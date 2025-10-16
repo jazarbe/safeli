@@ -13,10 +13,12 @@ public class Usuario
     public string bio {get; private set;}
     public DateOnly fechaNac {get; private set;}
     public string contraseña {get; private set;}
+    public List<Orbit> orbits {get; private set;}
     public Point ubicacion {get; private set;}
+    public List<Carpeta> carpetas {get; private set;}
     
     public Usuario(){}
-    public Usuario( string nombre, string apellido, string mail, int numTelefono, string username, string foto, string bio, DateOnly fechaNac, string contraseña, Point ubicacion)
+    public Usuario( string nombre, string apellido, string mail, int numTelefono, string username, string foto, string bio, DateOnly fechaNac, string contraseña, List<Orbit> orbits, Point ubicacion, List<Carpeta> carpetas)
     {
     
         this.nombre = nombre;
@@ -28,7 +30,9 @@ public class Usuario
         this.bio = bio;
         this.fechaNac = fechaNac;
         this.contraseña = contraseña;
+        this.orbits = orbits;
         this.ubicacion = ubicacion;
+        this.carpetas = carpetas;
     }
 
 }

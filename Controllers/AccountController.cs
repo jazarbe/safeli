@@ -70,33 +70,33 @@ public class Account  : Controller
         return View();
     }
 
-    // public IActionResult CrearCuenta(string nombre, string apellido, string password, string username, DateTime fecha, IFormFile foto, int idUsuario)
-    // {
-    //     BD miBd = new BD();
+    public IActionResult CrearCuenta(string nombre, string apellido, string password, string username, DateTime fecha, IFormFile foto, int idUsuario)
+    {
+        BD miBd = new BD();
 
-    //     if (miBd.BuscarUsuarioPorUsername(username) != null)
-    //     {
-    //         ViewBag.mensaje = "El nombre de usuario ya existe.";
-    //         return View("SignUp");
-    //     }
+        if (miBd.BuscarUsuarioPorUsername(username) != null)
+        {
+            ViewBag.mensaje = "El nombre de usuario ya existe.";
+            return View("SignUp");
+        }
 
-    //     string nombreArchivo = "default.png";
+        string nombreArchivo = "default.png";
 
-    //     if (foto != null && foto.Length > 0)
-    //     {
-    //         string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
-    //         nombreArchivo = Path.GetFileName(foto.FileName);
-    //         string rutaCompleta = Path.Combine(carpeta, nombreArchivo);
+        if (foto != null && foto.Length > 0)
+        {
+            string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+            nombreArchivo = Path.GetFileName(foto.FileName);
+            string rutaCompleta = Path.Combine(carpeta, nombreArchivo);
 
-    //         using (var stream = new FileStream(rutaCompleta, FileMode.Create))
-    //         {
-    //             foto.CopyTo(stream);
-    //         }
-    //     }
+            using (var stream = new FileStream(rutaCompleta, FileMode.Create))
+            {
+                foto.CopyTo(stream);
+            }
+        }
 
-    //     miBd.AgregarUsuario(nombre, apellido, password, username, nombreArchivo);
+        // miBd.AgregarUsuario(nombre, apellido, password, username, nombreArchivo);
 
-    //     ViewBag.mensaje = "Cuenta creada correctamente.";
-    //     return RedirectToAction("Index", "Home");
-    // }
+        ViewBag.mensaje = "Cuenta creada correctamente.";
+        return RedirectToAction("Home", "Home");
+    }
 }
