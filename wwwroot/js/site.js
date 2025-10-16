@@ -1,4 +1,13 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿// #region PASSWORD
+const togglePassword = document.getElementById('togglePassword');
+const password = document.getElementById('password');
 
-// Write your JavaScript code.
+    togglePassword.addEventListener('click', function () {
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+
+      // Cambiar el ícono (ojito abierto/cerrado)
+      this.classList.toggle('fa-eye');
+      this.classList.toggle('fa-eye-slash');
+    });
+//#endregion PASSWORD

@@ -2,3 +2,14 @@
     ViewData["Title"] = "Log In";
 }
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<h1>¡Bienvenido/a!</h1>
+<form method = "post" action = "">
+<input type = "text" id="Username" placeholder ="Ingrese su Usuario"/> <br>
+<input type = "password" id="password" placeholder ="Ingrese su Contraseña"/>
+    <i class="fa-solid fa-eye toggle-password" id="togglePassword"></i> <br>
+<a href='@Url.Action("OlvidePassword", "Account")'>¿Te olvidaste la contraseña?</a><br>
+<input type="checkbox"> Mantenerme iniciado/a
+
+<a href='@Url.Action("SignUp", "Account")'>Registrate</a>

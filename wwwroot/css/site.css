@@ -26,6 +26,24 @@ img{
   justify-self: center;
 }
 
+/*CHECKBOX - INDEX*/
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.checkbox-container input {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  accent-color: var(--color2); /* color del tick */
+  cursor: pointer;
+}
+
+
 /*FOOTER*/
 footer{
   position: absolute;
@@ -54,9 +72,7 @@ footer div ul{
   align-items: center;  
 }
 
-
-
-
+/*BORDE HEADER Y FOOTER*/
 .borde {
   width: 100%; /* Ancho del rectángulo */
   height: 30px; /* Alto del rectángulo */
