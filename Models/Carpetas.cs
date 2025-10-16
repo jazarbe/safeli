@@ -1,12 +1,9 @@
-namespace safeli.Models;
-using Microsoft.Data.SqlClient;
-using Dapper;
-using Newtonsoft.Json;
+namespace info360.Models;
 
 public class Carpetas
 {
     public int ID {get ; private set;}
-    public List<Destino> Destinos {get; private set;}
+    public List<Destinos> Destinos {get; private set;}
 
     public Carpetas(){}
 }

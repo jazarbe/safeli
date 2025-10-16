@@ -1,7 +1,6 @@
-namespace safeli.Models;
-using Microsoft.Data.SqlClient;
-using Dapper;
-using Newtonsoft.Json;
+namespace info360.Models;
+
+
     public class Point
     {
         public double x { get; private set; }
@@ -9,9 +8,11 @@ using Newtonsoft.Json;
 
         public Point(double x, double y)
         {
-            x = x;
-            y = y;
+            this.x = x;
+            this.y = y;
         }
 
         public Point(){}
+
+
     }
