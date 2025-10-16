@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using tp6_tudu.Models;
+using info360.Models;
 
-namespace tp6_tudu.Controllers;
+namespace info360.Controllers;
 
 public class Account  : Controller
 {
@@ -69,34 +69,34 @@ public class Account  : Controller
     {
         return View();
     }
-    
-    public IActionResult CrearCuenta(string nombre, string apellido, string password, string username, DateTime fecha, IFormFile foto, int idUsuario)
-    {
-        BD miBd = new BD();
 
-        if (miBd.BuscarUsuarioPorUsername(username) != null)
-        {
-            ViewBag.mensaje = "El nombre de usuario ya existe.";
-            return View("SignUp");
-        }
+    // public IActionResult CrearCuenta(string nombre, string apellido, string password, string username, DateTime fecha, IFormFile foto, int idUsuario)
+    // {
+    //     BD miBd = new BD();
 
-        string nombreArchivo = "default.png";
+    //     if (miBd.BuscarUsuarioPorUsername(username) != null)
+    //     {
+    //         ViewBag.mensaje = "El nombre de usuario ya existe.";
+    //         return View("SignUp");
+    //     }
 
-        if (foto != null && foto.Length > 0)
-        {
-            string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
-            nombreArchivo = Path.GetFileName(foto.FileName);
-            string rutaCompleta = Path.Combine(carpeta, nombreArchivo);
+    //     string nombreArchivo = "default.png";
 
-            using (var stream = new FileStream(rutaCompleta, FileMode.Create))
-            {
-                foto.CopyTo(stream);
-            }
-        }
+    //     if (foto != null && foto.Length > 0)
+    //     {
+    //         string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+    //         nombreArchivo = Path.GetFileName(foto.FileName);
+    //         string rutaCompleta = Path.Combine(carpeta, nombreArchivo);
 
-        miBd.AgregarUsuario(nombre, apellido, password, username, nombreArchivo);
+    //         using (var stream = new FileStream(rutaCompleta, FileMode.Create))
+    //         {
+    //             foto.CopyTo(stream);
+    //         }
+    //     }
 
-        ViewBag.mensaje = "Cuenta creada correctamente.";
-        return RedirectToAction("Index", "Home");
-    }
+    //     miBd.AgregarUsuario(nombre, apellido, password, username, nombreArchivo);
+
+    //     ViewBag.mensaje = "Cuenta creada correctamente.";
+    //     return RedirectToAction("Index", "Home");
+    // }
 }

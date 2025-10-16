@@ -17,11 +17,8 @@ public class HomeController : Controller
     {
         return View();
     }
-    public IActionResult aInicio()
-    {
-        return View("Index");
-    }
-    public IActionResult aOrbit(){
-        return View("Orbit");
+
+    public IActionResult Orbit(){
+        return View();
     }
 }
