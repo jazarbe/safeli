@@ -34,6 +34,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNZW51T3JiaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[c:/Users/49121068/safeli/Views/Home/OlvidePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxPbHZpZGVQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [c:/Users/49121068/safeli/Views/Home/OrbitInside.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxPcmJpdEluc2lkZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -50,8 +54,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQZXJtaXNvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/49121068/safeli/Views/Home/SingUp.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaW5nVXAuY3NodG1s
+[c:/Users/49121068/safeli/Views/Home/SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaWduVXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [c:/Users/49121068/safeli/Views/Home/SOS.cshtml]

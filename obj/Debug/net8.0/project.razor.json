@@ -19334,11 +19334,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\49121068\\safeli\\Views\\Home\\SingUp.cshtml",
-      "TargetPath": "Views\\Home\\SingUp.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\49121068\\safeli\\Views\\Home\\OrbitInside.cshtml",
       "TargetPath": "Views\\Home\\OrbitInside.cshtml",
       "FileKind": "mvc"
@@ -19346,6 +19341,11 @@
     {
       "FilePath": "c:\\Users\\49121068\\safeli\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\49121068\\safeli\\Views\\Home\\SignUp.cshtml",
+      "TargetPath": "Views\\Home\\SignUp.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -19376,6 +19376,11 @@
     {
       "FilePath": "c:\\Users\\49121068\\safeli\\Views\\Home\\Perfil.cshtml",
       "TargetPath": "Views\\Home\\Perfil.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\49121068\\safeli\\Views\\Home\\OlvidePassword.cshtml",
+      "TargetPath": "Views\\Home\\OlvidePassword.cshtml",
       "FileKind": "mvc"
     },
     {
