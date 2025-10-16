@@ -1,4 +1,4 @@
-namespace info360.Models;
+namespace safeli.Models;
 using Microsoft.Data.SqlClient;
 using Dapper;
 using Newtonsoft.Json;

@@ -1,4 +1,4 @@
-namespace info360.Models;
+namespace safeli.Models;
 using Microsoft.Data.SqlClient;
 using Dapper;
 using Newtonsoft.Json;
@@ -6,18 +6,9 @@ using Newtonsoft.Json;
 public class Destino{
     public int id {get; private set;}
 
-    public struct Point
-    {
-        public double x { get; private set; }
-        public double y { get; private set; }
+    public Point ubicacion {get; private set;}
+    public Destino(){}
 
-        public Point(double x, double y)
-        {
-            x = x;
-            y = y;
-        }
-    }
-    
 
 
 }
