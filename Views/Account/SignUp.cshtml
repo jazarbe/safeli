@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Sign Up";
+}
+<form method="post" action='@Url.Action("CrearCuenta", "AccountController")'>
+    <div class = "input-center">
+        <input type = "text" id="Nombre" placeholder ="Nombre" required/>
+        <input type = "text" id="Apellido" placeholder ="Apellido"required/>
+        <input type = "text" id="Mail" placeholder ="Mail"required/>
+        <input type = "text" id="NombreDeUsuario" placeholder ="Nombre de Usuario"required/>
+        <input type = "Date" id="Fecha" placeholder ="Fecha de nacimiento"required/>
+        
+        <input type = "password" id="pass-1" placeholder ="Contraseña" required/>
+        <div class = "contra-signUp">
+            <input type = "password" id="pass-confirm" placeholder ="Contraseña"required/>
+            <i class="fa-solid fa-eye toggle-password" id="togglePassword"required></i> <br>
+        </div>
+        
+        <div class = "create-button">
+            <button type="submit">Crear Cuenta</button><br>
+        </div>
+    </div>
+</form>
+
+@*NO DEJA CREAR CUENTA --> CHEQUEAR*@

@@ -5,7 +5,7 @@ using Dapper;
 
 namespace info360.Models;
 
-public static class BD{
+public class BD{
     private static string _connectionString = @"Server=localhost;DataBase=TPnoNum;Integrated Security=True;TrustServerCertificate=True;";
     
     public BD(){}
@@ -18,7 +18,7 @@ public static class BD{
         }
         return orbits;
     }
-    public Tarea BuscarOrbitPorId(int idBuscado){
+    /*public Tarea BuscarOrbitPorId(int idBuscado){
         Tarea tareaBuscada = null;
         using(SqlConnection connection = new SqlConnection(_connectionString)){
             string query = "SELECT * FROM Tareas WHERE id = @pIdBuscado";
@@ -99,5 +99,5 @@ public static class BD{
             connection.Execute(query, new 
             {ptitulo = titulo, pdescripcion = descripcion, pfecha = fecha, pfinalizada = finalizada, pidUsuario = idUsuario});
         }
-    }
+    }*/
 }
