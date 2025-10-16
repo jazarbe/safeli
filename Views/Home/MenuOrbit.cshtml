@@ -1,12 +1,12 @@
 @{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Menu";
 }
-<h2>Your orbits</h2>
-<img src="Imagenes/" alt="FotoOrit">
-<h2>Your orbits</h2>
-<img src="Imagenes/" alt="FotoOrit">
-<h2>Your orbits</h2>
+ @foreach (Orbit item in ViewBag.Usuario.orbits){
+      <img src='@ViewBag.Usuario.orbits.foto' alt="">
+    <p>@ViewBag.usuario.orbits.name</p>
+ }
 
+@* buscar como hacer los link  *@
 <form method="post" action="index.html" target="_blank">
     <input type="text" placeholder="Link Para unirse a un orbit">
     <button type="submit">

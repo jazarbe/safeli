@@ -44,6 +44,14 @@ img{
 }
 
 
+.accordion-button::after {
+  order: -1; /* mueve la flecha al inicio del botón */
+  margin-right: .5em;
+  margin-left: 0;
+}
+
+
+
 /*FOOTER*/
 footer{
   position: absolute;
