@@ -1,5 +1,7 @@
 *{
   font-family: "Noto Sans", sans-serif;
+  margin: 0%;
+  padding: 0%;
   /* font-family: 'Coolvetica', sans-serif; */
 
   /* paleta de colores */
@@ -12,12 +14,23 @@
   --gris: #9CA3AF;
   --rojo: #BA0000;
 }
+body{
+  position: relative;
+  min-height: 100vh;
+}
 
 img{
   width: 50%;
   height: auto;
   display: flex;
   justify-self: center;
+}
+
+/*FOOTER*/
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 footer div button{
@@ -32,4 +45,20 @@ footer div button{
 
 footer ul li{
   list-style: none;
+}
+
+footer div ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;  
+}
+
+
+
+
+.borde {
+  width: 100%; /* Ancho del rectángulo */
+  height: 30px; /* Alto del rectángulo */
+  background-color: var(--color1); /* Color de fondo */
 }
