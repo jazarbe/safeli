@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("info360")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49a20396cbbc015ab8af3cc5a464b108646edc2f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+294f88b0b24e82d791aa56fd71a1433c0bb9a0a9")]
 [assembly: System.Reflection.AssemblyProductAttribute("info360")]
 [assembly: System.Reflection.AssemblyTitleAttribute("info360")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
