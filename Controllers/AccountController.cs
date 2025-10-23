@@ -13,36 +13,34 @@ public class Account  : Controller
         _logger = logger;
     }
 
-    // public IActionResult LogIn(string username, string passwordIntentada)
-    //{
-    //     BD miBd = new BD();
-    //     string msg = null;
-    //     Usuario intentoIntegrante = miBd.BuscarUsuarioPorUsername(username);
-    //     if(intentoIntegrante == null){
-    //         msg = "Nombre de usuario inexistente";
-    //         return RedirectToAction("Index", "Home", new {mensaje = msg});
-    //     }
-    //     else if(passwordIntentada != intentoIntegrante.password){
-    //         msg = "Contraseña incorrecta";
-    //         return RedirectToAction("Index", "Home", new {mensaje = msg});
-    //     }
-    //     else{
-    //         string rutaFoto = "/images/default.png";
-    //         rutaFoto = "/images/" + intentoIntegrante.foto;
-    //         HttpContext.Session.SetString("fotoPerfil", rutaFoto);
-    //         HttpContext.Session.SetInt32("usuarioId", intentoIntegrante.id);
-    //         miBd.ActualizarLogin(intentoIntegrante.id);
+    public IActionResult LogIn(string username, string passwordIntentada)
+    {
+        BD miBd = new BD();
+        string msg = null;
+        Usuario intentoIntegrante = miBd.BuscarUsuarioPorUsername(username);
+        if(intentoIntegrante == null){
+            msg = "Nombre de usuario inexistente";
+            return RedirectToAction("Index", "Home", new {mensaje = msg});
+        }
+        else if(passwordIntentada != intentoIntegrante.contraseña){
+            msg = "Contraseña incorrecta";
+            return RedirectToAction("Index", "Home", new {mensaje = msg});
+        }
+        else{
+            string rutaFoto = "/images/default.png";
+            rutaFoto = "/images/" + intentoIntegrante.foto;
+            HttpContext.Session.SetString("fotoPerfil", rutaFoto);
+            HttpContext.Session.SetInt32("usuarioId", intentoIntegrante.id);
 
+            return RedirectToAction("Tasks", "Home", new { idSolicitado = intentoIntegrante.id });
+        }
+    }
 
-    //         return RedirectToAction("Tasks", "Home", new { idSolicitado = intentoIntegrante.id });
-    //     }
-    // }
-
-    // public IActionResult LogOut()
-    // {
-    //     HttpContext.Session.Clear();
-    //     return RedirectToAction("Index", "Home");
-    // }
+    public IActionResult LogOut()
+    {
+        HttpContext.Session.Clear();
+        return RedirectToAction("Index", "Home");
+    }
 
     public IActionResult OlvidePassword()
     {
@@ -114,5 +112,17 @@ public class Account  : Controller
 
         ViewBag.mensaje = "Cuenta creada correctamente.";
         return RedirectToAction("Home", "Home");
+    }
+
+    public IActionResult Perfil(){
+        return View();
+    }
+
+    public IActionResult OtroPerfil(){
+        return View();
+    }
+
+    public IActionResult Permisos(){
+        return View();
     }
 }
