@@ -11,4 +11,11 @@ public class OrbitController : Controller
         _logger = logger;
     }
 
+    public IActionResult MenuOrbit(){
+        return View();
+    }
+
+    public IActionResult OrbitInside(){
+        return View();
+    }
 }

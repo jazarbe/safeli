@@ -36,11 +36,11 @@ public class Account  : Controller
         }
     }
 
-    // public IActionResult LogOut()
-    // {
-    //     HttpContext.Session.Clear();
-    //     return RedirectToAction("Index", "Home");
-    // }
+    public IActionResult LogOut()
+    {
+        HttpContext.Session.Clear();
+        return RedirectToAction("Index", "Home");
+    }
 
     public IActionResult OlvidePassword()
     {
@@ -96,5 +96,17 @@ public class Account  : Controller
 
         ViewBag.mensaje = "Cuenta creada correctamente.";
         return RedirectToAction("Home", "Home");
+    }
+
+    public IActionResult Perfil(){
+        return View();
+    }
+
+    public IActionResult OtroPerfil(){
+        return View();
+    }
+
+    public IActionResult Permisos(){
+        return View();
     }
 }
