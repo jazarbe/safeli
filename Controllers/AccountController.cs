@@ -1,6 +1,13 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using info360.Models;
+using System.Data;
+using Dapper;
+using Microsoft.Data.SqlClient;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace info360.Controllers;
 
@@ -13,70 +20,46 @@ public class Account  : Controller
         _logger = logger;
     }
 
-    // public IActionResult LogIn(string username, string passwordIntentada)
-    //{
-    //     BD miBd = new BD();
-    //     string msg = null;
-    //     Usuario intentoIntegrante = miBd.BuscarUsuarioPorUsername(username);
-    //     if(intentoIntegrante == null){
-    //         msg = "Nombre de usuario inexistente";
-    //         return RedirectToAction("Index", "Home", new {mensaje = msg});
-    //     }
-    //     else if(passwordIntentada != intentoIntegrante.password){
-    //         msg = "Contraseña incorrecta";
-    //         return RedirectToAction("Index", "Home", new {mensaje = msg});
-    //     }
-    //     else{
-    //         string rutaFoto = "/images/default.png";
-    //         rutaFoto = "/images/" + intentoIntegrante.foto;
-    //         HttpContext.Session.SetString("fotoPerfil", rutaFoto);
-    //         HttpContext.Session.SetInt32("usuarioId", intentoIntegrante.id);
-    //         miBd.ActualizarLogin(intentoIntegrante.id);
+    public IActionResult LogIn(string username, string email, string passwordIntentada)
+    {
+        BD miBd = new BD();
+        string msg = null;
+        Usuario usuario = miBd.logIn(username, email,passwordIntentada);
+        if(usuario == null){
+            msg = "Nombre de usuario inexistente";
+            return RedirectToAction("Index", new {mensaje = msg});
+        }
+        else{
+            HttpContext.Session.SetString("IdUsuario", usuario.id.ToString());
+            return RedirectToAction("Home", new { idSolicitado = usuario.id });
+        }
+    }
 
-
-    //         return RedirectToAction("Tasks", "Home", new { idSolicitado = intentoIntegrante.id });
-    //     }
-    // }
-
-    // public IActionResult LogOut()
-    // {
-    //     HttpContext.Session.Clear();
-    //     return RedirectToAction("Index", "Home");
-    // }
+    public IActionResult LogOut()
+    {
+        HttpContext.Session.Clear();
+        return RedirectToAction("Index", "Home");
+    }
 
     public IActionResult OlvidePassword()
     {
         return View();
     }
 
-    // public IActionResult CambiarPassword(string username, string nuevapassword)
-    // {
-    //     BD miBd = new BD();
-    //     Usuario integrante = miBd.BuscarUsuarioPorUsername(username);
-    //     if (integrante == null)
-    //     {
-    //         ViewBag.mensaje = "El usuario no existe";
-    //         return View("OlvidePassword");
-    //     }
-        
-    //     miBd.CambiarPassword(username, nuevapassword);
-
-    //     ViewBag.mensaje = "Contraseña cambiada correctamente";
-    //     return RedirectToAction("Index", "Home");
-    // }
+   
 
     public IActionResult SignUp()
     {
         return View();
     }
 
-    public IActionResult CrearCuenta(string nombre, string apellido, string password, string username, DateTime fecha, IFormFile foto, int idUsuario)
+    public IActionResult CrearCuenta(string nombre, string apellido, string email, int telefono, string password, string username, DateTime fecha, IFormFile foto, int idUsuario)
     {
         BD miBd = new BD();
 
-        if (miBd.BuscarUsuarioPorUsername(username) != null)
+        if (miBd.existeEmailoUseroTelefono(username, email, telefono) == "")
         {
-            ViewBag.mensaje = "El nombre de usuario ya existe.";
+            ViewBag.mensaje = "El nombre de usuario, el mail o el telefono se encuentra en uso.";
             return View("SignUp");
         }
 
@@ -98,5 +81,20 @@ public class Account  : Controller
 
         ViewBag.mensaje = "Cuenta creada correctamente.";
         return RedirectToAction("Home", "Home");
-    }
+    } 
+    // public IActionResult CambiarPassword(string username, string nuevapassword)
+    // {
+    //     BD miBd = new BD();
+    //     Usuario integrante = miBd.BuscarUsuarioPorUsername(username);
+    //     if (integrante == null)
+    //     {
+    //         ViewBag.mensaje = "El usuario no existe";
+    //         return View("OlvidePassword");
+    //     }
+        
+    //     miBd.CambiarPassword(username, nuevapassword);
+
+    //     ViewBag.mensaje = "Contraseña cambiada correctamente";
+    //     return RedirectToAction("Index", "Home");
+    // }
 }

@@ -1,7 +1,11 @@
 using System.Data;
+using Dapper;
 using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
-using Dapper;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 
 namespace info360.Models;
 
@@ -18,7 +22,33 @@ public class BD{
         }
         return orbits;
     }
-    // ver si nos sirve buscar por id
+    
+    //Comienzo de Account
+ 
+    public Usuario logIn(string usernamePara, string emailPara, string passwordPara){
+        Usuario usuarioBuscado = null;
+        using(SqlConnection connection = new SqlConnection(_connectionString)){
+            string query = "SELECT * FROM Usuarios WHERE (email = @pEmail OR username = @pUsername) AND password = @pPassword";
+            if(query == null){}
+            else
+            {
+                usuarioBuscado = connection.QueryFirstOrDefault<Usuario>(query, new {pEmail = emailPara, pUsername = usernamePara, pPassword = passwordPara});
+            }
+            return usuarioBuscado;
+        }
+    }
+    public string existeEmailoUseroTelefono(string usernamePara, string emailPara, int telefonoPara){
+        string usuarioBuscado = "";
+        using(SqlConnection connection = new SqlConnection(_connectionString)){
+            string query = "SELECT id FROM Usuarios WHERE email = @pEmail OR username = @pUsername OR numTelefono = pTelefono";
+            usuarioBuscado = connection.QueryFirstOrDefault<string>(query, new {pEmail = emailPara, pUsername = usernamePara, pTelefono = telefonoPara });
+        }
+        return usuarioBuscado;
+    }
+
+    //Comienzo de Account
+
+    // ver si nos sirve 
     public Usuario BuscarUsuarioPorId(int idBuscado){
         Usuario usuarioBuscado = null;
         using(SqlConnection connection = new SqlConnection(_connectionString)){
