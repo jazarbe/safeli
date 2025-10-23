@@ -110,4 +110,5 @@ public class BD{
     //         {ptitulo = titulo, pdescripcion = descripcion, pfecha = fecha, pfinalizada = finalizada, pidUsuario = idUsuario});
     //     }
     // }
+    
 }

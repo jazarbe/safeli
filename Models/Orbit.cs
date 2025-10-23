@@ -5,6 +5,8 @@ public class Orbit
     public int id {get; private set;}
     public string name{get; private set;}
     public string foto{get; private set;}
+     public string link { get; private set; }
+
     public List<Usuario> usuarios {get; private set;}
 
     public Orbit(){}
@@ -12,6 +14,7 @@ public class Orbit
 {
     this.name = name;
     this.foto = foto;
+    this.link = Guid.NewGuid().ToString("N");
     this.usuarios = usuarios;
 }
 
