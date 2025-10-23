@@ -11,6 +11,24 @@ public class OrbitController : Controller
     {
         _logger = logger;
     }
+     // Acción que muestra un Orbit específico
+        public IActionResult VerOrbit(int id)
+        {
+            // Empieza a medir el tiempo de la consulta
+            var stopwatch = Stopwatch.StartNew();
+
+            // Llamada a la base de datos
+            Orbit orbit = BD.BuscarOrbitPorId(id);
+
+            // Termina de medir el tiempo
+            stopwatch.Stop();
+
+            // Guardamos el tiempo que tardó la consulta en ViewBag
+            ViewBag.TiempoConsulta = stopwatch.ElapsedMilliseconds; // milisegundos
+
+            // Devolvemos la vista con el modelo
+            return View(orbit);
+        }
 
     //   [HttpPost]
     //     public async Task<IActionResult> Crear(string name, string foto)
