@@ -19,14 +19,16 @@
 <body>
 
     <header>
-        <!-- if para ver cuando usar cada header -->
+        <!-- if para ver cuando usar cada header --> 
+        <div class="borde"></div>
         @if (ViewContext.RouteData.Values["action"].ToString() != "Index" && ViewContext.RouteData.Values["action"].ToString() != "SignUp" && ViewContext.RouteData.Values["action"].ToString() != "Permisos" && ViewContext.RouteData.Values["action"].ToString() != "OlvidePassword"){
             <img src="/images/logotipo_color.png" alt="Logotipo SAFELI">
         }
         else{
-            <div class="borde"></div>
             <img src="/images/imagotipo_color.png" alt="Imagotipo SAFELI">
         }
+       
+
     </header>
 
     <main role="main">
@@ -66,9 +68,8 @@
             </ul>
         </div>
     }
-    else{
-        <div class="borde"></div>
-    }
+
+     <div class="borde"></div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
