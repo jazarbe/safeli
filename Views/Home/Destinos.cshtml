@@ -1,25 +1,4 @@
 @{
     ViewData["Title"] = "Destinos";
 }
-<div class="accordion accordion-flush" id="accordionFlushExample">
-  @foreach (Carpeta item in ViewBag.Usuario.carpetas)
-  {
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-          @ViewBag.Usuario.carpetas.nombre
-        </button>
-      </h2>
-      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-        <ul>
-          @foreach (Destino destino in ViewBag.Usuario.carpetas.Destinos)
-          {  
-            <li class="accordion-body">
-              <a href="">@ViewBag.Usuario.carpetas.Destino.nombre</a>
-            </li>
-          }
-        </ul>
-      </div>
-    </div>
-  }
-</div>
+<h1> destinos </h1>

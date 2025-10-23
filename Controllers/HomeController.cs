@@ -18,7 +18,18 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Orbit(){
+     public IActionResult SOS()
+    {
+        return View();
+    }
+
+     public IActionResult Destinos()
+    {
+        return View();
+    }
+
+    public IActionResult Home()
+    {
         return View();
     }
 }

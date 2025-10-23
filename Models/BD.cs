@@ -111,20 +111,22 @@ public class BD{
     //         tareaBuscada = connection.QueryFirstOrDefault<Tarea>(query, new {pIdBuscado = idBuscado});
     //     }
     // }
-    // public void AgregarUsuario(string nombre, string apellido, string password, string username, string foto)
-    // {
-    //     using(SqlConnection connection = new SqlConnection(_connectionString))
-    //     {
-    //         string query = @"
-    //             INSERT INTO Usuarios 
-    //             (nombre, apellido, password, username, foto)
-    //             VALUES 
-    //             (@pNombre, @pApellido, @pPassword, @pUsername, @pFoto)";
+
+    public void AgregarUsuario(string nombre, string apellido, string contraseña, string username, string foto)
+    {
+        using(SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            string query = @"
+                IF foto IS null THEN foto = '/images/default.jpg' END
+                INSERT INTO Usuarios 
+                (nombre, apellido, email, nroTelefono, username, foto, bio, contraseña)
+                VALUES 
+                (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pFoto, @pBio, @pContraseña)";
             
-    //             connection.Execute(query, new 
-    //         {pNombre = nombre, pApellido = apellido, pPassword = password, pUsername = username, pFoto = foto});
-    //     }
-    // }
+                connection.Execute(query, new 
+            {pNombre = nombre, pApellido = apellido, pPassword = contraseña, pUsername = username, pFoto = foto});
+        }
+    }
 
     // public void AgregarTarea(string titulo, string descripcion, DateTime fecha, bool finalizada, int idUsuario)
     // {
@@ -140,4 +142,7 @@ public class BD{
     //         {ptitulo = titulo, pdescripcion = descripcion, pfecha = fecha, pfinalizada = finalizada, pidUsuario = idUsuario});
     //     }
     // }
+
+    
+    
 }

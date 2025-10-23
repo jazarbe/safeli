@@ -3,7 +3,7 @@
 }
 
 <h1>¡Bienvenido/a!</h1>
-<form method="post" action='@Url.Action("IniciarSesion", "Account")'>
+<form method="post" action='@Url.Action("LogIn", "AccountController")'>
    
    <div class = "input-center">
         <input type = "text" id="Username" placeholder ="Ingrese su Usuario"/> 
@@ -26,3 +26,5 @@
     <h3>¿Todavía no tenes cuenta?</h3>
     <a href='@Url.Action("SignUp", "Account")'>Registrate</a>
 </form>
+
+<a href='@Url.Action("Destinos", "Home")'>Destinos</a>

@@ -40,6 +40,11 @@ public class Account  : Controller
         HttpContext.Session.Clear();
         return RedirectToAction("Index", "Home");
     }
+    public IActionResult LogOut()
+    {
+        HttpContext.Session.Clear();
+        return RedirectToAction("Index", "Home");
+    }
 
     public IActionResult OlvidePassword()
     {
@@ -97,4 +102,17 @@ public class Account  : Controller
     //     ViewBag.mensaje = "Contraseña cambiada correctamente";
     //     return RedirectToAction("Index", "Home");
     // }
+    }
+
+    public IActionResult Perfil(){
+        return View();
+    }
+
+    public IActionResult OtroPerfil(){
+        return View();
+    }
+
+    public IActionResult Permisos(){
+        return View();
+    }
 }
