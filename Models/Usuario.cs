@@ -7,11 +7,7 @@ public class Usuario
     public string nombre {get; private set;}
     public string apellido {get; private set;}
     public string email {get; private set;}
-<<<<<<< HEAD
     public int nroTelefono {get; private set;}
-=======
-    public int numTelefono {get; private set;}
->>>>>>> af388788b2125f3d133b8da3335450a4aaef832c
     public string username {get; private set;}
     public string foto {get; private set;}
     public string bio {get; private set;}
@@ -27,13 +23,8 @@ public class Usuario
     
         this.nombre = nombre;
         this.apellido = apellido;
-<<<<<<< HEAD
         this.email = email;
         this.nroTelefono = nroTelefono;
-=======
-        this.email = mail;
-        this.numTelefono = numTelefono;
->>>>>>> af388788b2125f3d133b8da3335450a4aaef832c
         this.username = username;
         this.foto = foto;
         this.bio = bio;
