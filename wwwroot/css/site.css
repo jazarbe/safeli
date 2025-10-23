@@ -26,7 +26,7 @@ img{
   justify-self: center;
 }
 
-/*CHECKBOX - INDEX*/
+/*CHECKBOX - LOGIN*/
 .checkbox-container {
   display: flex;
   align-items: center;
@@ -57,6 +57,7 @@ footer{
   position: absolute;
   bottom: 0;
   width: 100%;
+  border-top: 1px var(--color1);
 }
 
 footer div button{
@@ -65,8 +66,10 @@ footer div button{
   border: none;
   border-radius: 50%;
   padding: 2%;
-  width: 13%;
-  height: 13%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  width: 200%;
+  height: 200%;
 }
 
 footer ul li{
@@ -111,7 +114,7 @@ h1{
   text-align: center;
 }
 
-/*CONTRASEÑA*/
+/*CONTRASEÑA - LOGIN*/
 .passw{
   position: relative;
   width: 275px;;
@@ -150,7 +153,7 @@ input [type = "password"]::placeholder{
   justify-content: center;
 }
 
-/*TE OLVIDASTE LA CONTRA?*/
+/*TE OLVIDASTE LA CONTRA? - LOGIN*/
 a{
   font-size: 13px;
   display: flex;
@@ -164,7 +167,7 @@ a:visited{
   color: var(--color2);
 }
 
-/*MANTENERME INICIADO*/
+/*MANTENERME INICIADO - LOGIN*/
 .checkbox-div{
   display: flex;
   justify-content: center;
@@ -176,7 +179,7 @@ a:visited{
   accent-color: var(--color2);
 }
 
-/*INICIAR BUTTON*/
+/*INICIAR BUTTON - LOGIN*/
 .inicio-button{
   display: flex;
   justify-content: center;
@@ -203,16 +206,13 @@ h3{
 }
 
 
-
-
-
 /*SIGN UP*/
 .contra-signUp{
   position: relative;
   width: 275px;;
 }
 
-.contra-signUpinput{
+.contra-signUp input{
   width: 100%;
   box-sizing: border-box;
   padding: 4%;
@@ -242,4 +242,69 @@ h3{
   justify-content: center;
   align-items: center;
   margin-top: 3%;
+}
+
+input{
+  background-color: var(--color5);
+}
+
+/*OLVIDE CONTRASEÑA*/
+.input-NewPass{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.input-NewPass input{
+  width: 250px;
+  padding: 3%;
+  border: 1.5px solid var(--color1);
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+
+.NewPass-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3%;
+}
+
+.NewPass-button button{
+  width: 62%;
+  margin-top: 2%;
+}
+
+.passw-forgot{
+  position: relative;
+  width: 275px;;
+}
+
+.passw-forgot input{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4%;
+  margin-bottom:1% ;
+}
+
+.passw-forgot i{
+  position: absolute;
+  right: 3%;
+  top: 26%;
+  transform: translateY(-50%);
+  color: var(--color1);
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.passw-forgot i:hover{
+  background: var(--color1);
+  color: #fff;
+  transition: 0.5s;
 }
