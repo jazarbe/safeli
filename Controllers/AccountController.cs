@@ -70,6 +70,22 @@ public class Account  : Controller
         return View();
     }
 
+    public IActionResult OtroPerfil()
+    {
+        return View();
+    }
+
+    public IActionResult Perfil()
+    {
+        return View();
+    }
+
+    public IActionResult Permisos()
+    {
+        return View();
+    }
+    
+
     public IActionResult CrearCuenta(string nombre, string apellido, string password, string username, DateTime fecha, IFormFile foto, int idUsuario)
     {
         BD miBd = new BD();

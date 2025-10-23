@@ -54,40 +54,64 @@ img{
 
 /*FOOTER*/
 footer{
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
-  border-top: 1px var(--color1);
+  border-top: 1px solid var(--color1);
+  background-color: var(--color5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /*check*/
 }
 
 footer div button{
   background-color: var(--rojo);
   color: var(--blanco);
   border: none;
-  border-radius: 50%;
-  padding: 2%;
+  cursor: pointer;
   padding-top: 5%;
   padding-bottom: 5%;
-  width: 200%;
-  height: 200%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+footer div{
+  width: 100%;
+
 }
 
 footer ul li{
+  text-align: center;
   list-style: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: var(--color1);
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 2%;
 }
 
-footer div ul{
+footer ul{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;  
+  align-items: center;
+  width: 100%;
+  list-style: none;  
 }
 
 /*BORDE HEADER Y FOOTER*/
 .borde {
-  width: 100%; /* Ancho del rectángulo */
-  height: 30px; /* Alto del rectángulo */
-  background-color: var(--color1); /* Color de fondo */
+  width: 100% !important; /* Ancho del rectángulo */
+  height: 30px !important; /* Alto del rectángulo */
+  background-color: var(--color1) !important;/* Color de fondo */
 }
 
 /*INICIO*/
@@ -195,6 +219,7 @@ button{
   font-size: 15px;
   border-radius: 50px;
   border-color: var(--color1);
+  border: none;
 }
 
 /*TDV NO TENES CUENTA?*/
