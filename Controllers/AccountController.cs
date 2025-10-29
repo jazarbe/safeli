@@ -5,7 +5,6 @@ using System.Data;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
-using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -23,35 +22,45 @@ public class Account  : Controller
     public IActionResult LogIn(string username, string email, string passwordIntentada)
     {
         BD miBd = new BD();
-        string msg = null;
-        Usuario usuario = miBd.logIn(username, email,passwordIntentada);
+        ViewBag.mensaje = "¡Bienvenido/a!";
+        Usuario usuario = miBd.LogIn(username, email, passwordIntentada);
         if(usuario == null){
-            msg = "Nombre de usuario inexistente";
-            return RedirectToAction("Index", new {mensaje = msg});
+            ViewBag.mensaje = "Nombre de usuario inexistente";
+            return RedirectToAction("Index");
         }
         else{
-            HttpContext.Session.SetString("IdUsuario", usuario.id.ToString());
-            return RedirectToAction("Home", new { idSolicitado = usuario.id });
+            HttpContext.Session.SetInt32("IdUsuario", usuario.id);
+            // return RedirectToAction("Home", new { idSolicitado = usuario.id });
+            return RedirectToAction("Home");
         }
     }
 
     public IActionResult LogOut()
     {
         HttpContext.Session.Clear();
-        return RedirectToAction("Index", "Home");
-    }
-    public IActionResult LogOut()
-    {
-        HttpContext.Session.Clear();
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Index");
     }
 
     public IActionResult OlvidePassword()
     {
         return View();
     }
+    public IActionResult CambiarPassword(string username, string nuevaContraseña)
+    {
+        BD miBd = new BD();
+        Usuario integrante = miBd.BuscarUsuarioPorUsername(username);
+        if (integrante == null)
+        {
+            ViewBag.mensaje = "El usuario no existe";
+            return View("OlvidePassword");
+        }
+        
+        miBd.CambiarContraseña(username, nuevaContraseña);
 
-   
+        ViewBag.mensaje = "Contraseña cambiada correctamente";
+        // loader y dps home
+        return RedirectToAction("Index", "Home");
+    }
 
     public IActionResult SignUp()
     {
@@ -62,7 +71,7 @@ public class Account  : Controller
     {
         BD miBd = new BD();
 
-        if (miBd.existeEmailoUseroTelefono(username, email, telefono) == "")
+        if (miBd.ExisteCuenta(username, email, telefono) == "")
         {
             ViewBag.mensaje = "El nombre de usuario, el mail o el telefono se encuentra en uso.";
             return View("SignUp");
@@ -85,24 +94,10 @@ public class Account  : Controller
         // miBd.AgregarUsuario(nombre, apellido, password, username, nombreArchivo);
 
         ViewBag.mensaje = "Cuenta creada correctamente.";
+        // acá te manda al loader y después a la home
         return RedirectToAction("Home", "Home");
     } 
-    // public IActionResult CambiarPassword(string username, string nuevapassword)
-    // {
-    //     BD miBd = new BD();
-    //     Usuario integrante = miBd.BuscarUsuarioPorUsername(username);
-    //     if (integrante == null)
-    //     {
-    //         ViewBag.mensaje = "El usuario no existe";
-    //         return View("OlvidePassword");
-    //     }
-        
-    //     miBd.CambiarPassword(username, nuevapassword);
-
-    //     ViewBag.mensaje = "Contraseña cambiada correctamente";
-    //     return RedirectToAction("Index", "Home");
-    // }
-    }
+    
 
     public IActionResult Perfil(){
         return View();

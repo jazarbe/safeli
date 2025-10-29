@@ -1,6 +1,8 @@
 @{
     ViewData["Title"] = "Sign Up";
 }
+
+<h2>@ViewBag.mensaje</h2>
 <form method="post" action='@Url.Action("CrearCuenta", "AccountController")'>
     <div class = "input-center">
         <input type = "text" id="Nombre" placeholder ="Nombre" required/>

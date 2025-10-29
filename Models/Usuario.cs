@@ -30,9 +30,9 @@ public class Usuario
         this.bio = bio;
         this.fechaNacimiento = fechaNac;
         this.contraseña = contraseña;
-        this.orbits = orbits;
-        this.ubicacion = ubicacion;
-        this.carpetas = carpetas;
+        this.orbits = new List<Orbit>();
+        this.ubicacion = new Point();
+        this.carpetas = new List<Carpeta>();
     }
 
 }

@@ -25,30 +25,28 @@ public class BD{
     
     //Comienzo de Account
  
-    public Usuario logIn(string usernamePara, string emailPara, string passwordPara){
+    public Usuario LogIn(string username, string email, string password){
         Usuario usuarioBuscado = null;
         using(SqlConnection connection = new SqlConnection(_connectionString)){
             string query = "SELECT * FROM Usuarios WHERE (email = @pEmail OR username = @pUsername) AND password = @pPassword";
             if(query == null){}
             else
             {
-                usuarioBuscado = connection.QueryFirstOrDefault<Usuario>(query, new {pEmail = emailPara, pUsername = usernamePara, pPassword = passwordPara});
+                usuarioBuscado = connection.QueryFirstOrDefault<Usuario>(query, new {pEmail = email, pUsername = username, pPassword = password});
             }
             return usuarioBuscado;
         }
     }
-    public string existeEmailoUseroTelefono(string usernamePara, string emailPara, int telefonoPara){
+    public string ExisteCuenta(string username, string email, int telefono){
         string usuarioBuscado = "";
         using(SqlConnection connection = new SqlConnection(_connectionString)){
             string query = "SELECT id FROM Usuarios WHERE email = @pEmail OR username = @pUsername OR numTelefono = pTelefono";
-            usuarioBuscado = connection.QueryFirstOrDefault<string>(query, new {pEmail = emailPara, pUsername = usernamePara, pTelefono = telefonoPara });
+            usuarioBuscado = connection.QueryFirstOrDefault<string>(query, new {pEmail = email, pUsername = username, pTelefono = telefono });
         }
         return usuarioBuscado;
     }
 
-    //Comienzo de Account
-
-    // ver si nos sirve 
+    // ver si nos sirve -- por mail sino
     public Usuario BuscarUsuarioPorId(int idBuscado){
         Usuario usuarioBuscado = null;
         using(SqlConnection connection = new SqlConnection(_connectionString)){
@@ -65,6 +63,33 @@ public class BD{
         }
         return usuarioBuscado;
     }
+    public void CambiarContraseña(string username, string nuevaContraseña)
+    {
+        using(SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            string query = "UPDATE Usuarios SET contraseña = @pNuevacontraseña WHERE username = @pUsername";
+            connection.Execute(query, new { pNuevacontraseña = nuevaContraseña, pUsername = username });
+        }
+    }
+    public void AgregarUsuario(string nombre, string apellido, string email, int nroTelefono, string username, string contraseña, string foto, string bio, DateOnly fechaNacimiento)
+    {
+        using(SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            string query = @"
+                IF foto IS NULL THEN foto = '/images/default.jpg' END
+                IF bio IS NULL THEN bio = '' END
+                INSERT INTO Usuarios 
+                (nombre, apellido, email, nroTelefono, username, contraseña, foto, bio, fechaNacimiento)
+                VALUES 
+                (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pContraseña, @pFoto, @pBio, @pFechaNacimiento)";
+            
+                connection.Execute(query, new 
+            {pNombre = nombre, pApellido = apellido, pEmail = email, pNroTelefono = nroTelefono, pUsername = username, pContraseña = contraseña, pFoto = foto, pbio = bio, pFechaNacimiento = fechaNacimiento});
+        }
+    }
+
+    // Comienzo de Orbit
+    // ver si nos sirve -- capaz que por link es mejor
     public Orbit BuscarOrbitPorId(int idBuscado){
         Orbit orbitBuscado = null;
         using(SqlConnection connection = new SqlConnection(_connectionString)){
@@ -81,14 +106,23 @@ public class BD{
         }
         return orbitBuscado;
     }
-    public void CambiarContraseña(string username, string nuevaContraseña)
+    public void AgregarOrbit(string name, string foto, int idUsuario)
     {
         using(SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "UPDATE Usuarios SET contraseña = @pNuevacontraseña WHERE username = @pUsername";
-            connection.Execute(query, new { pNuevacontraseña = nuevaContraseña, pUsername = username });
+            // ponerle lo de foto default.jpg
+            string link = Guid.NewGuid().ToString("N");
+            
+            string query = @"
+                INSERT INTO Orbits 
+                (name, foto, link, idUsuario)
+                VALUES 
+                (@pname, @pfoto, @plink, @pidUsuario)";
+                            
+            connection.Execute(query, new 
+            {ptitulo = name, pfoto = foto, plink = link, pidUsuario = idUsuario});
         }
-    }
+    }    
 
     // public void UpdateTarea(int idBuscado, string titulo, string descripcion, DateTime fecha, bool finalizada){
     //     using(SqlConnection connection = new SqlConnection(_connectionString)){
@@ -112,37 +146,5 @@ public class BD{
     //     }
     // }
 
-    public void AgregarUsuario(string nombre, string apellido, string contraseña, string username, string foto)
-    {
-        using(SqlConnection connection = new SqlConnection(_connectionString))
-        {
-            string query = @"
-                IF foto IS null THEN foto = '/images/default.jpg' END
-                INSERT INTO Usuarios 
-                (nombre, apellido, email, nroTelefono, username, foto, bio, contraseña)
-                VALUES 
-                (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pFoto, @pBio, @pContraseña)";
-            
-                connection.Execute(query, new 
-            {pNombre = nombre, pApellido = apellido, pPassword = contraseña, pUsername = username, pFoto = foto});
-        }
-    }
 
-    // public void AgregarTarea(string titulo, string descripcion, DateTime fecha, bool finalizada, int idUsuario)
-    // {
-    //     using(SqlConnection connection = new SqlConnection(_connectionString))
-    //     {
-    //         string query = @"
-    //             INSERT INTO Tareas 
-    //             (titulo, descripcion, fecha, finalizada, idUsuario)
-    //             VALUES 
-    //             (@ptitulo, @pdescripcion, @pfecha, @pfinalizada, @pidUsuario)";
-                            
-    //         connection.Execute(query, new 
-    //         {ptitulo = titulo, pdescripcion = descripcion, pfecha = fecha, pfinalizada = finalizada, pidUsuario = idUsuario});
-    //     }
-    // }
-
-    
-    
 }
