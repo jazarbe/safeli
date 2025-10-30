@@ -25,14 +25,12 @@ public class BD{
     
     //Comienzo de Account
  
-    public Usuario LogIn(string username, string email, string password){
+    public Usuario LogIn(string email, string password){
         Usuario usuarioBuscado = null;
         using(SqlConnection connection = new SqlConnection(_connectionString)){
-            string query = "SELECT * FROM Usuarios WHERE (email = @pEmail OR username = @pUsername) AND password = @pPassword";
-            if(query == null){}
-            else
-            {
-                usuarioBuscado = connection.QueryFirstOrDefault<Usuario>(query, new {pEmail = email, pUsername = username, pPassword = password});
+            string query = "SELECT * FROM Usuarios WHERE email = @pEmail  AND password = @pPassword";
+            if(query != null){
+                usuarioBuscado = connection.QueryFirstOrDefault<Usuario>(query, new {pEmail = email, pPassword = password});
             }
             return usuarioBuscado;
         }
@@ -45,6 +43,24 @@ public class BD{
         }
         return usuarioBuscado;
     }
+    public void AgregarUsuario(string nombre, string apellido, string email, int nroTelefono, string username, string contraseña, string foto, string bio, DateOnly fechaNacimiento, Point ubicacion)
+    {
+        using(SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            string query = @"
+                IF foto IS NULL THEN foto = '/images/default.jpg' END
+                IF bio IS NULL THEN bio = '' END
+                INSERT INTO Usuarios 
+                (nombre, apellido, email, nroTelefono, username, contraseña, foto, bio, fechaNacimiento)
+                VALUES 
+                (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pContraseña, @pFoto, @pBio, @pFechaNacimiento)";
+            
+                connection.Execute(query, new 
+            {pNombre = nombre, pApellido = apellido, pEmail = email, pNroTelefono = nroTelefono, pUsername = username, pContraseña = contraseña, pFoto = foto, pbio = bio, pFechaNacimiento = fechaNacimiento});
+        }
+    }
+
+
 
     // ver si nos sirve -- por mail sino
     public Usuario BuscarUsuarioPorId(int idBuscado){
@@ -71,22 +87,7 @@ public class BD{
             connection.Execute(query, new { pNuevacontraseña = nuevaContraseña, pUsername = username });
         }
     }
-    public void AgregarUsuario(string nombre, string apellido, string email, int nroTelefono, string username, string contraseña, string foto, string bio, DateOnly fechaNacimiento)
-    {
-        using(SqlConnection connection = new SqlConnection(_connectionString))
-        {
-            string query = @"
-                IF foto IS NULL THEN foto = '/images/default.jpg' END
-                IF bio IS NULL THEN bio = '' END
-                INSERT INTO Usuarios 
-                (nombre, apellido, email, nroTelefono, username, contraseña, foto, bio, fechaNacimiento)
-                VALUES 
-                (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pContraseña, @pFoto, @pBio, @pFechaNacimiento)";
-            
-                connection.Execute(query, new 
-            {pNombre = nombre, pApellido = apellido, pEmail = email, pNroTelefono = nroTelefono, pUsername = username, pContraseña = contraseña, pFoto = foto, pbio = bio, pFechaNacimiento = fechaNacimiento});
-        }
-    }
+
 
     // Comienzo de Orbit
     // ver si nos sirve -- capaz que por link es mejor

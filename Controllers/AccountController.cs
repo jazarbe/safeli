@@ -22,8 +22,7 @@ public class Account  : Controller
     public IActionResult LogIn(string username, string email, string passwordIntentada)
     {
         BD miBd = new BD();
-        ViewBag.mensaje = "¡Bienvenido/a!";
-        Usuario usuario = miBd.LogIn(username, email, passwordIntentada);
+        Usuario usuario = miBd.LogIn(email, passwordIntentada);
         if(usuario == null){
             ViewBag.mensaje = "Nombre de usuario inexistente";
             return RedirectToAction("Index");
@@ -41,10 +40,6 @@ public class Account  : Controller
         return RedirectToAction("Index");
     }
 
-    public IActionResult OlvidePassword()
-    {
-        return View();
-    }
     public IActionResult CambiarPassword(string username, string nuevaContraseña)
     {
         BD miBd = new BD();
@@ -61,53 +56,33 @@ public class Account  : Controller
         // loader y dps home
         return RedirectToAction("Index", "Home");
     }
-
-    public IActionResult SignUp()
-    {
-        return View();
-    }
-
     public IActionResult CrearCuenta(string nombre, string apellido, string email, int telefono, string password, string username, DateTime fecha, IFormFile foto, int idUsuario)
     {
         BD miBd = new BD();
 
         if (miBd.ExisteCuenta(username, email, telefono) == "")
         {
-            ViewBag.mensaje = "El nombre de usuario, el mail o el telefono se encuentra en uso.";
+            ViewBag.mensaje = "El nombre de usuario, el Email o el telefono se encuentra en uso.";
             return View("SignUp");
         }
-
-        string nombreArchivo = "default.png";
-
-        if (foto != null && foto.Length > 0)
-        {
-            string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
-            nombreArchivo = Path.GetFileName(foto.FileName);
-            string rutaCompleta = Path.Combine(carpeta, nombreArchivo);
-
-            using (var stream = new FileStream(rutaCompleta, FileMode.Create))
+        else{
+            string nombreArchivo = "default.png";
+            Usuario nuevo = new Usuario (nombre, apellido, email, telefono, password, username, fecha, foto, idUsuario);
+            if (foto != null && foto.Length > 0)
             {
-                foto.CopyTo(stream);
+                string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+                nombreArchivo = Path.GetFileName(foto.FileName);
+                string rutaCompleta = Path.Combine(carpeta, nombreArchivo);
+                using (var stream = new FileStream(rutaCompleta, FileMode.Create))
+                {
+                    foto.CopyTo(stream);
+                }
             }
-        }
-
         // miBd.AgregarUsuario(nombre, apellido, password, username, nombreArchivo);
-
-        ViewBag.mensaje = "Cuenta creada correctamente.";
-        // acá te manda al loader y después a la home
+            ViewBag.mensaje = "Cuenta creada correctamente.";
+        }
         return RedirectToAction("Home", "Home");
     } 
     
 
-    public IActionResult Perfil(){
-        return View();
-    }
-
-    public IActionResult OtroPerfil(){
-        return View();
-    }
-
-    public IActionResult Permisos(){
-        return View();
-    }
 }
