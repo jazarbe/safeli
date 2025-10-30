@@ -56,7 +56,7 @@ public class Account  : Controller
         // loader y dps home
         return RedirectToAction("Index", "Home");
     }
-    public IActionResult CrearCuenta(string nombre, string apellido, string email, int telefono, string password, string username, DateTime fecha, IFormFile foto, int idUsuario)
+    /**public IActionResult CrearCuenta(string nombre, string apellido, string email, int telefono, string password, string username, DateTime fecha, IFormFile foto, int idUsuario)
     {
         BD miBd = new BD();
 
@@ -82,7 +82,7 @@ public class Account  : Controller
             ViewBag.mensaje = "Cuenta creada correctamente.";
         }
         return RedirectToAction("Home", "Home");
-    } 
+    } */
     
 
 }
