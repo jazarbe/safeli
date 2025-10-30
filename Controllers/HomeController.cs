@@ -25,12 +25,15 @@ public class HomeController : Controller
 
      public IActionResult Destinos()
     {
-        ViewBag.Contacto = HttpContext.Session.GetString("Contacto");
-        ViewBag.Nombre = HttpContext.Session.GetString("NombreContacto");
-        return View();
+        var destinosJson = HttpContext.Session.GetString("Destinos");
+    var destinos = string.IsNullOrEmpty(destinosJson);
+        new List<Destino>();
+        JsonConvert.DeserializeObject<List<Destino>>(destinosJson);
+
+    return View(destinos);
     }
 
-     [HttpPost]
+    
     public IActionResult GuardarContacto(string nombre, string numero)
     {
         HttpContext.Session.SetString("NombreContacto", nombre);
