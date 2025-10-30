@@ -25,12 +25,12 @@ public class HomeController : Controller
 
      public IActionResult Destinos()
     {
-        var destinosJson = HttpContext.Session.GetString("Destinos");
-    var destinos = string.IsNullOrEmpty(destinosJson);
-        new List<Destino>();
-        JsonConvert.DeserializeObject<List<Destino>>(destinosJson);
+    // //     var destinosJson = HttpContext.Session.GetString("Destinos");
+    // // var destinos = string.IsNullOrEmpty(destinosJson);
+    // //     new List<Destino>();
+    // //     JsonConvert.DeserializeObject<List<Destino>>(destinosJson);
 
-    return View(destinos);
+    return View();
     }
 
     
