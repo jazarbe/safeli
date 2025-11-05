@@ -16,7 +16,9 @@ public class BD{
     {
         _connectionString = connectionString;
     }
-
+public BD(){
+    
+}
 
     public List<Orbit> ConseguirOrbitsDeUsuario(int idBuscado){
         List<Orbit> orbits = new List<Orbit>();

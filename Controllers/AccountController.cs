@@ -87,7 +87,8 @@ public class Account  : Controller
 
     public IActionResult SignUp( )
     {
-        return RedirectToAction(); 
+        return View();
+        
     }
     public IActionResult Index( )
     {

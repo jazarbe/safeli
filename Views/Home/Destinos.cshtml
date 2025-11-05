@@ -7,54 +7,8 @@
 @* REHACER LOS ACCORDIONS Y AVERIGUAR CÓMO PONER EL BOTON PARA AGREFAR OTRA CARPETA *@
 <h2>Destinos guardados</h2>
 
+<button id="addAccordionBtn" class="btn btn-primary mb-3">Agregar carpeta</button>
 
-<button id="addAccordionBtn" class="btn btn-primary mb-3">Agregar destino</button>
+<div class="accordion" id="accordionExample"></div>
 
 
-<div class="accordion" id="accordionPanelsStayOpenExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-       Carpeta 1
-      </button>
-    </h2>
-    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-      <div class="accordion-body">
-       asdasd
-      </div>
-    </div>
-  </div>
-    
-
-@section Scripts {
-    <script>
-        let accordionCount = 1; 
-
-        document.getElementById("addAccordionBtn").addEventListener("click", function () {
-            accordionCount++;
-            const collapseId = `collapse${accordionCount}`;
-            const headingId = `heading${accordionCount}`;
-
-            const newItem = `
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="${headingId}">
-                        <button class="accordion-button collapsed" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#${collapseId}"
-                            aria-expanded="false" aria-controls="${collapseId}">
-                            Carpeta ${accordionCount}
-                        </button>
-                    </h2>
-                    <div id="${collapseId}" class="accordion-collapse collapse"
-                        aria-labelledby="${headingId}" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>Este es el contenido de la Carpeta ${accordionCount}.</strong>
-                            Podés editar este texto o agregar información personalizada.
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            document.getElementById("accordionExample").insertAdjacentHTML("beforeend", newItem);
-        });
-    </script>
-}
