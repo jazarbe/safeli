@@ -12,22 +12,29 @@ namespace info360.Controllers;
 
 public class Account  : Controller
 {
-    private readonly ILogger<Account> _logger;
+    // private readonly ILogger<Account> _logger;
 
-    public Account(ILogger<Account> logger)
+    // public Account(ILogger<Account> logger)
+    // {
+    //     _logger = logger;
+    // }
+
+    private readonly BD _bd;
+
+    public Account(BD bd)
     {
-        _logger = logger;
+        _bd = bd;
     }
 
-    public IActionResult LogIn(string email, string password)
+    public async Task<IActionResult> LogIn(string email, string password)
     {
-        BD miBd = new BD();
-        Usuario usuario = miBd.LogIn(email, password);
+        IEnumerable<Usuario> usuario = await _bd.LogIn(email, password);
         if(usuario == null){
             ViewBag.mensaje = "Nombre de usuario inexistente";
             return RedirectToAction("Index");
         }
         else{
+            // PREGUNTARLE A ANGY !!!!
             HttpContext.Session.SetInt32("IdUsuario", usuario.id);
             // return RedirectToAction("Home", new { idSolicitado = usuario.id });
             return RedirectToAction("Home");

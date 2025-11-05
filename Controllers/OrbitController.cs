@@ -4,22 +4,29 @@ namespace info360.Models;
 
 public class OrbitController : Controller
 {
-    private readonly ILogger<OrbitController> _logger;
-    // private BD bd = new BD]();
+    // private readonly ILogger<OrbitController> _logger;
 
-    public OrbitController(ILogger<OrbitController> logger)
+    // public OrbitController(ILogger<OrbitController> logger)
+    // {
+    //     _logger = logger;
+    // }
+
+    private readonly BD _bd;
+
+    public OrbitController(BD bd)
     {
-        _logger = logger;
+        _bd = bd;
     }
+
+
      // Acción que muestra un Orbit específico
-    public IActionResult VerOrbit(int id)
+    public async Task<IActionResult> VerOrbit(string link)
     {
-        BD bd = new BD();
         // Empieza a medir el tiempo de la consulta
         var stopwatch = Stopwatch.StartNew();
 
         // Llamada a la base de datos
-        Orbit orbit = bd.BuscarOrbitPorId(id);
+        IEnumerable<Orbit> orbit = await _bd.BuscarOrbitPorLink(link);
 
         // Termina de medir el tiempo
         stopwatch.Stop();
@@ -33,9 +40,8 @@ public class OrbitController : Controller
 
         public async Task<IActionResult> Crear(string name, string foto)
         {
-            BD bd = new BD();
-            Orbit orbit = new Orbit(name, foto);
-            // int idOrbit = await bd.CrearOrbitAsync(orbit, HttpContext.Session.GetInt32("IdUsuario"));
+            IEnumerable<Orbit> orbit = new IEnumerable<Orbit>(name, foto);
+            // int idOrbit = await_bd.CrearOrbitAsync(orbit, HttpContext.Session.GetInt32("IdUsuario"));
             ViewBag.Link = orbit.link;
 
             // loader pero igual no hay una view de crear orbits donde hacer este método
@@ -45,7 +51,7 @@ public class OrbitController : Controller
     //     [HttpGet("/orbit/unirse/{link}")]
     //     public async Task<IActionResult> Unirse(string link)
     //     {
-    //         bool unido = await bd.UnirseAOrbitPorLinkAsync(HttpContext.Session.GetInt32("IdUsuario"), link);
+    //         bool unido = await_bd.UnirseAOrbitPorLinkAsync(HttpContext.Session.GetInt32("IdUsuario"), link);
 
     //         if (unido)
     //             return View("OrbitInside");
@@ -57,7 +63,7 @@ public class OrbitController : Controller
     //     [HttpGet("/orbit/{link}")]
     //     public async Task<IActionResult> Detalle(string link)
     //     {
-    //         var orbit = await bd.ObtenerOrbitPorLinkAsync(link);
+    //         var orbit = await_bd.ObtenerOrbitPorLinkAsync(link);
     //         if (orbit == null)
     //             return NotFound();
 

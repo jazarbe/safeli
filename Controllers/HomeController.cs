@@ -6,11 +6,18 @@ namespace info360.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    // private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    // public HomeController(ILogger<HomeController> logger)
+    // {
+    //     _logger = logger;
+    // }
+
+    private readonly BD _bd;
+
+    public HomeController(BD bd)
     {
-        _logger = logger;
+        _bd = bd;
     }
 
     public IActionResult Index()
@@ -25,20 +32,21 @@ public class HomeController : Controller
 
      public IActionResult Destinos()
     {
-    // //     var destinosJson = HttpContext.Session.GetString("Destinos");
-    // // var destinos = string.IsNullOrEmpty(destinosJson);
-    // //     new List<Destino>();
-    // //     JsonConvert.DeserializeObject<List<Destino>>(destinosJson);
+        // var destinosJson = HttpContext.Session.GetString("Destinos");
+        // var destinos = string.IsNullOrEmpty(destinosJson);
+        // new List<Destino>();
+        // JsonConvert.DeserializeObject<List<Destino>>(destinosJson);
 
-    return View();
+        return View();
     }
 
     
     public IActionResult GuardarContacto(string nombre, string numero)
     {
-        HttpContext.Session.SetString("NombreContacto", nombre);
-        HttpContext.Session.SetString("Contacto", numero);
-        return RedirectToAction("Destinos");
+        // crear view que accedes desde el perfil y es un form de contacto de emergencia
+        HttpContext.Session.SetString("nombreContacto", nombre);
+        HttpContext.Session.SetString("numContacto", numero);
+        return RedirectToAction("SOS");
     }
 
     public IActionResult Home()

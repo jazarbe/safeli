@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Npgsql;
 
 
 namespace info360.Models;
@@ -18,138 +19,108 @@ public class BD{
     }
 
 
-    public List<Orbit> ConseguirOrbitsDeUsuario(int idBuscado){
-        List<Orbit> orbits = new List<Orbit>();
-        using(SqlConnection connection = new SqlConnection(_connectionString)){
-            string query = "SELECT * FROM Orbits WHERE idUsuario = @pIdBuscado";
-            orbits = connection.Query<Orbit>(query, new {pIdBuscado = idBuscado}).ToList();
-        }
-        return orbits;
-    }
-    
+    // public async Task<IEnumerable<Producto>> ObtenerProductos()
+    // {
+    //     using (var conn = new NpgsqlConnection(_connectionString))
+    //     {
+    //         string sql = "SELECT p.id, p.nombre, p.precio FROM productos p";
+    //         return await conn.QueryAsync<Producto>(sql);
+    //     }
+    // }
+
+    // public async Task InsertarProducto(Producto producto)
+    // {
+    //     using (var conn = new NpgsqlConnection(_connectionString))
+    //     {
+    //         string sql = "INSERT INTO productos (nombre, precio) VALUES (@Nombre, @Precio)";
+    //         await conn.ExecuteAsync(sql, new { producto.Nombre, producto.Precio });
+    //     }
+    // }
     //Comienzo de Account
  
-    public Usuario LogIn(string email, string password){
-        Usuario usuarioBuscado = null;
-        using(SqlConnection connection = new SqlConnection(_connectionString)){
+    public async Task<IEnumerable<Usuario>> LogIn(string email, string password){
+        using(var connection = new NpgsqlConnection(_connectionString)){
             string query = "SELECT * FROM Usuarios WHERE email = @pEmail  AND password = @pPassword";
-            if(query != null){
-                usuarioBuscado = connection.QueryFirstOrDefault<Usuario>(query, new {pEmail = email, pPassword = password});
-            }
-            return usuarioBuscado;
+            return await connection.QueryAsync<Usuario>(query, new {pEmail = email, pPassword = password});
         }
     }
-    public string ExisteCuenta(string username, string email, int telefono){
-        string usuarioBuscado = "";
-        using(SqlConnection connection = new SqlConnection(_connectionString)){
+
+    // para buscar users tmb
+    public async Task<IEnumerable<string>> ExisteCuenta(string username, string email, int telefono){
+        using(var connection = new NpgsqlConnection(_connectionString)){
             string query = "SELECT id FROM Usuarios WHERE email = @pEmail OR username = @pUsername OR numTelefono = pTelefono";
-            usuarioBuscado = connection.QueryFirstOrDefault<string>(query, new {pEmail = email, pUsername = username, pTelefono = telefono });
+            return await connection.QueryAsync<string>(query, new {pEmail = email, pUsername = username, pTelefono = telefono });
         }
-        return usuarioBuscado;
+        
     }
-    public void AgregarUsuario(Usuario Unuevo)
+    public async Task AgregarUsuario(Usuario newUser)
     {
-        using(SqlConnection connection = new SqlConnection(_connectionString))
+        using(var connection = new NpgsqlConnection(_connectionString))
         {
             string query = @"
-                IF foto IS NULL THEN foto = '/images/default.jpg' END
-                IF bio IS NULL THEN bio = '' END
+                IF @pFoto IS NULL THEN foto = '/images/default.jpg' END
+                IF @pBio IS NULL THEN bio = '' END
                 INSERT INTO Usuarios 
                 (nombre, apellido, email, nroTelefono, username, contraseña, foto, bio, fechaNacimiento)
                 VALUES 
                 (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pContraseña, @pFoto, @pBio, @pFechaNacimiento)";
             
-                connection.Execute(query, new 
-            {pNombre = Unuevo.nombre, pApellido = Unuevo.apellido, pEmail = Unuevo.email, pNroTelefono = Unuevo.nroTelefono, pUsername = Unuevo.username, pContraseña = Unuevo.contraseña, pFoto = Unuevo.foto, pbio = Unuevo.bio, pFechaNacimiento = Unuevo.fechaNacimiento});
+                await connection.ExecuteAsync(query, new
+            {pNombre = newUser.nombre, pApellido = newUser.apellido, pEmail = newUser.email, pNroTelefono = newUser.nroTelefono, pUsername = newUser.username, pContraseña = newUser.contraseña, pFoto = newUser.foto, pbio = newUser.bio, pFechaNacimiento = newUser.fechaNacimiento});
         }
     }
 
-
-
-    // ver si nos sirve -- por mail sino
-    public Usuario BuscarUsuarioPorId(int idBuscado){
+    public async Task<IEnumerable<Usuario>> BuscarUsuarioPorUsername(string userBuscado){
         Usuario usuarioBuscado = null;
-        using(SqlConnection connection = new SqlConnection(_connectionString)){
-            string query = "SELECT * FROM Usuarios WHERE id = @pIdBuscado";
-            usuarioBuscado = connection.QueryFirstOrDefault<Usuario>(query, new {pIdBuscado = idBuscado});
-        }
-        return usuarioBuscado;
-    }
-    public Usuario BuscarUsuarioPorUsername(string userBuscado){
-        Usuario usuarioBuscado = null;
-        using(SqlConnection connection = new SqlConnection(_connectionString)){
+        using(var connection = new NpgsqlConnection(_connectionString)){
             string query = "SELECT * FROM Usuarios WHERE username = @puserBuscado";
-            usuarioBuscado = connection.QueryFirstOrDefault<Usuario>(query, new {puserBuscado = userBuscado});
+            return await connection.QueryAsync<Usuario>(query, new {puserBuscado = userBuscado});
         }
-        return usuarioBuscado;
     }
-    public void CambiarContraseña(string username, string nuevaContraseña)
+    public async Task CambiarContraseña(string username, string nuevaContraseña)
     {
-        using(SqlConnection connection = new SqlConnection(_connectionString))
+        using(var connection = new NpgsqlConnection(_connectionString))
         {
             string query = "UPDATE Usuarios SET contraseña = @pNuevacontraseña WHERE username = @pUsername";
-            connection.Execute(query, new { pNuevacontraseña = nuevaContraseña, pUsername = username });
+            await connection.ExecuteAsync(query, new { pNuevacontraseña = nuevaContraseña, pUsername = username });
+        }
+    }
+    public async Task<IEnumerable<Orbit>> ConseguirOrbitsDeUsuario(int idBuscado){
+        using(var connection = new NpgsqlConnection(_connectionString)){
+            string query = "SELECT * FROM Orbits WHERE idUsuario = @pIdBuscado";
+            return await connection.QueryAsync<Orbit>(query, new {pIdBuscado = idBuscado});
         }
     }
 
 
     // Comienzo de Orbit
-    // ver si nos sirve -- capaz que por link es mejor
-    public Orbit BuscarOrbitPorId(int idBuscado){
-        Orbit orbitBuscado = null;
-        using(SqlConnection connection = new SqlConnection(_connectionString)){
-            string query = "SELECT * FROM Orbits WHERE id = @pIdBuscado";
-            orbitBuscado = connection.QueryFirstOrDefault<Orbit>(query, new {pIdBuscado = idBuscado});
+    public async Task<IEnumerable<Orbit>> BuscarOrbitPorLink(string linkBus){
+        using(var connection = new NpgsqlConnection(_connectionString)){
+            string query = "SELECT * FROM Orbits WHERE link = @pLinkBus";
+            return await connection.QueryAsync<Orbit>(query, new {pLinkBus = linkBus});
         }
-        return orbitBuscado;
     }
-    public Orbit BuscarOrbitPorNombre(string nombreBuscado){
-        Orbit orbitBuscado = null;
-        using(SqlConnection connection = new SqlConnection(_connectionString)){
+    public async Task<IEnumerable<Orbit>> BuscarOrbitPorNombre(string nombreBuscado){
+        using(var connection = new NpgsqlConnection(_connectionString)){
             string query = "SELECT * FROM Orbits WHERE nombre = @pNombreBuscado";
-            orbitBuscado = connection.QueryFirstOrDefault<Orbit>(query, new {pNombreBuscado = nombreBuscado});
+            return await connection.QueryAsync<Orbit>(query, new {pNombreBuscado = nombreBuscado});
         }
-        return orbitBuscado;
     }
-    public void AgregarOrbit(string name, string foto, int idUsuario)
+    public async Task AgregarOrbit(string name, string foto, int idUsuario)
     {
-        using(SqlConnection connection = new SqlConnection(_connectionString))
+        using(var connection = new NpgsqlConnection(_connectionString))
         {
-            // ponerle lo de foto default.jpg
             string link = Guid.NewGuid().ToString("N");
             
             string query = @"
+                IF @pFoto IS NULL THEN foto = '/images/default.jpg' END
                 INSERT INTO Orbits 
                 (name, foto, link, idUsuario)
                 VALUES 
                 (@pname, @pfoto, @plink, @pidUsuario)";
                             
-            connection.Execute(query, new 
+            await connection.ExecuteAsync(query, new 
             {ptitulo = name, pfoto = foto, plink = link, pidUsuario = idUsuario});
         }
-    }    
-
-    // public void UpdateTarea(int idBuscado, string titulo, string descripcion, DateTime fecha, bool finalizada){
-    //     using(SqlConnection connection = new SqlConnection(_connectionString)){
-    //         string query = "UPDATE Tareas SET titulo = @ptitulo, descripcion = @pdescripcion, fecha = @pfecha WHERE id = @pIdBuscado";
-    //         connection.QueryFirstOrDefault<Tarea>(query, new { pIdBuscado = idBuscado, ptitulo = titulo, pdescripcion = descripcion, pfecha = fecha });
-    //     }
-    // }
-    // public void CambiarEstado(int idBuscado)
-    // {
-    //     using(SqlConnection connection = new SqlConnection(_connectionString))
-    //     {
-    //         string query = "UPDATE Tareas SET finalizada = CASE WHEN finalizada = 1 THEN 0 ELSE 1 END WHERE id = @pIdBuscado";
-    //         connection.Execute(query, new { pIdBuscado = idBuscado });
-    //     }
-    // }
-    // public void DeleteTarea(Tarea tareaBuscada){
-    //     int idBuscado = tareaBuscada.id;
-    //     using(SqlConnection connection = new SqlConnection(_connectionString)){
-    //         string query = "DELETE FROM Tareas WHERE id = @pIdBuscado";
-    //         tareaBuscada = connection.QueryFirstOrDefault<Tarea>(query, new {pIdBuscado = idBuscado});
-    //     }
-    // }
-
-
+    }
 }
