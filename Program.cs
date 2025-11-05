@@ -4,7 +4,12 @@ builder.Services.AddSession();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddScoped<info360.Models.BD>(provider =>
+{
+    var configuration = provider.GetRequiredService<IConfiguration>();
+    var connectionString = configuration.GetConnectionString("PostgreSQL");
+    return new info360.Models.BD(connectionString);
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -83,7 +83,34 @@ public class Account  : Controller
             ViewBag.mensaje = "Cuenta creada correctamente.";
         }
         return RedirectToAction("Home", "Home");
-    } 
-    
+    }
 
+    public IActionResult SignUp( )
+    {
+        return RedirectToAction(); 
+    }
+    public IActionResult Index( )
+    {
+        return RedirectToAction(); 
+    }
+    public IActionResult Notificaciones( )
+    {
+        return RedirectToAction(); 
+    }
+    public IActionResult ForgotPassword( )
+    {
+        return RedirectToAction(); 
+    }
+    public IActionResult OtherProfile( )
+    {
+        return RedirectToAction(); 
+    }
+    public IActionResult Perfil( )
+    {
+        return RedirectToAction(); 
+    }
+    public IActionResult Permisos( )
+    {
+        return RedirectToAction(); 
+    }
 }

@@ -10,9 +10,13 @@ using System.Threading.Tasks;
 namespace info360.Models;
 
 public class BD{
-    private static string _connectionString = @"Server=localhost;DataBase=TPnoNum;Integrated Security=True;TrustServerCertificate=True;";
-    
-    public BD(){}
+    private readonly string _connectionString;
+
+    public BD(string connectionString)
+    {
+        _connectionString = connectionString;
+    }
+
 
     public List<Orbit> ConseguirOrbitsDeUsuario(int idBuscado){
         List<Orbit> orbits = new List<Orbit>();
