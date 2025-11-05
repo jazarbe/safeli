@@ -95,24 +95,62 @@ public BD(){
     }
 
 
-    // Comienzo de Orbit
-    // ver si nos sirve -- capaz que por link es mejor
-    public Orbit BuscarOrbitPorId(int idBuscado){
-        Orbit orbitBuscado = null;
-        using(SqlConnection connection = new SqlConnection(_connectionString)){
-            string query = "SELECT * FROM Orbits WHERE id = @pIdBuscado";
-            orbitBuscado = connection.QueryFirstOrDefault<Orbit>(query, new {pIdBuscado = idBuscado});
-        }
-        return orbitBuscado;
-    }
-    public Orbit BuscarOrbitPorNombre(string nombreBuscado){
-        Orbit orbitBuscado = null;
-        using(SqlConnection connection = new SqlConnection(_connectionString)){
-            string query = "SELECT * FROM Orbits WHERE nombre = @pNombreBuscado";
-            orbitBuscado = connection.QueryFirstOrDefault<Orbit>(query, new {pNombreBuscado = nombreBuscado});
-        }
-        return orbitBuscado;
-    }
+        //Unisre por link, NO TOCAR 
+//    public async Task<int> CrearOrbitAsync(Orbit orbit, int idCreador)
+//         {
+//             using (var conexion = new NpgsqlConnection(connectionString))
+//             {
+//                 string query = @"
+//                     INSERT INTO orbit (name, foto, link_invitacion)
+//                     VALUES (@Name, @Foto, @Link)
+//                     RETURNING id;";
+
+//                 int idOrbit = await conexion.ExecuteScalarAsync<int>(query, new
+//                 {
+//                     Name = orbit.name,
+//                     Foto = orbit.foto,
+//                     Link = orbit.linkInvitacion
+//                 });
+
+//                 // agrega al creador como miembro del grupo
+//                 string insertRelacion = "INSERT INTO usuario_orbit (id_usuario, id_orbit) VALUES (@Usuario, @Orbit)";
+//                 await conexion.ExecuteAsync(insertRelacion, new { Usuario = idCreador, Orbit = idOrbit });
+
+//                 return idOrbit;
+//             }
+//         }
+
+//         public async Task<bool> UnirseAOrbitPorLinkAsync(int idUsuario, string linkInvitacion)
+//         {
+//             using (var conexion = new NpgsqlConnection(connectionString))
+//             {
+//                 string queryOrbit = "SELECT id FROM orbit WHERE link_invitacion = @Link";
+//                 int? idOrbit = await conexion.QueryFirstOrDefaultAsync<int?>(queryOrbit, new { Link = linkInvitacion });
+
+//                 if (idOrbit == null)
+//                     return false;
+
+//                 string insertQuery = @"
+//                     INSERT INTO usuario_orbit (id_usuario, id_orbit)
+//                     SELECT @Usuario, @Orbit
+//                     WHERE NOT EXISTS (
+//                         SELECT 1 FROM usuario_orbit WHERE id_usuario = @Usuario AND id_orbit = @Orbit
+//                     );
+//                 ";
+
+//                 int filas = await conexion.ExecuteAsync(insertQuery, new { Usuario = idUsuario, Orbit = idOrbit });
+//                 return filas > 0;
+//             }
+//         }
+
+//         public async Task<Orbit?> ObtenerOrbitPorLinkAsync(string link)
+//         {
+//             using (var conexion = new NpgsqlConnection(connectionString))
+//             {
+//                 string query = "SELECT * FROM orbit WHERE link_invitacion = @Link";
+//                 return await conexion.QueryFirstOrDefaultAsync<Orbit>(query, new { Link = link });
+//             }
+//         }
     public void AgregarOrbit(string name, string foto, int idUsuario)
     {
         using(SqlConnection connection = new SqlConnection(_connectionString))
