@@ -43,7 +43,7 @@ public class BD{
         }
         return usuarioBuscado;
     }
-    public void AgregarUsuario(string nombre, string apellido, string email, int nroTelefono, string username, string contraseña, string foto, string bio, DateOnly fechaNacimiento, Point ubicacion)
+    public void AgregarUsuario(Usuario Unuevo)
     {
         using(SqlConnection connection = new SqlConnection(_connectionString))
         {
@@ -56,7 +56,7 @@ public class BD{
                 (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pContraseña, @pFoto, @pBio, @pFechaNacimiento)";
             
                 connection.Execute(query, new 
-            {pNombre = nombre, pApellido = apellido, pEmail = email, pNroTelefono = nroTelefono, pUsername = username, pContraseña = contraseña, pFoto = foto, pbio = bio, pFechaNacimiento = fechaNacimiento});
+            {pNombre = Unuevo.nombre, pApellido = Unuevo.apellido, pEmail = Unuevo.email, pNroTelefono = Unuevo.nroTelefono, pUsername = Unuevo.username, pContraseña = Unuevo.contraseña, pFoto = Unuevo.foto, pbio = Unuevo.bio, pFechaNacimiento = Unuevo.fechaNacimiento});
         }
     }
 

@@ -19,10 +19,10 @@ public class Account  : Controller
         _logger = logger;
     }
 
-    public IActionResult LogIn(string username, string email, string passwordIntentada)
+    public IActionResult LogIn(string email, string password)
     {
         BD miBd = new BD();
-        Usuario usuario = miBd.LogIn(email, passwordIntentada);
+        Usuario usuario = miBd.LogIn(email, password);
         if(usuario == null){
             ViewBag.mensaje = "Nombre de usuario inexistente";
             return RedirectToAction("Index");
@@ -56,7 +56,7 @@ public class Account  : Controller
         // loader y dps home
         return RedirectToAction("Index", "Home");
     }
-    /**public IActionResult CrearCuenta(string nombre, string apellido, string email, int telefono, string password, string username, DateTime fecha, IFormFile foto, int idUsuario)
+    public IActionResult CrearCuenta(string nombre, string apellido, string email, int telefono, string password, string username, DateOnly fecha, IFormFile foto, string bio)
     {
         BD miBd = new BD();
 
@@ -67,22 +67,23 @@ public class Account  : Controller
         }
         else{
             string nombreArchivo = "default.png";
-            Usuario nuevo = new Usuario (nombre, apellido, email, telefono, password, username, fecha, foto, idUsuario);
+            string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+            string rutaCompleta = Path.Combine(carpeta, nombreArchivo);
             if (foto != null && foto.Length > 0)
             {
-                string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
                 nombreArchivo = Path.GetFileName(foto.FileName);
-                string rutaCompleta = Path.Combine(carpeta, nombreArchivo);
+                rutaCompleta = Path.Combine(carpeta, nombreArchivo);
                 using (var stream = new FileStream(rutaCompleta, FileMode.Create))
                 {
                     foto.CopyTo(stream);
                 }
             }
-        // miBd.AgregarUsuario(nombre, apellido, password, username, nombreArchivo);
+            Usuario nuevo = new Usuario (nombre, apellido, email, telefono, username, rutaCompleta, bio, fecha, password);
+            miBd.AgregarUsuario(nuevo);
             ViewBag.mensaje = "Cuenta creada correctamente.";
         }
         return RedirectToAction("Home", "Home");
-    } */
+    } 
     
 
 }
