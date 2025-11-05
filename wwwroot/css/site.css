@@ -288,6 +288,15 @@ input{
   background-color: var(--color5);
 }
 
+a{
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color3);
+  margin-top: 1%
+}
+
 /*OLVIDE CONTRASEÑA*/
 .input-NewPass{
   display: flex;
@@ -354,3 +363,5 @@ h2{
   text-align: center;
   font-weight: 500;
 }
+
+/*DESTINOS*/
