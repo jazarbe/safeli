@@ -2,12 +2,16 @@
     ViewData["Title"] = "Log In";
 }
 
-<h1>@ViewBag.mensaje</h1>
-<form method="post" action='@Url.Action("LogIn", "AccountController")'>
-   
+@if(ViewBag.mensaje != null)
+{
+    <h1 class="error">@ViewBag.mensaje</h1>
+}
+
+<form method="post" action='@Url.Action("LogIn", "Account")'>
+   <!-- hacer que los 2 inputs tengan el mismo tamaño !!! -->
    <div class = "input-center">
         <input type = "text" id="email" placeholder ="Ingrese su Email"/> 
-        <div class = "passw">
+        <div class="passw">
             <input type = "password" id="password" placeholder ="Ingrese su Contraseña"/>
             <i class="fa-solid fa-eye toggle-password" id="togglePassword"></i> <br>
         </div>

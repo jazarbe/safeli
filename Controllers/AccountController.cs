@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace info360.Controllers;
 
-public class Account  : Controller
+public class AccountController : Controller
 {
     // private readonly ILogger<Account> _logger;
 
@@ -21,21 +21,22 @@ public class Account  : Controller
 
     private readonly BD miBd;
 
-    public Account(BD bd)
+    public AccountController (BD bd)
     {
         miBd = bd;
     }
 
+    [HttpPost]
     public async Task<IActionResult> LogIn(string email, string password)
     {
         Usuario usuario = await miBd.LogIn(email, password); //ns si está bien
         if(usuario == null){
             ViewBag.mensaje = "Nombre de usuario inexistente";
-            return RedirectToAction("Index");
+            return View("Index");
         }
         else{
             HttpContext.Session.SetInt32("IdUsuario", usuario.id);
-            return RedirectToAction("Home");
+            return RedirectToAction("Home", "Home");
         }
     }
 
@@ -45,6 +46,7 @@ public class Account  : Controller
         return RedirectToAction("Index", "Home");
     }
 
+[HttpPost]
     public async Task<IActionResult> CambiarPassword(string username, string nuevaContraseña)
     {
         if (miBd.BuscarUsuarioPorUsername(username) == null)
@@ -59,6 +61,7 @@ public class Account  : Controller
         // loader y dps home
         return RedirectToAction("Index", "Home");
     }
+    [HttpPost]
     public async Task<IActionResult> CrearCuenta(string nombre, string apellido, string email, int telefono, string password, string username, DateOnly fecha, IFormFile foto, string bio)
     {
 
@@ -110,6 +113,7 @@ public class Account  : Controller
         ViewBag.Biografia = user.bio;
         return View(); 
     }
+    [HttpPost]
     public async Task<IActionResult> OtherProfile(int id)
     {
         Usuario user = await miBd.BuscarUsuarioPorId(id);

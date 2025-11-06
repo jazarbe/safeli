@@ -38,10 +38,10 @@ public class BD{
     // }
     //Comienzo de Account
  
-    public async Task<Usuario> LogIn(string email, string password){
+    public async Task<Usuario> LogIn(string email, string contraseña){
         using(var connection = new NpgsqlConnection(_connectionString)){
-            string query = "SELECT * FROM Usuarios WHERE email = @pEmail  AND password = @pPassword";
-            return await connection.QueryFirstOrDefaultAsync<Usuario>(query, new {pEmail = email, pPassword = password});
+            string query = "SELECT * FROM \"Usuarios\" WHERE email = @pEmail  AND contraseña = @pPassword";
+            return await connection.QueryFirstOrDefaultAsync<Usuario>(query, new {pEmail = email, pPassword = contraseña});
         }
     }
 

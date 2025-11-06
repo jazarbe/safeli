@@ -130,9 +130,10 @@ footer a{
 }
 
 /*INICIO*/
-h1{
+.error{
   text-align: center;
   font-size: 30px;
+  color: #BA0000;
 }
 
 .input-center{
@@ -156,7 +157,7 @@ h1{
 /*CONTRASEÑA - LOGIN*/
 .passw{
   position: relative;
-  width: 275px;;
+  width: 275px;
 }
 
 .passw input{
