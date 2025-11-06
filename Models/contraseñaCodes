@@ -1,0 +1,13 @@
+namespace info360.Models;
+
+public class contraseñaCodes
+{
+    public int ID {get ; private set;}
+    public string nombre {get; private set;}
+    public List<Destino> Destinos {get; private set;}
+    public contraseñaCodes(){}
+    public contraseñaCodes(string nombre)
+    {
+    }
+
+}
