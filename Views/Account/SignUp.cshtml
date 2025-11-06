@@ -3,20 +3,21 @@
 }
 
 <h2>@ViewBag.mensaje</h2>
-<form method="post" action='@Url.Action("CrearCuenta", "AccountController")'>
+<form method="post" enctype="multipart/form-data" action='@Url.Action("CrearCuenta", "Account")'>
     <div class = "input-center">
-        <input type = "text" id="Nombre" placeholder ="Nombre" required/>
-        <input type = "text" id="Apellido" placeholder ="Apellido"required/>
-        <input type = "text" id="Mail" placeholder ="Mail"required/>
-        <input type = "text" id="NombreDeUsuario" placeholder ="Nombre de Usuario"required/>
-        <input type = "Date" id="Fecha" placeholder ="Fecha de nacimiento"required/>
-        
-        <input type = "password" id="pass-1" placeholder ="Contraseña" required/>
+        <input type="text" name="nombre" id="Nombre" placeholder ="Nombre" required autocomplete="off"/>
+        <input type="text" name="apellido" id="Apellido" placeholder ="Apellido" required autocomplete="off"/>
+        <input type="text" name="email" id="Mail" placeholder ="Mail"required/>
+        <input type="number" name="telefono" id="Telefono" placeholder="Nro de Telefono" maxlength="10" required autocomplete="off">
+        <input type="text" name="username" id="NombreDeUsuario" placeholder ="Nombre de Usuario" required autocomplete="off"/>
+        <input type="password" name="password" id="pass-1" placeholder ="Contraseña" required/>
         
         <div class = "contra-signUp">
-            <input type = "password" id="pass-confirm" placeholder ="Contraseña"required/>
+            <input type="password" name="pass2" id="pass-confirm" placeholder ="Contraseña"required/>
             <i class="fa-solid fa-eye toggle-password" id="togglePassword"required></i> <br>
         </div>
+        <input type="Date" name="fecha" id="Fecha" placeholder ="Fecha de Nacimiento" required/>
+        <input type="file" name="foto" id="Foto" placeholder="Foto de Perfil">
         
         <div class = "create-button">
             <button type="submit">Crear Cuenta</button><br>

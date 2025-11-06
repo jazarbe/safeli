@@ -30,9 +30,10 @@ public class AccountController : Controller
     public async Task<IActionResult> LogIn(string email, string password)
     {
         Usuario usuario = await miBd.LogIn(email, password); //ns si está bien
+        string msg = "";
         if(usuario == null){
-            ViewBag.mensaje = "Nombre de usuario inexistente";
-            return View("Index");
+            msg = "Nombre de usuario inexistente";
+            return RedirectToAction("Index", "Home", new { msg = msg });
         }
         else{
             HttpContext.Session.SetInt32("IdUsuario", usuario.id);
@@ -52,22 +53,24 @@ public class AccountController : Controller
         if (miBd.BuscarUsuarioPorUsername(username) == null)
         {
             ViewBag.mensaje = "El usuario no existe";
-            return View("OlvidePassword");
+            return View("ForgotPassword");
         }
         
         await miBd.CambiarContraseña(username, nuevaContraseña);
 
-        ViewBag.mensaje = "Contraseña cambiada correctamente";
         // loader y dps home
         return RedirectToAction("Index", "Home");
     }
     [HttpPost]
-    public async Task<IActionResult> CrearCuenta(string nombre, string apellido, string email, int telefono, string password, string username, DateOnly fecha, IFormFile foto, string bio)
+    public async Task<IActionResult> CrearCuenta(string nombre, string apellido, string email, int telefono, string username, string password, string pass2, DateOnly fecha, IFormFile foto, string bio)
     {
-
         if (miBd.ExisteCuenta(username, email, telefono) == null) //ver si funciona
         {
             ViewBag.mensaje = "El nombre de usuario, el Email o el telefono se encuentra en uso.";
+            return View("SignUp");
+        }
+        else if(password != pass2){
+            ViewBag.mensaje = "La contraseña no coincide";
             return View("SignUp");
         }
         else{

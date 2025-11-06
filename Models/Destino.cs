@@ -7,12 +7,8 @@ public class Destino{
     public Point ubicacion {get; private set;}
     public Destino(){}
     public Destino(string nombre , Point ubicacion)
-{
-    this.nombre = nombre;
-    this.ubicacion = ubicacion;
-}
-
-
-
-
+    {
+        this.nombre = nombre;
+        this.ubicacion = ubicacion;
+    }
 }

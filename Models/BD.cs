@@ -48,7 +48,7 @@ public class BD{
     // para buscar users tmb
     public async Task<string> ExisteCuenta(string username, string email, int telefono){
         using(var connection = new NpgsqlConnection(_connectionString)){
-            string query = "SELECT id FROM Usuarios WHERE email = @pEmail OR username = @pUsername OR numTelefono = pTelefono";
+            string query = "SELECT id FROM \"Usuarios\" WHERE email = @pEmail OR username = @pUsername OR nroTelefono = pTelefono";
             return await connection.QueryFirstOrDefaultAsync<string>(query, new {pEmail = email, pUsername = username, pTelefono = telefono });
         }
         
@@ -57,28 +57,30 @@ public class BD{
     {
         using(var connection = new NpgsqlConnection(_connectionString))
         {
-            string query = @"
-                IF @pFoto IS NULL THEN foto = '/images/default.jpg' END
-                IF @pBio IS NULL THEN bio = '' END
-                INSERT INTO Usuarios 
-                (nombre, apellido, email, nroTelefono, username, contraseña, foto, bio, fechaNacimiento)
-                VALUES 
-                (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pContraseña, @pFoto, @pBio, @pFechaNacimiento)";
+            if(foto == null) foto = "/images/default.jpg";
+            if(bio == null) bio = "";
             
-                await connection.ExecuteAsync(query, new {pNombre = nombre, pApellido = apellido, pEmail = email, pNroTelefono = nroTelefono, pUsername = username,
-                pContraseña = contraseña, pFoto = foto, pbio = bio, pFechaNacimiento = fechaNacimiento});
+            string query = @"
+            INSERT INTO ""Usuarios"" 
+            (nombre, apellido, email, ""nroTelefono"", username, ""contraseña"", foto, bio, ""fechaNacimiento"")
+            VALUES 
+            (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pContraseña, @pFoto, @pBio, @pFechaNacimiento);
+            ";
+
+            await connection.ExecuteAsync(query, new {pNombre = nombre, pApellido = apellido, pEmail = email, pNroTelefono = nroTelefono, pUsername = username,
+            pContraseña = contraseña, pFoto = foto, pBio = bio, pFechaNacimiento = fechaNacimiento.ToDateTime(TimeOnly.MinValue)});
         }
     }
     public async Task<Usuario> BuscarUsuarioPorId(int idBuscado){
         using(var connection = new NpgsqlConnection(_connectionString)){
-            string query = "SELECT * FROM Usuarios WHERE id = @pIdBuscado";
+            string query = "SELECT * FROM \"Usuarios\" WHERE id = @pIdBuscado";
             return await connection.QueryFirstOrDefaultAsync<Usuario>(query, new {pIdBuscado = idBuscado});
         }
     }
     public async Task<Usuario> BuscarUsuarioPorUsername(string userBuscado){
         Usuario usuarioBuscado = null;
         using(var connection = new NpgsqlConnection(_connectionString)){
-            string query = "SELECT * FROM Usuarios WHERE username = @puserBuscado";
+            string query = "SELECT * FROM \"Usuarios\" WHERE username = @puserBuscado";
             return await connection.QueryFirstOrDefaultAsync<Usuario>(query, new {puserBuscado = userBuscado});
         }
     }
@@ -86,7 +88,7 @@ public class BD{
     {
         using(var connection = new NpgsqlConnection(_connectionString))
         {
-            string query = "UPDATE Usuarios SET contraseña = @pNuevacontraseña WHERE username = @pUsername";
+            string query = "UPDATE \"Usuarios\" SET contraseña = @pNuevacontraseña WHERE username = @pUsername";
             await connection.ExecuteAsync(query, new { pNuevacontraseña = nuevaContraseña, pUsername = username });
         }
     }
@@ -94,13 +96,13 @@ public class BD{
     // Comienzo de Orbit
     public async Task<Orbit> BuscarOrbitPorLink(string linkBus){
         using(var connection = new NpgsqlConnection(_connectionString)){
-            string query = "SELECT * FROM Orbits WHERE link = @pLinkBus";
+            string query = "SELECT * FROM \"Orbits\" WHERE link = @pLinkBus";
             return await connection.QueryFirstOrDefaultAsync<Orbit>(query, new {pLinkBus = linkBus});
         }
     }
     public async Task<Orbit> BuscarOrbitPorId(int idBuscado){
         using(var connection = new NpgsqlConnection(_connectionString)){
-            string query = "SELECT * FROM Orbits WHERE id = @pIdBuscado";
+            string query = "SELECT * FROM \"Orbits\" WHERE id = @pIdBuscado";
             return await connection.QueryFirstOrDefaultAsync<Orbit>(query, new {pIdBuscado = idBuscado});
         }
     }
@@ -109,14 +111,9 @@ public class BD{
         using(var connection = new NpgsqlConnection(_connectionString))
         {
             string link = Guid.NewGuid().ToString("N");
-            
-            string query = @"
-                IF @pFoto IS NULL THEN foto = '/images/default.jpg' END
-                INSERT INTO Orbits 
-                (name, foto, link, idUsuario)
-                VALUES 
-                (@pname, @pfoto, @plink, @pidUsuario)";
-                            
+            if(foto == null) foto = "/images/default.jpg";
+
+            string query = "INSERT INTO \"Orbits\" (name, foto, link, idUsuario) VALUES (@pname, @pfoto, @plink, @pidUsuario)";
             await connection.ExecuteAsync(query, new 
             {ptitulo = name, pfoto = foto, plink = link, pidUsuario = idUsuario});
         }

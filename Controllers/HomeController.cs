@@ -20,8 +20,9 @@ public class HomeController : Controller
         _bd = bd;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(string msg)
     {
+        ViewBag.mensaje = msg;
         return View();
     }
 

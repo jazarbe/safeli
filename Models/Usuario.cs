@@ -20,7 +20,6 @@ public class Usuario
     public Usuario(){}
     public Usuario( string nombre, string apellido, string email, int nroTelefono, string username, string foto, string bio, DateOnly fechaNac, string contraseña)
     {
-    
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;

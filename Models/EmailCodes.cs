@@ -1,6 +1,6 @@
 namespace info360.Models;
 
-public class contraseñaCodes
+public class EmailCodes
 {
  
     public int Id { get; private set; } 
@@ -10,13 +10,13 @@ public class contraseñaCodes
     public DateTime ExpiresAt { get; set; } 
     public bool Used { get; set; } 
     
-    public contraseñaCodes(){}
+    public EmailCodes(){}
     
-    public contraseñaCodes(int userId, string token, DateTime expiresAt)
+    public EmailCodes(int userId, string token, DateTime expiresAt)
     {
         this.UserId = userId;
         this.Token = token;
+        this.CreatedAt = DateTime.Now;
         this.ExpiresAt = expiresAt;
     }
-
 }
