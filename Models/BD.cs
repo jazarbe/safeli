@@ -19,12 +19,12 @@ public class BD{
     }
 
 
-    // public async Task<IEnumerable<Producto>> ObtenerProductos()
+    // public async Task<Producto>> ObtenerProductos()
     // {
     //     using (var conn = new NpgsqlConnection(_connectionString))
     //     {
     //         string sql = "SELECT p.id, p.nombre, p.precio FROM productos p";
-    //         return await conn.QueryAsync<Producto>(sql);
+    //         return await conn.QueryFirstOrDefaultAsync<Producto>(sql);
     //     }
     // }
 
@@ -38,22 +38,22 @@ public class BD{
     // }
     //Comienzo de Account
  
-    public async Task<IEnumerable<Usuario>> LogIn(string email, string password){
+    public async Task<Usuario> LogIn(string email, string password){
         using(var connection = new NpgsqlConnection(_connectionString)){
             string query = "SELECT * FROM Usuarios WHERE email = @pEmail  AND password = @pPassword";
-            return await connection.QueryAsync<Usuario>(query, new {pEmail = email, pPassword = password});
+            return await connection.QueryFirstOrDefaultAsync<Usuario>(query, new {pEmail = email, pPassword = password});
         }
     }
 
     // para buscar users tmb
-    public async Task<IEnumerable<string>> ExisteCuenta(string username, string email, int telefono){
+    public async Task<string> ExisteCuenta(string username, string email, int telefono){
         using(var connection = new NpgsqlConnection(_connectionString)){
             string query = "SELECT id FROM Usuarios WHERE email = @pEmail OR username = @pUsername OR numTelefono = pTelefono";
-            return await connection.QueryAsync<string>(query, new {pEmail = email, pUsername = username, pTelefono = telefono });
+            return await connection.QueryFirstOrDefaultAsync<string>(query, new {pEmail = email, pUsername = username, pTelefono = telefono });
         }
         
     }
-    public async Task AgregarUsuario(Usuario newUser)
+    public async Task AgregarUsuario(string nombre, string apellido, string email, int nroTelefono, string username, string contraseña, DateOnly fechaNacimiento, string foto, string bio)
     {
         using(var connection = new NpgsqlConnection(_connectionString))
         {
@@ -65,16 +65,21 @@ public class BD{
                 VALUES 
                 (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pContraseña, @pFoto, @pBio, @pFechaNacimiento)";
             
-                await connection.ExecuteAsync(query, new
-            {pNombre = newUser.nombre, pApellido = newUser.apellido, pEmail = newUser.email, pNroTelefono = newUser.nroTelefono, pUsername = newUser.username, pContraseña = newUser.contraseña, pFoto = newUser.foto, pbio = newUser.bio, pFechaNacimiento = newUser.fechaNacimiento});
+                await connection.ExecuteAsync(query, new {pNombre = nombre, pApellido = apellido, pEmail = email, pNroTelefono = nroTelefono, pUsername = username,
+                pContraseña = contraseña, pFoto = foto, pbio = bio, pFechaNacimiento = fechaNacimiento});
         }
     }
-
-    public async Task<IEnumerable<Usuario>> BuscarUsuarioPorUsername(string userBuscado){
+    public async Task<Usuario> BuscarUsuarioPorId(int idBuscado){
+        using(var connection = new NpgsqlConnection(_connectionString)){
+            string query = "SELECT * FROM Usuarios WHERE id = @pIdBuscado";
+            return await connection.QueryFirstOrDefaultAsync<Usuario>(query, new {pIdBuscado = idBuscado});
+        }
+    }
+    public async Task<Usuario> BuscarUsuarioPorUsername(string userBuscado){
         Usuario usuarioBuscado = null;
         using(var connection = new NpgsqlConnection(_connectionString)){
             string query = "SELECT * FROM Usuarios WHERE username = @puserBuscado";
-            return await connection.QueryAsync<Usuario>(query, new {puserBuscado = userBuscado});
+            return await connection.QueryFirstOrDefaultAsync<Usuario>(query, new {puserBuscado = userBuscado});
         }
     }
     public async Task CambiarContraseña(string username, string nuevaContraseña)
@@ -85,25 +90,18 @@ public class BD{
             await connection.ExecuteAsync(query, new { pNuevacontraseña = nuevaContraseña, pUsername = username });
         }
     }
-    public async Task<IEnumerable<Orbit>> ConseguirOrbitsDeUsuario(int idBuscado){
-        using(var connection = new NpgsqlConnection(_connectionString)){
-            string query = "SELECT * FROM Orbits WHERE idUsuario = @pIdBuscado";
-            return await connection.QueryAsync<Orbit>(query, new {pIdBuscado = idBuscado});
-        }
-    }
-
 
     // Comienzo de Orbit
-    public async Task<IEnumerable<Orbit>> BuscarOrbitPorLink(string linkBus){
+    public async Task<Orbit> BuscarOrbitPorLink(string linkBus){
         using(var connection = new NpgsqlConnection(_connectionString)){
             string query = "SELECT * FROM Orbits WHERE link = @pLinkBus";
-            return await connection.QueryAsync<Orbit>(query, new {pLinkBus = linkBus});
+            return await connection.QueryFirstOrDefaultAsync<Orbit>(query, new {pLinkBus = linkBus});
         }
     }
-    public async Task<IEnumerable<Orbit>> BuscarOrbitPorNombre(string nombreBuscado){
+    public async Task<Orbit> BuscarOrbitPorId(int idBuscado){
         using(var connection = new NpgsqlConnection(_connectionString)){
-            string query = "SELECT * FROM Orbits WHERE nombre = @pNombreBuscado";
-            return await connection.QueryAsync<Orbit>(query, new {pNombreBuscado = nombreBuscado});
+            string query = "SELECT * FROM Orbits WHERE id = @pIdBuscado";
+            return await connection.QueryFirstOrDefaultAsync<Orbit>(query, new {pIdBuscado = idBuscado});
         }
     }
     public async Task AgregarOrbit(string name, string foto, int idUsuario)

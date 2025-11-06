@@ -19,24 +19,22 @@ public class Account  : Controller
     //     _logger = logger;
     // }
 
-    private readonly BD _bd;
+    private readonly BD miBd;
 
     public Account(BD bd)
     {
-        _bd = bd;
+        miBd = bd;
     }
 
     public async Task<IActionResult> LogIn(string email, string password)
     {
-        IEnumerable<Usuario> usuario = await _bd.LogIn(email, password);
+        Usuario usuario = await miBd.LogIn(email, password); //ns si está bien
         if(usuario == null){
             ViewBag.mensaje = "Nombre de usuario inexistente";
             return RedirectToAction("Index");
         }
         else{
-            // PREGUNTARLE A ANGY !!!!
             HttpContext.Session.SetInt32("IdUsuario", usuario.id);
-            // return RedirectToAction("Home", new { idSolicitado = usuario.id });
             return RedirectToAction("Home");
         }
     }
@@ -44,30 +42,27 @@ public class Account  : Controller
     public IActionResult LogOut()
     {
         HttpContext.Session.Clear();
-        return RedirectToAction("Index");
+        return RedirectToAction("Index", "Home");
     }
 
-    public IActionResult CambiarPassword(string username, string nuevaContraseña)
+    public async Task<IActionResult> CambiarPassword(string username, string nuevaContraseña)
     {
-        BD miBd = new BD();
-        Usuario integrante = miBd.BuscarUsuarioPorUsername(username);
-        if (integrante == null)
+        if (miBd.BuscarUsuarioPorUsername(username) == null)
         {
             ViewBag.mensaje = "El usuario no existe";
             return View("OlvidePassword");
         }
         
-        miBd.CambiarContraseña(username, nuevaContraseña);
+        await miBd.CambiarContraseña(username, nuevaContraseña);
 
         ViewBag.mensaje = "Contraseña cambiada correctamente";
         // loader y dps home
         return RedirectToAction("Index", "Home");
     }
-    public IActionResult CrearCuenta(string nombre, string apellido, string email, int telefono, string password, string username, DateOnly fecha, IFormFile foto, string bio)
+    public async Task<IActionResult> CrearCuenta(string nombre, string apellido, string email, int telefono, string password, string username, DateOnly fecha, IFormFile foto, string bio)
     {
-        BD miBd = new BD();
 
-        if (miBd.ExisteCuenta(username, email, telefono) == "")
+        if (miBd.ExisteCuenta(username, email, telefono) == null) //ver si funciona
         {
             ViewBag.mensaje = "El nombre de usuario, el Email o el telefono se encuentra en uso.";
             return View("SignUp");
@@ -85,8 +80,7 @@ public class Account  : Controller
                     foto.CopyTo(stream);
                 }
             }
-            Usuario nuevo = new Usuario (nombre, apellido, email, telefono, username, rutaCompleta, bio, fecha, password);
-            miBd.AgregarUsuario(nuevo);
+            await miBd.AgregarUsuario(nombre, apellido, email, telefono, username, password, fecha, rutaCompleta, bio);
             ViewBag.mensaje = "Cuenta creada correctamente.";
         }
         return RedirectToAction("Home", "Home");
@@ -97,28 +91,35 @@ public class Account  : Controller
         return View();
         
     }
-    public IActionResult Index( )
-    {
-        return RedirectToAction(); 
-    }
     public IActionResult Notificaciones( )
     {
-        return RedirectToAction(); 
+        return View(); 
     }
     public IActionResult ForgotPassword( )
     {
-        return RedirectToAction(); 
+        return View(); 
     }
-    public IActionResult OtherProfile( )
+    public async Task<IActionResult> Perfil()
     {
-        return RedirectToAction(); 
+        int? id = HttpContext.Session.GetInt32("IdUsuario");
+        Usuario user = await miBd.BuscarUsuarioPorId(id.Value);
+
+        ViewBag.Username = user.username;
+        ViewBag.Email = user.email;
+        ViewBag.Telefono = user.nroTelefono;
+        ViewBag.Biografia = user.bio;
+        return View(); 
     }
-    public IActionResult Perfil( )
+    public async Task<IActionResult> OtherProfile(int id)
     {
-        return RedirectToAction(); 
+        Usuario user = await miBd.BuscarUsuarioPorId(id);
+        ViewBag.Username = user.username;
+        ViewBag.Biografia = user.bio;
+        ViewBag.Point = user.ubicacion;
+        return View(); 
     }
     public IActionResult Permisos( )
     {
-        return RedirectToAction(); 
+        return View(); 
     }
 }

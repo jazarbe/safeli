@@ -1,9 +1,9 @@
 @{
     ViewData["Title"] = "Menu";
 }
- @foreach (Orbit item in ViewBag.Usuario.orbits){
-      <img src='@ViewBag.Usuario.orbits.foto' alt="">
-    <p>@ViewBag.usuario.orbits.name</p>
+ @foreach (Orbit item in ViewBag.orbits){
+      <img src='@ViewBag.item.foto' alt="foto">
+    <h5>@ViewBag.item.name</h5>
  }
 
 <form method="post" action="index.html" target="_blank">

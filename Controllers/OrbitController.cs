@@ -11,43 +11,63 @@ public class OrbitController : Controller
     //     _logger = logger;
     // }
 
-    private readonly BD _bd;
+    private readonly BD miBd;
 
     public OrbitController(BD bd)
     {
-        _bd = bd;
+        miBd = bd;
     }
 
 
-     // Acción que muestra un Orbit específico
-    public async Task<IActionResult> VerOrbit(string link)
+    public async Task<IActionResult> VerOrbit(string link) // muestra un Orbit específico
     {
-        // Empieza a medir el tiempo de la consulta
+        // Empieza a medir el tiempo de la consulta --> para el loader
         var stopwatch = Stopwatch.StartNew();
 
-        // Llamada a la base de datos
-        IEnumerable<Orbit> orbit = await _bd.BuscarOrbitPorLink(link);
+        Orbit orbit = await miBd.BuscarOrbitPorLink(link);
 
-        // Termina de medir el tiempo
         stopwatch.Stop();
+        ViewBag.TiempoConsulta = stopwatch.ElapsedMilliseconds;
 
-        // Guardamos el tiempo que tardó la consulta en ViewBag
-        ViewBag.TiempoConsulta = stopwatch.ElapsedMilliseconds; // milisegundos
-
-        // Devolvemos la vista con el modelo
-        return View(orbit);
+        return RedirectToAction("OrbitInside", "OrbitController", new {orbit = orbit});
     }
 
-        public async Task<IActionResult> Crear(string name, string foto)
-        {
-            IEnumerable<Orbit> orbit = new IEnumerable<Orbit>(name, foto);
-            // int idOrbit = await_bd.CrearOrbitAsync(orbit, HttpContext.Session.GetInt32("IdUsuario"));
-            ViewBag.Link = orbit.link;
+    public IActionResult Crear(string name, string foto)
+    {
+        Orbit orbit = new Orbit (name, foto);
+        // int idOrbit = await_bd.CrearOrbitAsync(orbit, HttpContext.Session.GetInt32("IdUsuario"));
+        ViewBag.Link = orbit.link;
 
-            // loader pero igual no hay una view de crear orbits donde hacer este método
-            return View("MenuOrbit");
+        // loader pero igual no hay una view de crear orbits donde hacer este método
+        return View("MenuOrbit");
+    }
+
+    public async Task<IActionResult> MenuOrbit()
+    {
+        int? id = HttpContext.Session.GetInt32("IdUsuario");
+        Usuario user = await miBd.BuscarUsuarioPorId(id.Value);
+
+        ViewBag.orbits = user.orbits;
+        return View();
+    }
+
+    public IActionResult OrbitInside(Orbit orbit)
+    {
+        ViewBag.nombre = orbit.name;
+        ViewBag.link = orbit.link;
+        ViewBag.usuarios = orbit.usuarios;
+        return View();
+    }
+
+    public bool UsuarioUnido(Orbit orbit, Usuario user){
+        bool check = false;
+        
+        foreach(Usuario u in orbit.usuarios){
+            if (u.id == user.id) check = true;
         }
 
+        return check;
+    }
 
         //Pantalla de carga, NO TOCAR
     // // Acción para unirse a un Orbit por link
@@ -85,14 +105,4 @@ public class OrbitController : Controller
     //         // Mostramos la vista de carga
     //         return View("PantallaCarga");
     //     }
-    public IActionResult MenuOrbit()
-    {
-        return View();
-    }
-
-    public IActionResult OrbitInside()
-    {
-        // cargar los datos del orbit específico
-        return View();
-    }
 }
