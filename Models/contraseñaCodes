@@ -2,12 +2,21 @@ namespace info360.Models;
 
 public class contraseñaCodes
 {
-    public int ID {get ; private set;}
-    public string nombre {get; private set;}
-    public List<Destino> Destinos {get; private set;}
+ 
+    public int Id { get; private set; } 
+    public int UserId { get; set; } 
+    public string Token { get; set; } 
+    public DateTime CreatedAt { get; private set; }
+    public DateTime ExpiresAt { get; set; } 
+    public bool Used { get; set; } 
+    
     public contraseñaCodes(){}
-    public contraseñaCodes(string nombre)
+    
+    public contraseñaCodes(int userId, string token, DateTime expiresAt)
     {
+        this.UserId = userId;
+        this.Token = token;
+        this.ExpiresAt = expiresAt;
     }
 
 }
