@@ -11,7 +11,7 @@ public class Usuario
     public string username {get; private set;}
     public string foto {get; private set;}
     public string bio {get; private set;}
-    public DateOnly fechaNacimiento {get; private set;}
+    public DateTime fechaNacimiento {get; private set;}
     public string contraseña {get; private set;}
     public List<Orbit> orbits {get; private set;}
     public Point ubicacion {get; private set;}
@@ -27,7 +27,7 @@ public class Usuario
         this.username = username;
         this.foto = foto;
         this.bio = bio;
-        this.fechaNacimiento = fechaNac;
+        this.fechaNacimiento = fechaNac.ToDateTime(TimeOnly.MinValue);
         this.contraseña = contraseña;
     }
 

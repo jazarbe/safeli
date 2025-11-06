@@ -10,15 +10,15 @@
 <form method="post" action='@Url.Action("LogIn", "Account")'>
    <!-- hacer que los 2 inputs tengan el mismo tamaño !!! -->
    <div class = "input-center">
-        <input type = "text" id="email" placeholder ="Ingrese su Email"/> 
+        <input type = "text" name="email" placeholder ="Ingrese su Email"/> 
         <div class="passw">
-            <input type = "password" id="password" placeholder ="Ingrese su Contraseña"/>
+            <input type = "password" name="password" placeholder ="Ingrese su Contraseña"/>
             <i class="fa-solid fa-eye toggle-password" id="togglePassword"></i> <br>
         </div>
     </div>
     
     <div class = "logIn_Href">
-        <a href='@Url.Action("OlvidePassword", "Account")'>¿Te olvidaste la contraseña?</a><br>
+        <a href='@Url.Action("ForgotPassword", "Account")'>¿Te olvidaste la contraseña?</a><br>
     </div>
     
     <div class = "checkbox-div">

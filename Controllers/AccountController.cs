@@ -32,7 +32,7 @@ public class AccountController : Controller
         Usuario usuario = await miBd.LogIn(email, password); //ns si está bien
         string msg = "";
         if(usuario == null){
-            msg = "Nombre de usuario inexistente";
+            msg = "Nombre de usuario o contraseña incorrectos";
             return RedirectToAction("Index", "Home", new { msg = msg });
         }
         else{
@@ -47,20 +47,26 @@ public class AccountController : Controller
         return RedirectToAction("Index", "Home");
     }
 
-[HttpPost]
-    public async Task<IActionResult> CambiarPassword(string username, string nuevaContraseña)
+    [HttpPost]
+    public async Task<IActionResult> CambiarPassword(string username, string nuevaContraseña, string pass2)
     {
         if (miBd.BuscarUsuarioPorUsername(username) == null)
         {
             ViewBag.mensaje = "El usuario no existe";
             return View("ForgotPassword");
         }
-        
+        else if(nuevaContraseña != pass2)
+        {
+            ViewBag.mensaje = "Las contraseñas no concuerdan";
+            return View("ForgotPassword");
+        }
+
         await miBd.CambiarContraseña(username, nuevaContraseña);
 
         // loader y dps home
         return RedirectToAction("Index", "Home");
     }
+
     [HttpPost]
     public async Task<IActionResult> CrearCuenta(string nombre, string apellido, string email, int telefono, string username, string password, string pass2, DateOnly fecha, IFormFile foto, string bio)
     {
@@ -74,7 +80,7 @@ public class AccountController : Controller
             return View("SignUp");
         }
         else{
-            string nombreArchivo = "default.png";
+            string nombreArchivo = "default.jpg";
             string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
             string rutaCompleta = Path.Combine(carpeta, nombreArchivo);
             if (foto != null && foto.Length > 0)
@@ -86,8 +92,12 @@ public class AccountController : Controller
                     foto.CopyTo(stream);
                 }
             }
-            await miBd.AgregarUsuario(nombre, apellido, email, telefono, username, password, fecha, rutaCompleta, bio);
+            await miBd.AgregarUsuario(nombre, apellido, email, telefono, username, password, fecha, nombreArchivo, bio);
             ViewBag.mensaje = "Cuenta creada correctamente.";
+
+            Usuario usuario = await miBd.BuscarUsuarioPorUsername(username) as Usuario;
+            HttpContext.Session.SetInt32("IdUsuario", usuario.id);
+            // loader
         }
         return RedirectToAction("Home", "Home");
     }
@@ -114,6 +124,7 @@ public class AccountController : Controller
         ViewBag.Email = user.email;
         ViewBag.Telefono = user.nroTelefono;
         ViewBag.Biografia = user.bio;
+        ViewBag.Foto = "/images/" + user.foto;
         return View(); 
     }
     [HttpPost]
@@ -123,6 +134,7 @@ public class AccountController : Controller
         ViewBag.Username = user.username;
         ViewBag.Biografia = user.bio;
         ViewBag.Point = user.ubicacion;
+        ViewBag.Foto = "/images/" + user.foto;
         return View(); 
     }
     public IActionResult Permisos( )
