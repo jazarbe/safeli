@@ -41,24 +41,24 @@
 
             const newItem = `
             <div class="accordion-item" id="accordion-${accordionCount}">
-            <h2 class="accordion-header" id="${headingId}">
-            <div class="d-flex align-items-center">
-            <button class="accordion-button flex-grow-1" type="button" data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-expanded="false" aria-controls="${collapseId}"> Carpeta #${accordionCount}</button>
-            <button class="btn btn-sm btn-warning ms-2 rename-folder" type="button">Renombrar</button>
-            <button class="btn btn-sm btn-danger ms-2 delete-folder" type="button">Borrar</button>
-            </div>
-            </h2>
+                <h2 class="accordion-header" id="${headingId}">
+                    <div class="d-flex align-items-center">
+                        <button class="accordion-button flex-grow-1" type="button" data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-expanded="false" aria-controls="${collapseId}"> Carpeta #${accordionCount}</button>
+                        <button class="btn btn-sm btn-warning ms-2 rename-folder" type="button">Renombrar</button>
+                        <button class="btn btn-sm btn-danger ms-2 delete-folder" type="button">Borrar</button>
+                    </div>
+                </h2>
             
-            <div id="${collapseId}" class="accordion-collapse collapse">
-            <div class="accordion-body">
-            <ul id="${listId}" class="mb-3 list-group"></ul>
+                <div id="${collapseId}" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <ul id="${listId}" class="mb-3 list-group"></ul>
             
-            <div class="input-group">
-            <input id="${inputId}" type="text" class="form-control" placeholder="Nuevo destino...">
-            <button class="btn btn-success add-destino" data-list="${listId}" data-input="${inputId}" type="button">Agregar</button>
-            </div>
-            </div>
-            </div>
+                            <div class="input-group">
+                                <input id="${inputId}" type="text" class="form-control" placeholder="Nuevo destino...">
+                                <button class="btn btn-success add-destino" data-list="${listId}" data-input="${inputId}" type="button">Agregar</button>
+                            </div>
+                    </div>
+                </div>
             </div>
             `;
             
@@ -75,14 +75,13 @@
                 if (input.value.trim() !== "") {
                         list.insertAdjacentHTML("beforeend", `
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span class="destino-text">${input.value}</span>
-                        <div>
-                        <button class="btn btn-sm btn-warning edit-destino me-2">Editar</button>
-                        <button class="btn btn-sm btn-danger delete-destino">Borrar</button>
-                        </div>
-                        </li>
-                        `);
-                        input.value = "";
+                            <span class="destino-text">${input.value}</span>
+                            <div>
+                                <button class="btn btn-sm btn-warning edit-destino me-2">Editar</button>
+                                <button class="btn btn-sm btn-danger delete-destino">Borrar</button>
+                            </div>
+                        </li>`);
+                        input.value = "";                                                                           
                     }
                 }
                 
@@ -117,20 +116,77 @@
                 });
             }
 
-            // Borrar carpeta completa
+            // 🗑 Borrar carpeta con confirmación inline
             if (event.target.classList.contains("delete-folder")) {
-                if (confirm("¿Eliminar esta carpeta y todos sus destinos?")) {
-                    event.target.closest(".accordion-item").remove();
-                }
+                const folder = event.target.closest(".accordion-item");
+
+                // Si ya está mostrando confirmación, no duplicar
+                if (folder.querySelector(".confirm-delete")) return;
+
+                    // Crear zona de confirmación
+                    const confirmDiv = document.createElement("div");
+                    confirmDiv.className = "confirm-delete mt-2";
+                    confirmDiv.innerHTML = `
+                    <div class="alert alert-danger p-2 d-flex justify-content-between align-items-center">
+                        <span>¿Eliminar esta carpeta y todos sus destinos?</span>
+                        <div>
+                            <button class="btn btn-sm btn-danger confirm-yes">Sí</button>
+                            <button class="btn btn-sm btn-secondary confirm-no">No</button>
+                        </div>
+                    </div>
+                    `;
+
+                    // Insertamos justo debajo del header
+                    folder.appendChild(confirmDiv);
+            }
+
+            // ✅ Confirmar eliminación
+            if (event.target.classList.contains("confirm-yes")) {
+                event.target.closest(".accordion-item").remove();
+            }
+
+            // ❌ Cancelar eliminación
+            if (event.target.classList.contains("confirm-no")) {
+                event.target.closest(".confirm-delete").remove();
             }
             
             // Editar destino
             if (event.target.classList.contains("edit-destino")) {
                 const li = event.target.closest("li");
                 const textEl = li.querySelector(".destino-text");
-                const nuevoTexto = prompt("Editar destino:", textEl.textContent);
-                if (nuevoTexto) textEl.textContent = nuevoTexto;
+                const oldValue = textEl.textContent;
+            
+                // Crear input
+                const input = document.createElement("input");
+                input.type = "text";
+                input.value = oldValue;
+                input.className = "form-control";
+                input.style.maxWidth = "200px";
+            
+                // Reemplazar el texto por el input temporalmente
+                textEl.replaceWith(input);
+                input.focus();
+            
+                // Guardar al salir del input
+                input.addEventListener("blur", function () {
+                    const newValue = input.value.trim() || oldValue;
+                    input.replaceWith(createTextSpan(newValue));
+                });
+            
+                // Guardar con Enter
+                input.addEventListener("keydown", function (e) {
+                    if (e.key === "Enter") input.blur();
+                });
             }
+            
+            // ✅ Función para reconstruir el span después de editar
+            function createTextSpan(text) {
+                const span = document.createElement("span");
+                span.className = "destino-text";
+                span.textContent = text;
+                return span;
+            }
+            
             
             // Borrar destino individual
             if (event.target.classList.contains("delete-destino")) {

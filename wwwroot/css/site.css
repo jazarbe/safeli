@@ -366,3 +366,36 @@ h2{
 }
 
 /*DESTINOS*/
+.rename-folder{
+  background-color: var(--color3) !important;
+  border-color: var(--color3) !important;
+  color: black;
+}
+
+.delete-folder{
+  background-color: var(--rojo) !important;
+}
+
+.accordion-header{
+  padding: 1%;
+  margin: 1%;
+}
+
+.add-destino{
+  background-color: var(--color2) !important;
+  border-color: var(--color2) !important;
+}
+
+.edit-destino{
+  width: 30%;
+  background-color: var(--color3) !important;
+  border-color: var(--color3) !important;
+  display: inline-block;
+}
+
+.delete-destino{
+  width: 30%;
+
+}
+
+/*TERMINAR CSS DE DESTINOS*/
