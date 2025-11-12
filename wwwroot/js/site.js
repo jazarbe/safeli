@@ -116,7 +116,7 @@
                 });
             }
 
-            // 🗑 Borrar carpeta con confirmación inline
+            // Borrar carpeta con confirmación inline
             if (event.target.classList.contains("delete-folder")) {
                 const folder = event.target.closest(".accordion-item");
 
@@ -140,12 +140,12 @@
                     folder.appendChild(confirmDiv);
             }
 
-            // ✅ Confirmar eliminación
+            // Confirmar eliminación
             if (event.target.classList.contains("confirm-yes")) {
                 event.target.closest(".accordion-item").remove();
             }
 
-            // ❌ Cancelar eliminación
+            // Cancelar eliminación
             if (event.target.classList.contains("confirm-no")) {
                 event.target.closest(".confirm-delete").remove();
             }
@@ -179,7 +179,7 @@
                 });
             }
             
-            // ✅ Función para reconstruir el span después de editar
+            //Función para reconstruir el span después de editar
             function createTextSpan(text) {
                 const span = document.createElement("span");
                 span.className = "destino-text";

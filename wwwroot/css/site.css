@@ -43,15 +43,6 @@ img{
   cursor: pointer;
 }
 
-
-.accordion-button::after {
-  order: -1; /* mueve la flecha al inicio del botón */
-  margin-right: .5em;
-  margin-left: 0;
-}
-
-
-
 /*FOOTER*/
 footer{
   position: fixed;
@@ -148,7 +139,7 @@ footer a{
   width: 250px;
   padding: 3%;
   border: 1.5px solid var(--color1);
-  border-radius: 8px;
+  border-radius: 5px;
   font-size: 14px;
   color: #333;
   text-align: center;
@@ -175,7 +166,7 @@ footer a{
   color: var(--color1);
   cursor: pointer;
   font-size: 18px;
-  border-radius: 50%;
+  border-radius: 5px;
   padding: 4px;
 }
 
@@ -233,7 +224,7 @@ button{
   padding: 2%;
   width: 150px;
   font-size: 15px;
-  border-radius: 50px;
+  border-radius: 5px;
   border-color: var(--color1);
   border: none;
 }
@@ -349,7 +340,7 @@ a{
   color: var(--color1);
   cursor: pointer;
   font-size: 18px;
-  border-radius: 50%;
+  border-radius: 5px;
   padding: 4px;
 }
 
@@ -363,12 +354,35 @@ a{
 h2{
   text-align: center;
   font-weight: 500;
+  color: var(--color1) !important;
+  font-size: 25px !important;
+  margin-bottom: 3% !important;
+}
+/*DESTINOS*/
+
+.add-carpeta{
+  margin: 1%;
+  margin-left: 1.5%;
+  border-radius: 5px;
+  display: block;           
+  margin: 20px auto;
+  background-color: var(--color1);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-/*DESTINOS*/
+.add-carpeta:hover {
+  opacity: 0.85;
+}
+
 .rename-folder{
-  background-color: var(--color3) !important;
-  border-color: var(--color3) !important;
+  background-color: var(--color2) !important;
+  border-color: var(--color2) !important;
   color: black;
 }
 
@@ -382,20 +396,105 @@ h2{
 }
 
 .add-destino{
+  background-color: var(--color1) !important;
+  border-color: var(--color1) !important;
+}
+
+.edit-destino:hover {
+  opacity: 0.8;
+}
+
+.delete-destino:hover {
+  opacity: 0.8;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+.list-group-item input.form-control {
+  width: auto;
+  flex: 1; 
+  min-width: 100px;
+  max-width: 250px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.list-group-item div {
+  display: flex;
+  flex-shrink: 0;
+  gap: 5px;
+}
+
+.edit-destino,
+.delete-destino {
+  all: unset; 
+  display: inline-block;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit-destino {
   background-color: var(--color2) !important;
   border-color: var(--color2) !important;
+  border: 1px solid var(--color2) !important;
 }
 
-.edit-destino{
+.delete-destino {
+  background-color: var(--rojo) !important;
+  border-color: var(--rojo) !important;
+  border: 1px solid var(--rojo) !important;
+}
+
+.confirm-yes{
   width: 30%;
-  background-color: var(--color3) !important;
-  border-color: var(--color3) !important;
-  display: inline-block;
+
 }
 
-.delete-destino{
+.confirm-no{
   width: 30%;
-
 }
 
-/*TERMINAR CSS DE DESTINOS*/
+.confirm-delete .alert {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; 
+  gap: 10px; 
+  margin: 2%;
+}
+
+/* botones dentro del mensaje */
+.confirm-delete .btn {
+  min-width: 50px;
+  font-weight: 400;
+  border-radius: 5px;
+}
+
+.confirm-delete .btn-danger {
+  background-color: var(--rojo);
+  border: none;
+  color: #fff;
+}
+
+.confirm-delete .btn-danger:hover {
+  opacity: 0.9;
+}
+
+.confirm-delete .btn-secondary {
+  background-color: #6c757d;
+  border: none;
+  color: #fff;
+}
+
+.confirm-delete .btn-secondary:hover {
+  opacity: 0.9;
+}
