@@ -22,6 +22,33 @@
         this.classList.toggle('fa-eye-slash');
         });
     }
+
+    const togglePassword2 = document.getElementById('togglePassword2');
+    const password3 = document.getElementById('password');
+    if(togglePassword2){
+        togglePassword2.addEventListener('click', function () {
+        const type = password3.getAttribute('type') === 'password' ? 'text' : 'password';
+        password3.setAttribute('type', type);
+
+        // Cambiar el ícono (ojito abierto/cerrado)
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+        });
+
+        const password4 = document.getElementById('pass-confirm');
+        togglePassword2.addEventListener('click', function () {
+        const type = password3.getAttribute('type') === 'password' ? 'text' : 'password';
+        password3.setAttribute('type', type);
+
+        // Cambiar el ícono (ojito abierto/cerrado)
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+        });
+    }
+
+    // CHEQUEAR OJO DEL 1ER CONTRA
+
+    
 // #endregion
 
 

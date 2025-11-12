@@ -10,12 +10,17 @@
         <input type="text" name="email" id="Mail" placeholder ="Mail"required/>
         <input type="number" name="telefono" id="Telefono" placeholder="Nro de Telefono" maxlength="10" required autocomplete="off">
         <input type="text" name="username" id="NombreDeUsuario" placeholder ="Nombre de Usuario" required autocomplete="off"/>
-        <input type="password" name="password" id="pass-1" placeholder ="Contraseña" required/>
+        
+        <div class = "contra-signUp">
+            <input type="password" name="password" id="pass-1" placeholder ="Contraseña" required/>
+            <i class="fa-solid fa-eye-slash toggle-password" id="togglePassword2"required></i> <br>
+        </div>
         
         <div class = "contra-signUp">
             <input type="password" name="pass2" id="pass-confirm" placeholder ="Contraseña"required/>
-            <i class="fa-solid fa-eye toggle-password" id="togglePassword"required></i> <br>
+            <i class="fa-solid fa-eye-slash toggle-password" id="togglePassword"required></i> <br>
         </div>
+        
         <input type="Date" name="fecha" id="Fecha" placeholder ="Fecha de Nacimiento" required/>
         <input type="file" name="foto" id="Foto" placeholder="Foto de Perfil">
         
@@ -25,7 +30,6 @@
     </div>
 </form>
 
-<a href='@Url.Action("Index", "Home")'>Volver al Inicio de Sesión</a><br>
-
-
-@*NO DEJA CREAR CUENTA --> CHEQUEAR*@
+<div class = "sign-a">
+    <a href='@Url.Action("Index", "Home")'>Volver al Inicio de Sesión</a><br>
+</div>
