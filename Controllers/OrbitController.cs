@@ -78,6 +78,45 @@ public class OrbitController : Controller
         return check;
     }
 
+
+    [HttpGet]
+public async Task<IActionResult> Unirse(string link)
+{
+    int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
+    if (idUsuario == null)
+        return RedirectToAction("Login", "Account");
+
+    // Buscar el orbit con ese link
+    Orbit orbit = await miBd.BuscarOrbitPorLink(link);
+    if (orbit == null)
+    {
+        ViewBag.MensajeError = "El enlace no es válido o el Orbit no existe.";
+        return View("Error");
+    }
+
+    // Comprobar si el usuario ya está en el orbit
+    bool yaUnido = await miBd.UsuarioEnOrbit(idUsuario.Value, orbit.id);
+    if (yaUnido)
+    {
+        ViewBag.Mensaje = "Ya sos parte de este Orbit.";
+        return RedirectToAction("OrbitInside", new { link = link });
+    }
+
+    // Agregar el usuario al orbit
+    bool agregado = await miBd.AgregarUsuarioAOrbit(idUsuario.Value, orbit.id);
+
+    if (agregado)
+    {
+        ViewBag.Mensaje = "Te uniste correctamente al Orbit.";
+        return RedirectToAction("OrbitInside", new { link = link });
+    }
+    else
+    {
+        ViewBag.MensajeError = "Hubo un problema al unirte al Orbit.";
+        return View("Error");
+    }
+}
+
       
     
 }
