@@ -55,13 +55,20 @@ public class OrbitController : Controller
         return View();
     }
 
-    public IActionResult OrbitInside(Orbit orbit)
-    {
-        ViewBag.nombre = orbit.name;
-        ViewBag.link = orbit.link;
-        ViewBag.usuarios = orbit.usuarios;
-        return View();
-    }
+   public IActionResult OrbitInside(Orbit orbit)
+{
+    // Genera la URL base del sitio (por ej: https://localhost:5001 o https://tusitio.com)x
+    string baseUrl = $"{Request.Scheme}://{Request.Host}";
+
+    // Crea el link completo y lo pasa a la vista
+    ViewBag.LinkCompleto = orbit.ObtenerLinkCompleto(baseUrl);
+
+    // También pasamos los datos del orbit
+    ViewBag.nombre = orbit.name;
+    ViewBag.usuarios = orbit.usuarios;
+
+    return View(orbit); // Enviamos el Orbit como modelo
+}
 
     public IActionResult ViewCrear()
     {
