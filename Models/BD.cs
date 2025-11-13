@@ -53,7 +53,7 @@ public class BD{
         }
         
     }
-public async Task<int> AgregarUsuario(string nombre, string apellido, string email, int nroTelefono, string username, string contraseña, DateOnly fechaNacimiento, string foto, string bio)
+public async Task<int> AgregarUsuario(string nombre, string apellido, string email, int nroTelefono, string username, string contraseña, DateOnly fechaNacimiento, string foto, string bio, int contactoDeEmergencia)
 {
     using(var connection = new NpgsqlConnection(_connectionString))
     {
@@ -62,13 +62,12 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
         
         string query = @"
         INSERT INTO ""Usuarios"" 
-        (nombre, apellido, email, ""nroTelefono"", username, ""contraseña"", foto, bio, ""fechaNacimiento"", confirmado)
+        (nombre, apellido, email, ""nroTelefono"", username, ""contraseña"", foto, bio, ""fechaNacimiento"", confirmado, contactoEmergencia )
         VALUES 
-        (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pContraseña, @pFoto, @pBio, @pFechaNacimiento, @pConfirmado)
-        RETURNING id; -- ¡CLAVE! Esto devuelve el ID autoincremental
+        (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pContraseña, @pFoto, @pBio, @pFechaNacimiento, @pConfirmado, @contactoEmergencia)
+        RETURNING id; 
         ";
 
-        // Usamos QuerySingleAsync para ejecutar la inserción y recuperar el valor de la columna 'id'
         int nuevoId = await connection.QuerySingleAsync<int>(query, new {
             pNombre = nombre, 
             pApellido = apellido, 
@@ -79,7 +78,7 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
             pFoto = foto, 
             pBio = bio, 
             pFechaNacimiento = fechaNacimiento.ToDateTime(TimeOnly.MinValue),
-            pConfirmado = false // Nuevo campo: el usuario empieza sin confirmar
+            pConfirmado = false 
         });
 
         return nuevoId;
@@ -128,8 +127,6 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
             VALUES 
             (@Token, @IdUsuario, @CreadoCuando, @ExpiraCuando, @Usado);
             ";
-
-            // Dapper mapeará las propiedades del objeto 'token' a los parámetros SQL
             await connection.ExecuteAsync(query, token);
         }
     }
