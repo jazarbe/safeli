@@ -28,6 +28,7 @@ public class HomeController : Controller
 
      public IActionResult SOS()
     {
+        
         return View();
     }
 
