@@ -2,10 +2,11 @@
     ViewData["Title"] = "Log In";
 }
 
-@if(ViewBag.mensaje != null)
-{
-    <h1 class="error">@ViewBag.mensaje</h1>
-}
+
+    @if(ViewBag.mensaje != null)
+    {
+        <h1 class="error">@ViewBag.mensaje</h1>
+    }   
 
 <form method="post" action='@Url.Action("LogIn", "Account")'>
    <div class = "input-center">
@@ -15,6 +16,7 @@
             <i class="fa-solid fa-eye-slash toggle-password" id="togglePassword2"required></i> <br>
         </div>
     </div>
+
     
     <div class = "logIn_Href">
         <a href='@Url.Action("ForgotPassword", "Account")'>¿Te olvidaste la contraseña?</a><br>
@@ -27,10 +29,15 @@
     <div class = "inicio-button">
         <button type="submit">Iniciar Sesión</button><br>
     </div>
+</form>
 
     <h3>¿Todavía no tenes cuenta?</h3>
-    <a href='@Url.Action("SignUp", "Account")'>Registrate</a>
-</form>
+    <div class = "registrarse-button">
+        <a href='@Url.Action("SignUp", "Account")'>
+            <button>Registrate</button>
+        </a>
+    </div>
+        
 
 <a href='@Url.Action("Destinos", "Home")'>Destinos</a>
 <a href='@Url.Action("Permisos", "Account")'>Permisos</a>

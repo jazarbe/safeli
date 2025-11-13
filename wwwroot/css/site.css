@@ -156,8 +156,11 @@ footer a{
 /*INICIO*/
 .error{
   text-align: center;
-  font-size: 30px;
+  font-size: 15px;
   color: #BA0000;
+  font-weight: 400;
+  margin: 1%;
+  margin-bottom: 2%;
 }
 
 
@@ -250,7 +253,19 @@ input [type = "password"]::placeholder{
   justify-content: center;
   align-items: center;
   margin-top: 3%;
+  transition: 0.3s ease;
 }
+
+.inicio-button button:hover{
+  box-shadow: 1px 3px 10px var(--color3);
+  transition: 0.5s;
+}
+/* BUTTON REGISREAESE */
+.registrarse-button a{
+  text-decoration: none;
+}
+
+
 
 button{
   background-color: var(--color1);
@@ -265,7 +280,6 @@ button{
 
 
 .SOS{
-
   background-color: var(--rojo);
   color: #BA0000;
   padding: 5%;
