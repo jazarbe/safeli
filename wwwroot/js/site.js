@@ -1,5 +1,5 @@
-﻿document.addEventListener("DOMContentLoaded", function () {
-// #region PASSWORD
+﻿// #region PASSWORD
+document.addEventListener("DOMContentLoaded", function () {
     const togglePassword = document.getElementById('togglePassword');
     const password1 = document.getElementById('password');
     if(togglePassword){
@@ -35,20 +35,16 @@
         this.classList.toggle('fa-eye-slash');
         });
 
-        const password4 = document.getElementById('pass-confirm');
+        const password4 = document.getElementById('pass-1');
         togglePassword2.addEventListener('click', function () {
-        const type = password3.getAttribute('type') === 'password' ? 'text' : 'password';
-        password3.setAttribute('type', type);
+        const type = password4.getAttribute('type') === 'password' ? 'text' : 'password';
+        password4.setAttribute('type', type);
 
         // Cambiar el ícono (ojito abierto/cerrado)
         this.classList.toggle('fa-eye');
         this.classList.toggle('fa-eye-slash');
         });
-    }
-
-    // CHEQUEAR OJO DEL 1ER CONTRA
-
-    
+    }    
 // #endregion
 
 
