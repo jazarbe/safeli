@@ -16,6 +16,7 @@ public class Usuario
     public List<Orbit> orbits {get; private set;}
     public Point ubicacion {get; private set;}
     public List<Carpeta> carpetas {get; private set;}
+    public int contactoEmeregencia {get; private set;}
     
     public Usuario(){}
     public Usuario(string nombre, string apellido, string email, int nroTelefono, string username, string foto, string bio, DateOnly fechaNac, string contraseña)

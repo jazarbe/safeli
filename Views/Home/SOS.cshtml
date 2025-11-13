@@ -3,17 +3,26 @@
 }
 
 
-<div class="contenedor-sos">
-  <h2>Números de emergencia</h2>
-  <button type="button" class="SOS"><a href='@Url.Action("SOS", "Home")'>Llamar a contacto</a></button>
-  <button type="button" class="SOS"><a href='@Url.Action("SOS", "Home")'>Policía</a></button>
-  <button type="button" class="SOS"><a href='@Url.Action("SOS", "Home")'>Ambulancia</a></button>
-  <button type="button" class="SOS"><a href='@Url.Action("SOS", "Home")'>Bomberos</a></button>
+ 
+
+<button type="button" class="SOS" 
+        onclick="window.location.href = 'tel:@ViewBag.Usuario.contactoEmergencia';">
+    Llamar a Contacto de Emergencia
+</button>
+<button type="button" class="SOS" 
+        onclick="window.location.href = 'tel: 101';">
+    Llamar a Policia
+</button>
+<button type="button" class="SOS" 
+        onclick="window.location.href = 'tel: 107';">
+    Llamar a Ambulancia
+</button>
+<button type="button" class="SOS" 
+        onclick="window.location.href = 'tel: 100';">
+    Llamar a Bomberos
+</button> 
 <button type="button" class="btn btn-outline-danger">Danger</button>
 
-</div>
 
-
- 
  
 
