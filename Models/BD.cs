@@ -132,6 +132,22 @@ public class BD{
     }
 }
 
+
+    public async Task<bool> UsuarioEnOrbit(int idUsuario, int idOrbit)
+{
+    using (var connection = new NpgsqlConnection(_connectionString))
+    {
+        string query = @"
+            SELECT COUNT(*) 
+            FROM ""Usuarios_Orbits"" 
+            WHERE ""IdUsuario"" = @pIdUsuario AND ""IdOrbit"" = @pIdOrbit;
+        ";
+
+        int count = await connection.ExecuteScalarAsync<int>(query, new { pIdUsuario = idUsuario, pIdOrbit = idOrbit });
+        return count > 0;
+    }
+}
+
     public async Task AgregarOrbit(string name, string foto, int idUsuario)
     {
         using(var connection = new NpgsqlConnection(_connectionString))
