@@ -54,4 +54,12 @@ public class HomeController : Controller
     {
         return View();
     }
+     public IActionResult SafeliScore()
+    {
+        return View();
+    }
+     public IActionResult SafeliScoreBD()
+    {
+        return View();
+    }
 }
