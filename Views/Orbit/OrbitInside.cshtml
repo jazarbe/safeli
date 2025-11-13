@@ -31,21 +31,25 @@
         </svg>
     </button>
 </form>
-<div class = "Link container">
 
-<p>Compartí tu Orbit con otros:</p>
-<input type="text" id="linkOrbit" value="@($"{Request.Scheme}://{Request.Host}{Model.ObtenerLinkCompleto()}")" readonly style="width: 100%; padding: 5px;" />
-<button onclick="copiarLink()" class="btn btn-primary mt-2">Copiar link</button>
+<div class="orbit-container">
+    <h2>@Model.name</h2>
+
+    <p>Invitá a tus amigos a unirse a este Orbit:</p>
+
+    <input type="text" id="linkOrbit" value="@ViewBag.LinkCompleto" readonly class="input-link" />
+
+    <button type="button" onclick="copiarLink()" class="btn-copiar">Copiar link</button>
+</div>
 
 <script>
 function copiarLink() {
-    var copyText = document.getElementById("linkOrbit");
+    const copyText = document.getElementById("linkOrbit");
     copyText.select();
     document.execCommand("copy");
     alert("¡Link copiado al portapapeles!");
 }
 </script>
-</div>
 
 
 <h5>@ViewBag.name</h5>
