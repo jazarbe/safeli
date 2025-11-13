@@ -2,12 +2,18 @@
     ViewData["Title"] = "SOS";
 }
 
-<h2>Números de emergencia</h2>
 
-<button type="button" class = "SOS"><a href='@Url.Action("SOS", "Home")' LLamar a contacto></a></button>
-<button type="button"class = "SOS"><a href='@Url.Action("SOS", "Home")' Policia></a></button>
-<button type="button"class = "SOS"><a href='@Url.Action("SOS", "Home")' Ambulancia></a></button>
-<button type="button" class = "SOS"><a href='@Url.Action("SOS", "Home")' Bomberos></a></button>
+<div class="contenedor-sos">
+  <h2>Números de emergencia</h2>
+  <button type="button" class="SOS"><a href='@Url.Action("SOS", "Home")'>Llamar a contacto</a></button>
+  <button type="button" class="SOS"><a href='@Url.Action("SOS", "Home")'>Policía</a></button>
+  <button type="button" class="SOS"><a href='@Url.Action("SOS", "Home")'>Ambulancia</a></button>
+  <button type="button" class="SOS"><a href='@Url.Action("SOS", "Home")'>Bomberos</a></button>
+<button type="button" class="btn btn-outline-danger">Danger</button>
+
+</div>
+
+
  
  
 
