@@ -1,10 +1,10 @@
 @{
     ViewData["Title"] = "SOS";
 }
-
-@if(ViewBag.Usuario.contactoEmergencia != -1){
+<!-- que te diga a que números llamar pero no  -->
+@if(ViewBag.contactoEmergencia != -1){
     <button type="button" class="SOS" 
-            onclick="window.location.href = 'tel:@ViewBag.Usuario.contactoEmergencia';">
+            onclick="window.location.href = 'tel:@ViewBag.contactoEmergencia';">
         Llamar a Contacto de Emergencia
     </button>
 }

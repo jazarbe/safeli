@@ -48,18 +48,19 @@ public class HomeController : Controller
 
     public IActionResult Home()
     {
+        int? id = HttpContext.Session.GetInt32("IdUsuario");
+        ViewBag.id = id.Value;
         return View();
     }
      public async Task<IActionResult> SafeliScore()
     {
-        
         return View();
     }
      public async Task<IActionResult> SOS()
     {
         int? id = HttpContext.Session.GetInt32("IdUsuario");
         Usuario user = await miBd.BuscarUsuarioPorId(id.Value);
-        ViewBag.Usuario = user;
+        ViewBag.contactoEmergencia = user.contactoEmeregencia;
         return View();
     }
 }
