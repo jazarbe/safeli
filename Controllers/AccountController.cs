@@ -107,10 +107,6 @@ public class AccountController : Controller
         return View();
         
     }
-    public IActionResult Notificaciones( )
-    {
-        return View(); 
-    }
     public IActionResult ForgotPassword( )
     {
         return View(); 
@@ -141,6 +137,5 @@ public class AccountController : Controller
     {
         return View(); 
     }
-
     
 }

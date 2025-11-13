@@ -129,8 +129,8 @@ footer a{
   cursor: pointer;
   padding-top: 5%;
   padding-bottom: 5%;
-  width: 30px;
-  height: 30px;
+  width:50px;
+  height:50px;
   border-radius: 50%;
   position: absolute;
   top: 6%;
@@ -138,6 +138,14 @@ footer a{
   transform: translateX(-50%);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
+
+.noti-css button{
+  background-color: none;
+  color: none;
+  padding: 0%;
+  width: 0px;
+}
+
 /*BORDE HEADER Y FOOTER*/
 .borde {
   width: 100% !important; /* Ancho del rectángulo */
@@ -151,7 +159,6 @@ footer a{
   font-size: 30px;
   color: #BA0000;
 }
-
 
 
 .input-center{
@@ -269,6 +276,7 @@ button.SOS{
   border: none;
 
 }
+
 /*TDV NO TENES CUENTA?*/
 h3{
   margin-top: 10%;
@@ -299,7 +307,6 @@ a{
   margin-bottom:1% ;
 } 
 
-/* Si tu <i> está dentro .contra-signUp */
 .contra-signUp i {
   right: 8%;
   color: var(--color1);
@@ -414,8 +421,8 @@ h2{
   font-size: 25px !important;
   margin-bottom: 3% !important;
 }
-/*DESTINOS*/
 
+/*DESTINOS*/
 .add-carpeta{
   margin: 1%;
   margin-left: 1.5%;
@@ -554,3 +561,5 @@ h2{
 .confirm-delete .btn-secondary:hover {
   opacity: 0.9;
 }
+
+/* NOTIFICACIONES */
