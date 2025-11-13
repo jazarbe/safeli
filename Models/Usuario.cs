@@ -19,7 +19,7 @@ public class Usuario
     public int contactoEmeregencia {get; private set;}
     
     public Usuario(){}
-    public Usuario(string nombre, string apellido, string email, int nroTelefono, string username, string foto, string bio, DateOnly fechaNac, string contraseña)
+    public Usuario(string nombre, string apellido, string email, int nroTelefono, string username, string foto, string bio, DateOnly fechaNac, string contraseña, int contactoEmeregencia)
     {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -32,5 +32,6 @@ public class Usuario
         this.contraseña = contraseña;
         this.orbits = new List<Orbit>();
         this.carpetas = new List<Carpeta>();
+        this.contactoEmeregencia = contactoEmeregencia;
     }
 }

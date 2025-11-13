@@ -2,10 +2,12 @@
     ViewData["Title"] = "SOS";
 }
 
-<button type="button" class="SOS" 
-        onclick="window.location.href = 'tel:@ViewBag.Usuario.contactoEmergencia';">
-    Llamar a Contacto de Emergencia
-</button>
+@if(ViewBag.Usuario.contactoEmergencia != -1){
+    <button type="button" class="SOS" 
+            onclick="window.location.href = 'tel:@ViewBag.Usuario.contactoEmergencia';">
+        Llamar a Contacto de Emergencia
+    </button>
+}
 <button type="button" class="SOS" 
         onclick="window.location.href = 'tel: 101';">
     Llamar a Policia
@@ -18,8 +20,5 @@
         onclick="window.location.href = 'tel: 100';">
     Llamar a Bomberos
 </button> 
-<button type="button" class="btn btn-outline-danger">Danger</button>
-
-
- 
+<button type="button" class="btn btn-outline-danger">Cancel</button>
 

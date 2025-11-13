@@ -57,9 +57,9 @@ public class HomeController : Controller
     }
      public async Task<IActionResult> SOS()
     {
-        // int? id = HttpContext.Session.GetInt32("IdUsuario");
-        // Usuario user = await miBd.BuscarUsuarioPorId(id.Value);
-        // ViewBag.Usuario = user;
+        int? id = HttpContext.Session.GetInt32("IdUsuario");
+        Usuario user = await miBd.BuscarUsuarioPorId(id.Value);
+        ViewBag.Usuario = user;
         return View();
     }
 }
