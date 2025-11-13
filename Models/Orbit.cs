@@ -17,4 +17,15 @@ public class Orbit
         this.usuarios = new List<Usuario>();
     }
 
+
+     public string ObtenerCodigoLink()
+        {
+            return link;
+        }
+
+    public string ObtenerLinkCompleto()
+        {
+            return $"/Orbit/Unirse?link={link}";
+           
+        }
 }

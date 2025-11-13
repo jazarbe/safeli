@@ -78,7 +78,7 @@ public class OrbitController : Controller
         return check;
     }
 
-        //Pantalla de carga, NO TOCAR
+      
     // // Acción para unirse a un Orbit por link
     //     public IActionResult Unirse(string link)
     //     {
@@ -87,7 +87,7 @@ public class OrbitController : Controller
     //         sw.Start();
 
     //         // 🔍 1. Buscar el Orbit por su link
-    //         Orbit? orbit = BD.ObtenerOrbitPorLink(link);
+    //         Orbit orbit = BD.BuscarOrbitPorLink(link);
 
     //         // 🧑 2. Obtener el usuario actual (por ejemplo, de la sesión)
     //         Usuario? usuarioActual = BD.ObtenerUsuarioPorId(HttpContext.Session.GetInt32("IdUsuario") ?? 0);
@@ -111,7 +111,7 @@ public class OrbitController : Controller
     //         ViewBag.TiempoTotal = tiempoTotal;
     //         ViewBag.Unido = unido;
 
-    //         // Mostramos la vista de carga
-    //         return View("PantallaCarga");
+            
+    //         return View("OrbitCarga");
     //     }
 }
