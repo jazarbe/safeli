@@ -13,11 +13,11 @@ public class HomeController : Controller
     //     _logger = logger;
     // }
 
-    private readonly BD _bd;
+   private readonly BD miBd;
 
     public HomeController(BD bd)
     {
-        _bd = bd;
+        miBd = bd;
     }
 
     public IActionResult Index(string msg)
@@ -26,11 +26,6 @@ public class HomeController : Controller
         return View();
     }
 
-     public IActionResult SOS()
-    {
-        
-        return View();
-    }
 
      public IActionResult Destinos()
     {
@@ -55,12 +50,16 @@ public class HomeController : Controller
     {
         return View();
     }
-     public IActionResult SafeliScore()
+     public async Task<IActionResult> SafeliScore()
     {
+        
         return View();
     }
-     public IActionResult SafeliScoreBD()
+     public async Task<IActionResult> SOS()
     {
+        // int? id = HttpContext.Session.GetInt32("IdUsuario");
+        // Usuario user = await miBd.BuscarUsuarioPorId(id.Value);
+        // ViewBag.Usuario = user;
         return View();
     }
 }
