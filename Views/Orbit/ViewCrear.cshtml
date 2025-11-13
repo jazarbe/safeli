@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Crea un Orbit";
+}
+
+<h1>Crea un Orbit</h1>
+
+<form method="post" enctype="multipart/form-data" action='@Url.Action("Crear", "Orbit")'>
+    <div class="input-center">
+        <input type="text" name="name" id="Nombre" placeholder ="Nombre" required autocomplete="off"/>
+        <input type="file" name="foto" id="Foto" placeholder="Foto de Perfil">
+        <button type="submit" class = "create-button">Crear</button>
+    </div>
+</form>

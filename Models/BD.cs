@@ -113,9 +113,14 @@ public class BD{
             string link = Guid.NewGuid().ToString("N");
             if(foto == null) foto = "/images/default.jpg";
 
-            string query = "INSERT INTO \"Orbits\" (name, foto, link, idUsuario) VALUES (@pname, @pfoto, @plink, @pidUsuario)";
-            await connection.ExecuteAsync(query, new 
-            {ptitulo = name, pfoto = foto, plink = link, pidUsuario = idUsuario});
+            string query = "INSERT INTO \"Orbits\" (name, foto, link) VALUES (@pname, @pfoto, @plink)";
+            await connection.ExecuteAsync(query, new {pname = name, pfoto = foto, plink = link});
+
+            string query2 = "INSERT INTO \"OrbitUsuario\" (idOrbit, idUsuario) VALUES ((SELECT id FROM \"Orbits\" WHERE link = @plink), @pidUsuario)";
+            await connection.ExecuteAsync(query2, new {plink = link, pidUsuario = idUsuario});
+
+            string update = "UPDATE \"Orbits\" SET idOrbitUsuario = (SELECT id FROM \"OrbitUsuario\" WHERE idOrbit = (SELECT id FROM \"Orbits\" WHERE link = @plink))";
+            await connection.ExecuteAsync(update, new {plink = link});
         }
     }
 }

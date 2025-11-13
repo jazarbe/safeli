@@ -18,7 +18,7 @@ public class Usuario
     public List<Carpeta> carpetas {get; private set;}
     
     public Usuario(){}
-    public Usuario( string nombre, string apellido, string email, int nroTelefono, string username, string foto, string bio, DateOnly fechaNac, string contraseña)
+    public Usuario(string nombre, string apellido, string email, int nroTelefono, string username, string foto, string bio, DateOnly fechaNac, string contraseña)
     {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -29,6 +29,7 @@ public class Usuario
         this.bio = bio;
         this.fechaNacimiento = fechaNac.ToDateTime(TimeOnly.MinValue);
         this.contraseña = contraseña;
+        this.orbits = new List<Orbit>();
+        this.carpetas = new List<Carpeta>();
     }
-
 }
