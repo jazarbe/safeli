@@ -17,7 +17,8 @@ public class Usuario
     public Point ubicacion {get; private set;}
     public List<Carpeta> carpetas {get; private set;}
     public int contactoEmeregencia {get; private set;}
-    
+    public bool confirmado {get; private set;}
+
     public Usuario(){}
     public Usuario(string nombre, string apellido, string email, int nroTelefono, string username, string foto, string bio, DateOnly fechaNac, string contraseña, int contactoEmeregencia)
     {

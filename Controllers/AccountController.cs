@@ -68,9 +68,9 @@ public class AccountController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> CrearCuenta(string nombre, string apellido, string email, int telefono, string username, string password, string pass2, DateOnly fecha, IFormFile foto, string bio)
+    public async Task<IActionResult> CrearCuenta(string nombre, string apellido, string email, int telefono, string username, string password, string pass2, DateOnly fecha, IFormFile foto, string bio, int contactoDeEmergencia)
     {
-        if (miBd.ExisteCuenta(username, email, telefono) == null) //ver si funciona
+        if (miBd.ExisteCuenta(username, email, telefono) == null) 
         {
             ViewBag.mensaje = "El nombre de usuario, el Email o el telefono se encuentra en uso.";
             return View("SignUp");
@@ -92,7 +92,7 @@ public class AccountController : Controller
                     foto.CopyTo(stream);
                 }
             }
-            int nuevoIdUsuario = await miBd.AgregarUsuario(nombre, apellido, email, telefono, username, password, fecha, nombreArchivo, bio);
+            int nuevoIdUsuario = await miBd.AgregarUsuario(nombre, apellido, email, telefono, username, password, fecha, nombreArchivo, bio, contactoDeEmergencia);
             string token = Guid.NewGuid().ToString("N");
             DateTime ahora = DateTime.Now;
             DateTime expira = ahora.AddMinutes(20);
@@ -100,9 +100,6 @@ public class AccountController : Controller
             await miBd.GuardarToken(nuevoToken);
             string urlBase = $"{this.Request.Scheme}://{this.Request.Host}";
             string urlConfirmacion = $"{urlBase}/Account/ConfirmarEmail?token={token}&idUsuario={nuevoIdUsuario}";
-            
-            
-
             Usuario usuario = await miBd.BuscarUsuarioPorUsername(username) as Usuario;
             HttpContext.Session.SetInt32("IdUsuario", usuario.id);
             ViewBag.mensaje = "Cuenta creada correctamente.";
@@ -116,12 +113,10 @@ public class AccountController : Controller
     [HttpPost]
     public async Task<IActionResult> ConfirmarEmail(string token, int idUsuario)
     {
-        // 1. Obtener y validar el registro de EmailCodes
         EmailCodes tokenData = await miBd.ObtenerToken(token, idUsuario); 
 
         if (tokenData == null || tokenData.Usado || tokenData.expiraCuando < DateTime.Now)
         {
-            // Token inválido, expirado o ya usado
             return View("ErrorConfirmacion", "El enlace de confirmación no es válido o ha expirado.");
         }
 

@@ -23,9 +23,9 @@ public class Orbit
             return link;
         }
 
-   public string ObtenerLinkCompleto()
-        {
-    return $"/Orbit/Unirse?link={link}";
-        }
+    public string ObtenerLinkCompleto(string baseUrl)
+    {
+        return $"{baseUrl}/Orbit/Unirse?link={link}";
+    }
 
 }
