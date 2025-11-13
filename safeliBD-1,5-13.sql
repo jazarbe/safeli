@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.0
 
--- Started on 2025-11-12 11:44:34
+-- Started on 2025-11-13 10:46:17
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -19,7 +19,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 6 (class 2615 OID 18219)
+-- TOC entry 6 (class 2615 OID 16398)
 -- Name: public; Type: SCHEMA; Schema: -; Owner: pg_database_owner
 --
 
@@ -29,7 +29,7 @@ CREATE SCHEMA public;
 ALTER SCHEMA public OWNER TO pg_database_owner;
 
 --
--- TOC entry 4946 (class 0 OID 0)
+-- TOC entry 4947 (class 0 OID 0)
 -- Dependencies: 6
 -- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: pg_database_owner
 --
@@ -42,7 +42,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 216 (class 1259 OID 18220)
+-- TOC entry 216 (class 1259 OID 16399)
 -- Name: Carpetas; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -57,7 +57,7 @@ CREATE TABLE public."Carpetas" (
 ALTER TABLE public."Carpetas" OWNER TO postgres;
 
 --
--- TOC entry 217 (class 1259 OID 18223)
+-- TOC entry 217 (class 1259 OID 16402)
 -- Name: CarpetasDestinos; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -71,7 +71,7 @@ CREATE TABLE public."CarpetasDestinos" (
 ALTER TABLE public."CarpetasDestinos" OWNER TO postgres;
 
 --
--- TOC entry 218 (class 1259 OID 18226)
+-- TOC entry 218 (class 1259 OID 16405)
 -- Name: CarpetasDestinos_idCarpeta_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -87,7 +87,7 @@ CREATE SEQUENCE public."CarpetasDestinos_idCarpeta_seq"
 ALTER SEQUENCE public."CarpetasDestinos_idCarpeta_seq" OWNER TO postgres;
 
 --
--- TOC entry 4948 (class 0 OID 0)
+-- TOC entry 4949 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: CarpetasDestinos_idCarpeta_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -96,7 +96,7 @@ ALTER SEQUENCE public."CarpetasDestinos_idCarpeta_seq" OWNED BY public."Carpetas
 
 
 --
--- TOC entry 219 (class 1259 OID 18227)
+-- TOC entry 219 (class 1259 OID 16406)
 -- Name: CarpetasDestinos_idDestino_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -112,7 +112,7 @@ CREATE SEQUENCE public."CarpetasDestinos_idDestino_seq"
 ALTER SEQUENCE public."CarpetasDestinos_idDestino_seq" OWNER TO postgres;
 
 --
--- TOC entry 4949 (class 0 OID 0)
+-- TOC entry 4950 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: CarpetasDestinos_idDestino_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -121,7 +121,7 @@ ALTER SEQUENCE public."CarpetasDestinos_idDestino_seq" OWNED BY public."Carpetas
 
 
 --
--- TOC entry 220 (class 1259 OID 18228)
+-- TOC entry 220 (class 1259 OID 16407)
 -- Name: CarpetasDestinos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -137,7 +137,7 @@ CREATE SEQUENCE public."CarpetasDestinos_id_seq"
 ALTER SEQUENCE public."CarpetasDestinos_id_seq" OWNER TO postgres;
 
 --
--- TOC entry 4950 (class 0 OID 0)
+-- TOC entry 4951 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: CarpetasDestinos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -146,7 +146,7 @@ ALTER SEQUENCE public."CarpetasDestinos_id_seq" OWNED BY public."CarpetasDestino
 
 
 --
--- TOC entry 221 (class 1259 OID 18229)
+-- TOC entry 221 (class 1259 OID 16408)
 -- Name: CarpetasUsuarios; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -160,7 +160,7 @@ CREATE TABLE public."CarpetasUsuarios" (
 ALTER TABLE public."CarpetasUsuarios" OWNER TO postgres;
 
 --
--- TOC entry 222 (class 1259 OID 18232)
+-- TOC entry 222 (class 1259 OID 16411)
 -- Name: CarpetasUsuarios_idCarpeta_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -176,7 +176,7 @@ CREATE SEQUENCE public."CarpetasUsuarios_idCarpeta_seq"
 ALTER SEQUENCE public."CarpetasUsuarios_idCarpeta_seq" OWNER TO postgres;
 
 --
--- TOC entry 4951 (class 0 OID 0)
+-- TOC entry 4952 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: CarpetasUsuarios_idCarpeta_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -185,7 +185,7 @@ ALTER SEQUENCE public."CarpetasUsuarios_idCarpeta_seq" OWNED BY public."Carpetas
 
 
 --
--- TOC entry 223 (class 1259 OID 18233)
+-- TOC entry 223 (class 1259 OID 16412)
 -- Name: CarpetasUsuarios_idUsuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -201,7 +201,7 @@ CREATE SEQUENCE public."CarpetasUsuarios_idUsuario_seq"
 ALTER SEQUENCE public."CarpetasUsuarios_idUsuario_seq" OWNER TO postgres;
 
 --
--- TOC entry 4952 (class 0 OID 0)
+-- TOC entry 4953 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: CarpetasUsuarios_idUsuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -210,7 +210,7 @@ ALTER SEQUENCE public."CarpetasUsuarios_idUsuario_seq" OWNED BY public."Carpetas
 
 
 --
--- TOC entry 224 (class 1259 OID 18234)
+-- TOC entry 224 (class 1259 OID 16413)
 -- Name: CarpetasUsuarios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -226,7 +226,7 @@ CREATE SEQUENCE public."CarpetasUsuarios_id_seq"
 ALTER SEQUENCE public."CarpetasUsuarios_id_seq" OWNER TO postgres;
 
 --
--- TOC entry 4953 (class 0 OID 0)
+-- TOC entry 4954 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: CarpetasUsuarios_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -235,7 +235,7 @@ ALTER SEQUENCE public."CarpetasUsuarios_id_seq" OWNED BY public."CarpetasUsuario
 
 
 --
--- TOC entry 225 (class 1259 OID 18235)
+-- TOC entry 225 (class 1259 OID 16414)
 -- Name: Carpetas_idCarpetaDestinos_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -251,7 +251,7 @@ CREATE SEQUENCE public."Carpetas_idCarpetaDestinos_seq"
 ALTER SEQUENCE public."Carpetas_idCarpetaDestinos_seq" OWNER TO postgres;
 
 --
--- TOC entry 4954 (class 0 OID 0)
+-- TOC entry 4955 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: Carpetas_idCarpetaDestinos_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -260,7 +260,7 @@ ALTER SEQUENCE public."Carpetas_idCarpetaDestinos_seq" OWNED BY public."Carpetas
 
 
 --
--- TOC entry 226 (class 1259 OID 18236)
+-- TOC entry 226 (class 1259 OID 16415)
 -- Name: Carpetas_idCarpetaUsuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -276,7 +276,7 @@ CREATE SEQUENCE public."Carpetas_idCarpetaUsuario_seq"
 ALTER SEQUENCE public."Carpetas_idCarpetaUsuario_seq" OWNER TO postgres;
 
 --
--- TOC entry 4955 (class 0 OID 0)
+-- TOC entry 4956 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: Carpetas_idCarpetaUsuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -285,7 +285,7 @@ ALTER SEQUENCE public."Carpetas_idCarpetaUsuario_seq" OWNED BY public."Carpetas"
 
 
 --
--- TOC entry 227 (class 1259 OID 18237)
+-- TOC entry 227 (class 1259 OID 16416)
 -- Name: Carpetas_idUsuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -301,7 +301,7 @@ CREATE SEQUENCE public."Carpetas_idUsuario_seq"
 ALTER SEQUENCE public."Carpetas_idUsuario_seq" OWNER TO postgres;
 
 --
--- TOC entry 4956 (class 0 OID 0)
+-- TOC entry 4957 (class 0 OID 0)
 -- Dependencies: 227
 -- Name: Carpetas_idUsuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -310,7 +310,7 @@ ALTER SEQUENCE public."Carpetas_idUsuario_seq" OWNED BY public."Carpetas"."idUsu
 
 
 --
--- TOC entry 228 (class 1259 OID 18238)
+-- TOC entry 228 (class 1259 OID 16417)
 -- Name: Carpetas_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -326,7 +326,7 @@ CREATE SEQUENCE public."Carpetas_id_seq"
 ALTER SEQUENCE public."Carpetas_id_seq" OWNER TO postgres;
 
 --
--- TOC entry 4957 (class 0 OID 0)
+-- TOC entry 4958 (class 0 OID 0)
 -- Dependencies: 228
 -- Name: Carpetas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -335,7 +335,7 @@ ALTER SEQUENCE public."Carpetas_id_seq" OWNED BY public."Carpetas".id;
 
 
 --
--- TOC entry 229 (class 1259 OID 18239)
+-- TOC entry 229 (class 1259 OID 16418)
 -- Name: Destinos; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -350,7 +350,7 @@ CREATE TABLE public."Destinos" (
 ALTER TABLE public."Destinos" OWNER TO postgres;
 
 --
--- TOC entry 230 (class 1259 OID 18242)
+-- TOC entry 230 (class 1259 OID 16421)
 -- Name: DestinosUsuarios; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -364,7 +364,7 @@ CREATE TABLE public."DestinosUsuarios" (
 ALTER TABLE public."DestinosUsuarios" OWNER TO postgres;
 
 --
--- TOC entry 231 (class 1259 OID 18245)
+-- TOC entry 231 (class 1259 OID 16424)
 -- Name: DestinosUsuarios_idDestino_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -380,7 +380,7 @@ CREATE SEQUENCE public."DestinosUsuarios_idDestino_seq"
 ALTER SEQUENCE public."DestinosUsuarios_idDestino_seq" OWNER TO postgres;
 
 --
--- TOC entry 4958 (class 0 OID 0)
+-- TOC entry 4959 (class 0 OID 0)
 -- Dependencies: 231
 -- Name: DestinosUsuarios_idDestino_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -389,7 +389,7 @@ ALTER SEQUENCE public."DestinosUsuarios_idDestino_seq" OWNED BY public."Destinos
 
 
 --
--- TOC entry 232 (class 1259 OID 18246)
+-- TOC entry 232 (class 1259 OID 16425)
 -- Name: DestinosUsuarios_idUsuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -405,7 +405,7 @@ CREATE SEQUENCE public."DestinosUsuarios_idUsuario_seq"
 ALTER SEQUENCE public."DestinosUsuarios_idUsuario_seq" OWNER TO postgres;
 
 --
--- TOC entry 4959 (class 0 OID 0)
+-- TOC entry 4960 (class 0 OID 0)
 -- Dependencies: 232
 -- Name: DestinosUsuarios_idUsuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -414,7 +414,7 @@ ALTER SEQUENCE public."DestinosUsuarios_idUsuario_seq" OWNED BY public."Destinos
 
 
 --
--- TOC entry 233 (class 1259 OID 18247)
+-- TOC entry 233 (class 1259 OID 16426)
 -- Name: DestinosUsuarios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -430,7 +430,7 @@ CREATE SEQUENCE public."DestinosUsuarios_id_seq"
 ALTER SEQUENCE public."DestinosUsuarios_id_seq" OWNER TO postgres;
 
 --
--- TOC entry 4960 (class 0 OID 0)
+-- TOC entry 4961 (class 0 OID 0)
 -- Dependencies: 233
 -- Name: DestinosUsuarios_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -439,7 +439,7 @@ ALTER SEQUENCE public."DestinosUsuarios_id_seq" OWNED BY public."DestinosUsuario
 
 
 --
--- TOC entry 234 (class 1259 OID 18248)
+-- TOC entry 234 (class 1259 OID 16427)
 -- Name: EmailCodes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -454,7 +454,7 @@ CREATE SEQUENCE public."EmailCodes_id_seq"
 ALTER SEQUENCE public."EmailCodes_id_seq" OWNER TO postgres;
 
 --
--- TOC entry 235 (class 1259 OID 18249)
+-- TOC entry 235 (class 1259 OID 16428)
 -- Name: EmailCodes; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -471,7 +471,7 @@ CREATE TABLE public."EmailCodes" (
 ALTER TABLE public."EmailCodes" OWNER TO postgres;
 
 --
--- TOC entry 236 (class 1259 OID 18257)
+-- TOC entry 236 (class 1259 OID 16436)
 -- Name: OrbitUsuario; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -485,7 +485,7 @@ CREATE TABLE public."OrbitUsuario" (
 ALTER TABLE public."OrbitUsuario" OWNER TO postgres;
 
 --
--- TOC entry 237 (class 1259 OID 18260)
+-- TOC entry 237 (class 1259 OID 16439)
 -- Name: OrbitUsuario_idOrbit_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -501,7 +501,7 @@ CREATE SEQUENCE public."OrbitUsuario_idOrbit_seq"
 ALTER SEQUENCE public."OrbitUsuario_idOrbit_seq" OWNER TO postgres;
 
 --
--- TOC entry 4961 (class 0 OID 0)
+-- TOC entry 4962 (class 0 OID 0)
 -- Dependencies: 237
 -- Name: OrbitUsuario_idOrbit_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -510,7 +510,7 @@ ALTER SEQUENCE public."OrbitUsuario_idOrbit_seq" OWNED BY public."OrbitUsuario".
 
 
 --
--- TOC entry 238 (class 1259 OID 18261)
+-- TOC entry 238 (class 1259 OID 16440)
 -- Name: OrbitUsuario_idUsuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -526,7 +526,7 @@ CREATE SEQUENCE public."OrbitUsuario_idUsuario_seq"
 ALTER SEQUENCE public."OrbitUsuario_idUsuario_seq" OWNER TO postgres;
 
 --
--- TOC entry 4962 (class 0 OID 0)
+-- TOC entry 4963 (class 0 OID 0)
 -- Dependencies: 238
 -- Name: OrbitUsuario_idUsuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -535,7 +535,7 @@ ALTER SEQUENCE public."OrbitUsuario_idUsuario_seq" OWNED BY public."OrbitUsuario
 
 
 --
--- TOC entry 239 (class 1259 OID 18262)
+-- TOC entry 239 (class 1259 OID 16441)
 -- Name: OrbitUsuario_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -551,7 +551,7 @@ CREATE SEQUENCE public."OrbitUsuario_id_seq"
 ALTER SEQUENCE public."OrbitUsuario_id_seq" OWNER TO postgres;
 
 --
--- TOC entry 4963 (class 0 OID 0)
+-- TOC entry 4964 (class 0 OID 0)
 -- Dependencies: 239
 -- Name: OrbitUsuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -560,7 +560,7 @@ ALTER SEQUENCE public."OrbitUsuario_id_seq" OWNED BY public."OrbitUsuario".id;
 
 
 --
--- TOC entry 240 (class 1259 OID 18263)
+-- TOC entry 240 (class 1259 OID 16442)
 -- Name: Orbits; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -568,14 +568,14 @@ CREATE TABLE public."Orbits" (
     id integer NOT NULL,
     nombre character varying(150) NOT NULL,
     foto character varying(150),
-    "idOrbitUsuario" integer NOT NULL
+    "idOrbitUsuario" integer
 );
 
 
 ALTER TABLE public."Orbits" OWNER TO postgres;
 
 --
--- TOC entry 241 (class 1259 OID 18266)
+-- TOC entry 241 (class 1259 OID 16445)
 -- Name: Orbits_idOrbitUsuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -591,7 +591,7 @@ CREATE SEQUENCE public."Orbits_idOrbitUsuario_seq"
 ALTER SEQUENCE public."Orbits_idOrbitUsuario_seq" OWNER TO postgres;
 
 --
--- TOC entry 4964 (class 0 OID 0)
+-- TOC entry 4965 (class 0 OID 0)
 -- Dependencies: 241
 -- Name: Orbits_idOrbitUsuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -600,7 +600,7 @@ ALTER SEQUENCE public."Orbits_idOrbitUsuario_seq" OWNED BY public."Orbits"."idOr
 
 
 --
--- TOC entry 242 (class 1259 OID 18267)
+-- TOC entry 242 (class 1259 OID 16446)
 -- Name: Orbits_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -616,7 +616,7 @@ CREATE SEQUENCE public."Orbits_id_seq"
 ALTER SEQUENCE public."Orbits_id_seq" OWNER TO postgres;
 
 --
--- TOC entry 4965 (class 0 OID 0)
+-- TOC entry 4966 (class 0 OID 0)
 -- Dependencies: 242
 -- Name: Orbits_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -625,7 +625,7 @@ ALTER SEQUENCE public."Orbits_id_seq" OWNED BY public."Orbits".id;
 
 
 --
--- TOC entry 243 (class 1259 OID 18268)
+-- TOC entry 243 (class 1259 OID 16447)
 -- Name: Usuarios; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -642,14 +642,15 @@ CREATE TABLE public."Usuarios" (
     "contraseña" character varying(50) NOT NULL,
     ubicacion point,
     "idDestinos" integer,
-    "idOrbitUsuario" integer
+    "idOrbitUsuario" integer,
+    "contactoEmergencia" integer DEFAULT 911
 );
 
 
 ALTER TABLE public."Usuarios" OWNER TO postgres;
 
 --
--- TOC entry 244 (class 1259 OID 18273)
+-- TOC entry 244 (class 1259 OID 16452)
 -- Name: Usuarios_idDestinos_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -665,7 +666,7 @@ CREATE SEQUENCE public."Usuarios_idDestinos_seq"
 ALTER SEQUENCE public."Usuarios_idDestinos_seq" OWNER TO postgres;
 
 --
--- TOC entry 4966 (class 0 OID 0)
+-- TOC entry 4967 (class 0 OID 0)
 -- Dependencies: 244
 -- Name: Usuarios_idDestinos_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -674,7 +675,7 @@ ALTER SEQUENCE public."Usuarios_idDestinos_seq" OWNED BY public."Usuarios"."idDe
 
 
 --
--- TOC entry 245 (class 1259 OID 18274)
+-- TOC entry 245 (class 1259 OID 16453)
 -- Name: Usuarios_idOrbitUsuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -690,7 +691,7 @@ CREATE SEQUENCE public."Usuarios_idOrbitUsuario_seq"
 ALTER SEQUENCE public."Usuarios_idOrbitUsuario_seq" OWNER TO postgres;
 
 --
--- TOC entry 4967 (class 0 OID 0)
+-- TOC entry 4968 (class 0 OID 0)
 -- Dependencies: 245
 -- Name: Usuarios_idOrbitUsuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -699,7 +700,7 @@ ALTER SEQUENCE public."Usuarios_idOrbitUsuario_seq" OWNED BY public."Usuarios"."
 
 
 --
--- TOC entry 246 (class 1259 OID 18275)
+-- TOC entry 246 (class 1259 OID 16454)
 -- Name: Usuarios_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -715,7 +716,7 @@ CREATE SEQUENCE public."Usuarios_id_seq"
 ALTER SEQUENCE public."Usuarios_id_seq" OWNER TO postgres;
 
 --
--- TOC entry 4968 (class 0 OID 0)
+-- TOC entry 4969 (class 0 OID 0)
 -- Dependencies: 246
 -- Name: Usuarios_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -724,7 +725,7 @@ ALTER SEQUENCE public."Usuarios_id_seq" OWNED BY public."Usuarios".id;
 
 
 --
--- TOC entry 247 (class 1259 OID 18276)
+-- TOC entry 247 (class 1259 OID 16455)
 -- Name: destinos_carpeta_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -740,7 +741,7 @@ CREATE SEQUENCE public.destinos_carpeta_seq
 ALTER SEQUENCE public.destinos_carpeta_seq OWNER TO postgres;
 
 --
--- TOC entry 4969 (class 0 OID 0)
+-- TOC entry 4970 (class 0 OID 0)
 -- Dependencies: 247
 -- Name: destinos_carpeta_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -749,7 +750,7 @@ ALTER SEQUENCE public.destinos_carpeta_seq OWNED BY public."Destinos"."idCarpeta
 
 
 --
--- TOC entry 248 (class 1259 OID 18277)
+-- TOC entry 248 (class 1259 OID 16456)
 -- Name: destinos_idUsuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -765,7 +766,7 @@ CREATE SEQUENCE public."destinos_idUsuario_seq"
 ALTER SEQUENCE public."destinos_idUsuario_seq" OWNER TO postgres;
 
 --
--- TOC entry 4970 (class 0 OID 0)
+-- TOC entry 4971 (class 0 OID 0)
 -- Dependencies: 248
 -- Name: destinos_idUsuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -774,7 +775,7 @@ ALTER SEQUENCE public."destinos_idUsuario_seq" OWNED BY public."Destinos"."idDes
 
 
 --
--- TOC entry 249 (class 1259 OID 18278)
+-- TOC entry 249 (class 1259 OID 16457)
 -- Name: destinos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -790,7 +791,7 @@ CREATE SEQUENCE public.destinos_id_seq
 ALTER SEQUENCE public.destinos_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4971 (class 0 OID 0)
+-- TOC entry 4972 (class 0 OID 0)
 -- Dependencies: 249
 -- Name: destinos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -799,7 +800,7 @@ ALTER SEQUENCE public.destinos_id_seq OWNED BY public."Destinos".id;
 
 
 --
--- TOC entry 4691 (class 2604 OID 18279)
+-- TOC entry 4691 (class 2604 OID 16458)
 -- Name: Carpetas id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -807,7 +808,7 @@ ALTER TABLE ONLY public."Carpetas" ALTER COLUMN id SET DEFAULT nextval('public."
 
 
 --
--- TOC entry 4692 (class 2604 OID 18280)
+-- TOC entry 4692 (class 2604 OID 16459)
 -- Name: Carpetas idCarpetaDestinos; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -815,7 +816,7 @@ ALTER TABLE ONLY public."Carpetas" ALTER COLUMN "idCarpetaDestinos" SET DEFAULT 
 
 
 --
--- TOC entry 4693 (class 2604 OID 18281)
+-- TOC entry 4693 (class 2604 OID 16460)
 -- Name: Carpetas idCarpetaUsuario; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -823,7 +824,7 @@ ALTER TABLE ONLY public."Carpetas" ALTER COLUMN "idCarpetaUsuario" SET DEFAULT n
 
 
 --
--- TOC entry 4694 (class 2604 OID 18282)
+-- TOC entry 4694 (class 2604 OID 16461)
 -- Name: Carpetas idUsuario; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -831,7 +832,7 @@ ALTER TABLE ONLY public."Carpetas" ALTER COLUMN "idUsuario" SET DEFAULT nextval(
 
 
 --
--- TOC entry 4695 (class 2604 OID 18283)
+-- TOC entry 4695 (class 2604 OID 16462)
 -- Name: CarpetasDestinos id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -839,7 +840,7 @@ ALTER TABLE ONLY public."CarpetasDestinos" ALTER COLUMN id SET DEFAULT nextval('
 
 
 --
--- TOC entry 4696 (class 2604 OID 18284)
+-- TOC entry 4696 (class 2604 OID 16463)
 -- Name: CarpetasDestinos idCarpeta; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -847,7 +848,7 @@ ALTER TABLE ONLY public."CarpetasDestinos" ALTER COLUMN "idCarpeta" SET DEFAULT 
 
 
 --
--- TOC entry 4697 (class 2604 OID 18285)
+-- TOC entry 4697 (class 2604 OID 16464)
 -- Name: CarpetasDestinos idDestino; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -855,7 +856,7 @@ ALTER TABLE ONLY public."CarpetasDestinos" ALTER COLUMN "idDestino" SET DEFAULT 
 
 
 --
--- TOC entry 4698 (class 2604 OID 18286)
+-- TOC entry 4698 (class 2604 OID 16465)
 -- Name: CarpetasUsuarios id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -863,7 +864,7 @@ ALTER TABLE ONLY public."CarpetasUsuarios" ALTER COLUMN id SET DEFAULT nextval('
 
 
 --
--- TOC entry 4699 (class 2604 OID 18287)
+-- TOC entry 4699 (class 2604 OID 16466)
 -- Name: CarpetasUsuarios idCarpeta; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -871,7 +872,7 @@ ALTER TABLE ONLY public."CarpetasUsuarios" ALTER COLUMN "idCarpeta" SET DEFAULT 
 
 
 --
--- TOC entry 4700 (class 2604 OID 18288)
+-- TOC entry 4700 (class 2604 OID 16467)
 -- Name: CarpetasUsuarios idUsuario; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -879,7 +880,7 @@ ALTER TABLE ONLY public."CarpetasUsuarios" ALTER COLUMN "idUsuario" SET DEFAULT 
 
 
 --
--- TOC entry 4701 (class 2604 OID 18289)
+-- TOC entry 4701 (class 2604 OID 16468)
 -- Name: Destinos id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -887,7 +888,7 @@ ALTER TABLE ONLY public."Destinos" ALTER COLUMN id SET DEFAULT nextval('public.d
 
 
 --
--- TOC entry 4702 (class 2604 OID 18290)
+-- TOC entry 4702 (class 2604 OID 16469)
 -- Name: Destinos idDestinosUsuarios; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -895,7 +896,7 @@ ALTER TABLE ONLY public."Destinos" ALTER COLUMN "idDestinosUsuarios" SET DEFAULT
 
 
 --
--- TOC entry 4703 (class 2604 OID 18291)
+-- TOC entry 4703 (class 2604 OID 16470)
 -- Name: Destinos idCarpetasDestinos; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -903,7 +904,7 @@ ALTER TABLE ONLY public."Destinos" ALTER COLUMN "idCarpetasDestinos" SET DEFAULT
 
 
 --
--- TOC entry 4704 (class 2604 OID 18292)
+-- TOC entry 4704 (class 2604 OID 16471)
 -- Name: DestinosUsuarios id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -911,7 +912,7 @@ ALTER TABLE ONLY public."DestinosUsuarios" ALTER COLUMN id SET DEFAULT nextval('
 
 
 --
--- TOC entry 4705 (class 2604 OID 18293)
+-- TOC entry 4705 (class 2604 OID 16472)
 -- Name: DestinosUsuarios idDestino; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -919,7 +920,7 @@ ALTER TABLE ONLY public."DestinosUsuarios" ALTER COLUMN "idDestino" SET DEFAULT 
 
 
 --
--- TOC entry 4706 (class 2604 OID 18294)
+-- TOC entry 4706 (class 2604 OID 16473)
 -- Name: DestinosUsuarios idUsuario; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -927,7 +928,7 @@ ALTER TABLE ONLY public."DestinosUsuarios" ALTER COLUMN "idUsuario" SET DEFAULT 
 
 
 --
--- TOC entry 4710 (class 2604 OID 18295)
+-- TOC entry 4710 (class 2604 OID 16474)
 -- Name: OrbitUsuario id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -935,7 +936,7 @@ ALTER TABLE ONLY public."OrbitUsuario" ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 4711 (class 2604 OID 18296)
+-- TOC entry 4711 (class 2604 OID 16475)
 -- Name: OrbitUsuario idUsuario; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -943,7 +944,7 @@ ALTER TABLE ONLY public."OrbitUsuario" ALTER COLUMN "idUsuario" SET DEFAULT next
 
 
 --
--- TOC entry 4712 (class 2604 OID 18297)
+-- TOC entry 4712 (class 2604 OID 16476)
 -- Name: OrbitUsuario idOrbit; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -951,7 +952,7 @@ ALTER TABLE ONLY public."OrbitUsuario" ALTER COLUMN "idOrbit" SET DEFAULT nextva
 
 
 --
--- TOC entry 4713 (class 2604 OID 18298)
+-- TOC entry 4713 (class 2604 OID 16477)
 -- Name: Orbits id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -959,7 +960,7 @@ ALTER TABLE ONLY public."Orbits" ALTER COLUMN id SET DEFAULT nextval('public."Or
 
 
 --
--- TOC entry 4714 (class 2604 OID 18299)
+-- TOC entry 4714 (class 2604 OID 16478)
 -- Name: Orbits idOrbitUsuario; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -967,7 +968,7 @@ ALTER TABLE ONLY public."Orbits" ALTER COLUMN "idOrbitUsuario" SET DEFAULT nextv
 
 
 --
--- TOC entry 4715 (class 2604 OID 18300)
+-- TOC entry 4715 (class 2604 OID 16479)
 -- Name: Usuarios id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -975,7 +976,7 @@ ALTER TABLE ONLY public."Usuarios" ALTER COLUMN id SET DEFAULT nextval('public."
 
 
 --
--- TOC entry 4907 (class 0 OID 18220)
+-- TOC entry 4908 (class 0 OID 16399)
 -- Dependencies: 216
 -- Data for Name: Carpetas; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -983,7 +984,7 @@ ALTER TABLE ONLY public."Usuarios" ALTER COLUMN id SET DEFAULT nextval('public."
 
 
 --
--- TOC entry 4908 (class 0 OID 18223)
+-- TOC entry 4909 (class 0 OID 16402)
 -- Dependencies: 217
 -- Data for Name: CarpetasDestinos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -991,7 +992,7 @@ ALTER TABLE ONLY public."Usuarios" ALTER COLUMN id SET DEFAULT nextval('public."
 
 
 --
--- TOC entry 4912 (class 0 OID 18229)
+-- TOC entry 4913 (class 0 OID 16408)
 -- Dependencies: 221
 -- Data for Name: CarpetasUsuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -999,7 +1000,7 @@ ALTER TABLE ONLY public."Usuarios" ALTER COLUMN id SET DEFAULT nextval('public."
 
 
 --
--- TOC entry 4920 (class 0 OID 18239)
+-- TOC entry 4921 (class 0 OID 16418)
 -- Dependencies: 229
 -- Data for Name: Destinos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1007,7 +1008,7 @@ ALTER TABLE ONLY public."Usuarios" ALTER COLUMN id SET DEFAULT nextval('public."
 
 
 --
--- TOC entry 4921 (class 0 OID 18242)
+-- TOC entry 4922 (class 0 OID 16421)
 -- Dependencies: 230
 -- Data for Name: DestinosUsuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1015,7 +1016,7 @@ ALTER TABLE ONLY public."Usuarios" ALTER COLUMN id SET DEFAULT nextval('public."
 
 
 --
--- TOC entry 4926 (class 0 OID 18249)
+-- TOC entry 4927 (class 0 OID 16428)
 -- Dependencies: 235
 -- Data for Name: EmailCodes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1023,7 +1024,7 @@ ALTER TABLE ONLY public."Usuarios" ALTER COLUMN id SET DEFAULT nextval('public."
 
 
 --
--- TOC entry 4927 (class 0 OID 18257)
+-- TOC entry 4928 (class 0 OID 16436)
 -- Dependencies: 236
 -- Data for Name: OrbitUsuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1031,7 +1032,7 @@ ALTER TABLE ONLY public."Usuarios" ALTER COLUMN id SET DEFAULT nextval('public."
 
 
 --
--- TOC entry 4931 (class 0 OID 18263)
+-- TOC entry 4932 (class 0 OID 16442)
 -- Dependencies: 240
 -- Data for Name: Orbits; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -1039,17 +1040,19 @@ ALTER TABLE ONLY public."Usuarios" ALTER COLUMN id SET DEFAULT nextval('public."
 
 
 --
--- TOC entry 4934 (class 0 OID 18268)
+-- TOC entry 4935 (class 0 OID 16447)
 -- Dependencies: 243
 -- Data for Name: Usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."Usuarios" (id, nombre, apellido, email, "nroTelefono", username, foto, bio, "fechaNacimiento", "contraseña", ubicacion, "idDestinos", "idOrbitUsuario") VALUES (1, 'Jazmin', 'Arias Berlin', 'jazminariasberlin@gmail.com', 1139448264, 'jazarbe', 'foto-jaz.jpg', '', '2009-03-16', 'prueba3', NULL, NULL, NULL);
-INSERT INTO public."Usuarios" (id, nombre, apellido, email, "nroTelefono", username, foto, bio, "fechaNacimiento", "contraseña", ubicacion, "idDestinos", "idOrbitUsuario") VALUES (2, 'Diana', 'Park', 'dianairenepark08@gmail.com', 1165006568, 'ddpyi', 'foto-dai.jfif', '', '2008-11-27', 'holadai', NULL, NULL, NULL);
+INSERT INTO public."Usuarios" VALUES (1, 'Jazmin', 'Arias Berlin', 'jazminariasberlin@gmail.com', 1139448264, 'jazarbe', 'foto-jaz.jpg', '', '2009-03-16', 'prueba3', NULL, NULL, NULL, 911);
+INSERT INTO public."Usuarios" VALUES (2, 'Diana', 'Park', 'dianairenepark08@gmail.com', 1165006568, 'ddpyi', 'foto-dai.jfif', '', '2008-11-27', 'holadai', NULL, NULL, NULL, 911);
+INSERT INTO public."Usuarios" VALUES (3, 'Joaquin', 'Iribas', 'soyjoaquin.i@gmail.com', 1150523437, 'AuraMan', 'IMG_8121.jpeg', '', '2009-06-05', 'miSafeli.360', NULL, NULL, NULL, 911);
+INSERT INTO public."Usuarios" VALUES (4, 'Ciro', 'Perazzo', 'ciroperazzo08@gmail.com', 0, 'cirif', 'default.jpg', '', '2008-10-20', 'patrollerg08', NULL, NULL, NULL, 911);
 
 
 --
--- TOC entry 4972 (class 0 OID 0)
+-- TOC entry 4973 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: CarpetasDestinos_idCarpeta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1058,7 +1061,7 @@ SELECT pg_catalog.setval('public."CarpetasDestinos_idCarpeta_seq"', 1, false);
 
 
 --
--- TOC entry 4973 (class 0 OID 0)
+-- TOC entry 4974 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: CarpetasDestinos_idDestino_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1067,7 +1070,7 @@ SELECT pg_catalog.setval('public."CarpetasDestinos_idDestino_seq"', 1, false);
 
 
 --
--- TOC entry 4974 (class 0 OID 0)
+-- TOC entry 4975 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: CarpetasDestinos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1076,7 +1079,7 @@ SELECT pg_catalog.setval('public."CarpetasDestinos_id_seq"', 1, false);
 
 
 --
--- TOC entry 4975 (class 0 OID 0)
+-- TOC entry 4976 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: CarpetasUsuarios_idCarpeta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1085,7 +1088,7 @@ SELECT pg_catalog.setval('public."CarpetasUsuarios_idCarpeta_seq"', 1, false);
 
 
 --
--- TOC entry 4976 (class 0 OID 0)
+-- TOC entry 4977 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: CarpetasUsuarios_idUsuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1094,7 +1097,7 @@ SELECT pg_catalog.setval('public."CarpetasUsuarios_idUsuario_seq"', 1, false);
 
 
 --
--- TOC entry 4977 (class 0 OID 0)
+-- TOC entry 4978 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: CarpetasUsuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1103,7 +1106,7 @@ SELECT pg_catalog.setval('public."CarpetasUsuarios_id_seq"', 1, false);
 
 
 --
--- TOC entry 4978 (class 0 OID 0)
+-- TOC entry 4979 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: Carpetas_idCarpetaDestinos_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1112,7 +1115,7 @@ SELECT pg_catalog.setval('public."Carpetas_idCarpetaDestinos_seq"', 1, false);
 
 
 --
--- TOC entry 4979 (class 0 OID 0)
+-- TOC entry 4980 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: Carpetas_idCarpetaUsuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1121,7 +1124,7 @@ SELECT pg_catalog.setval('public."Carpetas_idCarpetaUsuario_seq"', 1, false);
 
 
 --
--- TOC entry 4980 (class 0 OID 0)
+-- TOC entry 4981 (class 0 OID 0)
 -- Dependencies: 227
 -- Name: Carpetas_idUsuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1130,7 +1133,7 @@ SELECT pg_catalog.setval('public."Carpetas_idUsuario_seq"', 1, false);
 
 
 --
--- TOC entry 4981 (class 0 OID 0)
+-- TOC entry 4982 (class 0 OID 0)
 -- Dependencies: 228
 -- Name: Carpetas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1139,7 +1142,7 @@ SELECT pg_catalog.setval('public."Carpetas_id_seq"', 1, false);
 
 
 --
--- TOC entry 4982 (class 0 OID 0)
+-- TOC entry 4983 (class 0 OID 0)
 -- Dependencies: 231
 -- Name: DestinosUsuarios_idDestino_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1148,7 +1151,7 @@ SELECT pg_catalog.setval('public."DestinosUsuarios_idDestino_seq"', 1, false);
 
 
 --
--- TOC entry 4983 (class 0 OID 0)
+-- TOC entry 4984 (class 0 OID 0)
 -- Dependencies: 232
 -- Name: DestinosUsuarios_idUsuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1157,7 +1160,7 @@ SELECT pg_catalog.setval('public."DestinosUsuarios_idUsuario_seq"', 1, false);
 
 
 --
--- TOC entry 4984 (class 0 OID 0)
+-- TOC entry 4985 (class 0 OID 0)
 -- Dependencies: 233
 -- Name: DestinosUsuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1166,7 +1169,7 @@ SELECT pg_catalog.setval('public."DestinosUsuarios_id_seq"', 1, false);
 
 
 --
--- TOC entry 4985 (class 0 OID 0)
+-- TOC entry 4986 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: EmailCodes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1175,7 +1178,7 @@ SELECT pg_catalog.setval('public."EmailCodes_id_seq"', 1, false);
 
 
 --
--- TOC entry 4986 (class 0 OID 0)
+-- TOC entry 4987 (class 0 OID 0)
 -- Dependencies: 237
 -- Name: OrbitUsuario_idOrbit_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1184,7 +1187,7 @@ SELECT pg_catalog.setval('public."OrbitUsuario_idOrbit_seq"', 1, false);
 
 
 --
--- TOC entry 4987 (class 0 OID 0)
+-- TOC entry 4988 (class 0 OID 0)
 -- Dependencies: 238
 -- Name: OrbitUsuario_idUsuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1193,7 +1196,7 @@ SELECT pg_catalog.setval('public."OrbitUsuario_idUsuario_seq"', 1, false);
 
 
 --
--- TOC entry 4988 (class 0 OID 0)
+-- TOC entry 4989 (class 0 OID 0)
 -- Dependencies: 239
 -- Name: OrbitUsuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1202,7 +1205,7 @@ SELECT pg_catalog.setval('public."OrbitUsuario_id_seq"', 1, false);
 
 
 --
--- TOC entry 4989 (class 0 OID 0)
+-- TOC entry 4990 (class 0 OID 0)
 -- Dependencies: 241
 -- Name: Orbits_idOrbitUsuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1211,7 +1214,7 @@ SELECT pg_catalog.setval('public."Orbits_idOrbitUsuario_seq"', 1, false);
 
 
 --
--- TOC entry 4990 (class 0 OID 0)
+-- TOC entry 4991 (class 0 OID 0)
 -- Dependencies: 242
 -- Name: Orbits_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1220,7 +1223,7 @@ SELECT pg_catalog.setval('public."Orbits_id_seq"', 1, false);
 
 
 --
--- TOC entry 4991 (class 0 OID 0)
+-- TOC entry 4992 (class 0 OID 0)
 -- Dependencies: 244
 -- Name: Usuarios_idDestinos_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1229,7 +1232,7 @@ SELECT pg_catalog.setval('public."Usuarios_idDestinos_seq"', 1, false);
 
 
 --
--- TOC entry 4992 (class 0 OID 0)
+-- TOC entry 4993 (class 0 OID 0)
 -- Dependencies: 245
 -- Name: Usuarios_idOrbitUsuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1238,16 +1241,16 @@ SELECT pg_catalog.setval('public."Usuarios_idOrbitUsuario_seq"', 1, false);
 
 
 --
--- TOC entry 4993 (class 0 OID 0)
+-- TOC entry 4994 (class 0 OID 0)
 -- Dependencies: 246
 -- Name: Usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Usuarios_id_seq"', 2, true);
+SELECT pg_catalog.setval('public."Usuarios_id_seq"', 4, true);
 
 
 --
--- TOC entry 4994 (class 0 OID 0)
+-- TOC entry 4995 (class 0 OID 0)
 -- Dependencies: 247
 -- Name: destinos_carpeta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1256,7 +1259,7 @@ SELECT pg_catalog.setval('public.destinos_carpeta_seq', 1, false);
 
 
 --
--- TOC entry 4995 (class 0 OID 0)
+-- TOC entry 4996 (class 0 OID 0)
 -- Dependencies: 248
 -- Name: destinos_idUsuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1265,7 +1268,7 @@ SELECT pg_catalog.setval('public."destinos_idUsuario_seq"', 1, false);
 
 
 --
--- TOC entry 4996 (class 0 OID 0)
+-- TOC entry 4997 (class 0 OID 0)
 -- Dependencies: 249
 -- Name: destinos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -1274,7 +1277,7 @@ SELECT pg_catalog.setval('public.destinos_id_seq', 1, false);
 
 
 --
--- TOC entry 4748 (class 2606 OID 18304)
+-- TOC entry 4749 (class 2606 OID 16481)
 -- Name: Usuarios id; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1283,7 +1286,7 @@ ALTER TABLE ONLY public."Usuarios"
 
 
 --
--- TOC entry 4719 (class 2606 OID 18306)
+-- TOC entry 4720 (class 2606 OID 16483)
 -- Name: Carpetas idCarpeta; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1292,7 +1295,7 @@ ALTER TABLE ONLY public."Carpetas"
 
 
 --
--- TOC entry 4723 (class 2606 OID 18308)
+-- TOC entry 4724 (class 2606 OID 16485)
 -- Name: CarpetasDestinos idCarpetaDestinos; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1301,7 +1304,7 @@ ALTER TABLE ONLY public."CarpetasDestinos"
 
 
 --
--- TOC entry 4727 (class 2606 OID 18310)
+-- TOC entry 4728 (class 2606 OID 16487)
 -- Name: CarpetasUsuarios idCarpetaUsuario; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1310,7 +1313,7 @@ ALTER TABLE ONLY public."CarpetasUsuarios"
 
 
 --
--- TOC entry 4736 (class 2606 OID 18312)
+-- TOC entry 4737 (class 2606 OID 16489)
 -- Name: EmailCodes idContraseñaCodes; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1319,7 +1322,7 @@ ALTER TABLE ONLY public."EmailCodes"
 
 
 --
--- TOC entry 4731 (class 2606 OID 18314)
+-- TOC entry 4732 (class 2606 OID 16491)
 -- Name: Destinos idDest; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1328,7 +1331,7 @@ ALTER TABLE ONLY public."Destinos"
 
 
 --
--- TOC entry 4734 (class 2606 OID 18316)
+-- TOC entry 4735 (class 2606 OID 16493)
 -- Name: DestinosUsuarios idDestinoUsuario; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1337,7 +1340,7 @@ ALTER TABLE ONLY public."DestinosUsuarios"
 
 
 --
--- TOC entry 4745 (class 2606 OID 18318)
+-- TOC entry 4746 (class 2606 OID 16495)
 -- Name: Orbits idOrbit; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1346,7 +1349,7 @@ ALTER TABLE ONLY public."Orbits"
 
 
 --
--- TOC entry 4742 (class 2606 OID 18320)
+-- TOC entry 4743 (class 2606 OID 16497)
 -- Name: OrbitUsuario idOrbitUsuario; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1355,7 +1358,7 @@ ALTER TABLE ONLY public."OrbitUsuario"
 
 
 --
--- TOC entry 4738 (class 2606 OID 18322)
+-- TOC entry 4739 (class 2606 OID 16499)
 -- Name: EmailCodes tokenUnique; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1364,7 +1367,7 @@ ALTER TABLE ONLY public."EmailCodes"
 
 
 --
--- TOC entry 4720 (class 1259 OID 18323)
+-- TOC entry 4721 (class 1259 OID 16500)
 -- Name: fki_idCarpetaCarpetasDestinos; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1372,7 +1375,7 @@ CREATE INDEX "fki_idCarpetaCarpetasDestinos" ON public."CarpetasDestinos" USING 
 
 
 --
--- TOC entry 4724 (class 1259 OID 18324)
+-- TOC entry 4725 (class 1259 OID 16501)
 -- Name: fki_idCarpetaCarpetasUsuarios; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1380,7 +1383,7 @@ CREATE INDEX "fki_idCarpetaCarpetasUsuarios" ON public."CarpetasUsuarios" USING 
 
 
 --
--- TOC entry 4716 (class 1259 OID 18325)
+-- TOC entry 4717 (class 1259 OID 16502)
 -- Name: fki_idCarpetaDestinos; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1388,7 +1391,7 @@ CREATE INDEX "fki_idCarpetaDestinos" ON public."Carpetas" USING btree ("idCarpet
 
 
 --
--- TOC entry 4717 (class 1259 OID 18326)
+-- TOC entry 4718 (class 1259 OID 16503)
 -- Name: fki_idCarpetaUsuario; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1396,7 +1399,7 @@ CREATE INDEX "fki_idCarpetaUsuario" ON public."Carpetas" USING btree ("idCarpeta
 
 
 --
--- TOC entry 4728 (class 1259 OID 18327)
+-- TOC entry 4729 (class 1259 OID 16504)
 -- Name: fki_idCarpetasDestinos; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1404,7 +1407,7 @@ CREATE INDEX "fki_idCarpetasDestinos" ON public."Destinos" USING btree ("idCarpe
 
 
 --
--- TOC entry 4732 (class 1259 OID 18328)
+-- TOC entry 4733 (class 1259 OID 16505)
 -- Name: fki_idDestino; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1412,7 +1415,7 @@ CREATE INDEX "fki_idDestino" ON public."DestinosUsuarios" USING btree ("idDestin
 
 
 --
--- TOC entry 4721 (class 1259 OID 18329)
+-- TOC entry 4722 (class 1259 OID 16506)
 -- Name: fki_idDestinoCarpetasDestinos; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1420,7 +1423,7 @@ CREATE INDEX "fki_idDestinoCarpetasDestinos" ON public."CarpetasDestinos" USING 
 
 
 --
--- TOC entry 4746 (class 1259 OID 18330)
+-- TOC entry 4747 (class 1259 OID 16507)
 -- Name: fki_idDestinos; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1428,7 +1431,7 @@ CREATE INDEX "fki_idDestinos" ON public."Usuarios" USING btree ("idDestinos");
 
 
 --
--- TOC entry 4729 (class 1259 OID 18331)
+-- TOC entry 4730 (class 1259 OID 16508)
 -- Name: fki_idDestinosUsuarios; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1436,7 +1439,7 @@ CREATE INDEX "fki_idDestinosUsuarios" ON public."Destinos" USING btree ("idDesti
 
 
 --
--- TOC entry 4739 (class 1259 OID 18332)
+-- TOC entry 4740 (class 1259 OID 16509)
 -- Name: fki_idOrbit; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1444,7 +1447,7 @@ CREATE INDEX "fki_idOrbit" ON public."OrbitUsuario" USING btree ("idOrbit");
 
 
 --
--- TOC entry 4743 (class 1259 OID 18333)
+-- TOC entry 4744 (class 1259 OID 16510)
 -- Name: fki_idOrbitUsuario; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1452,7 +1455,7 @@ CREATE INDEX "fki_idOrbitUsuario" ON public."Orbits" USING btree ("idOrbitUsuari
 
 
 --
--- TOC entry 4740 (class 1259 OID 18334)
+-- TOC entry 4741 (class 1259 OID 16511)
 -- Name: fki_idUsuario; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1460,7 +1463,7 @@ CREATE INDEX "fki_idUsuario" ON public."OrbitUsuario" USING btree ("idUsuario");
 
 
 --
--- TOC entry 4725 (class 1259 OID 18335)
+-- TOC entry 4726 (class 1259 OID 16512)
 -- Name: fki_idUsuarioCarpetasUsuarios; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -1468,7 +1471,7 @@ CREATE INDEX "fki_idUsuarioCarpetasUsuarios" ON public."CarpetasUsuarios" USING 
 
 
 --
--- TOC entry 4752 (class 2606 OID 18336)
+-- TOC entry 4753 (class 2606 OID 16513)
 -- Name: CarpetasDestinos idCarpetaCarpetasDestinos; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1477,7 +1480,7 @@ ALTER TABLE ONLY public."CarpetasDestinos"
 
 
 --
--- TOC entry 4754 (class 2606 OID 18341)
+-- TOC entry 4755 (class 2606 OID 16518)
 -- Name: CarpetasUsuarios idCarpetaCarpetasUsuarios; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1486,7 +1489,7 @@ ALTER TABLE ONLY public."CarpetasUsuarios"
 
 
 --
--- TOC entry 4749 (class 2606 OID 18346)
+-- TOC entry 4750 (class 2606 OID 16523)
 -- Name: Carpetas idCarpetaDestinos; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1495,7 +1498,7 @@ ALTER TABLE ONLY public."Carpetas"
 
 
 --
--- TOC entry 4750 (class 2606 OID 18351)
+-- TOC entry 4751 (class 2606 OID 16528)
 -- Name: Carpetas idCarpetaUsuario; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1504,7 +1507,7 @@ ALTER TABLE ONLY public."Carpetas"
 
 
 --
--- TOC entry 4756 (class 2606 OID 18356)
+-- TOC entry 4757 (class 2606 OID 16533)
 -- Name: Destinos idCarpetasDestinos; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1513,7 +1516,7 @@ ALTER TABLE ONLY public."Destinos"
 
 
 --
--- TOC entry 4758 (class 2606 OID 18361)
+-- TOC entry 4759 (class 2606 OID 16538)
 -- Name: DestinosUsuarios idDestino; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1522,7 +1525,7 @@ ALTER TABLE ONLY public."DestinosUsuarios"
 
 
 --
--- TOC entry 4753 (class 2606 OID 18366)
+-- TOC entry 4754 (class 2606 OID 16543)
 -- Name: CarpetasDestinos idDestinoCarpetasDestinos; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1531,7 +1534,7 @@ ALTER TABLE ONLY public."CarpetasDestinos"
 
 
 --
--- TOC entry 4757 (class 2606 OID 18376)
+-- TOC entry 4758 (class 2606 OID 16548)
 -- Name: Destinos idDestinosUsuarios; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1540,7 +1543,7 @@ ALTER TABLE ONLY public."Destinos"
 
 
 --
--- TOC entry 4761 (class 2606 OID 18381)
+-- TOC entry 4762 (class 2606 OID 16553)
 -- Name: OrbitUsuario idOrbit; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1549,7 +1552,7 @@ ALTER TABLE ONLY public."OrbitUsuario"
 
 
 --
--- TOC entry 4763 (class 2606 OID 18386)
+-- TOC entry 4764 (class 2606 OID 16558)
 -- Name: Orbits idOrbitUsuario; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1558,7 +1561,7 @@ ALTER TABLE ONLY public."Orbits"
 
 
 --
--- TOC entry 4762 (class 2606 OID 18396)
+-- TOC entry 4763 (class 2606 OID 16563)
 -- Name: OrbitUsuario idUsuario; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1567,7 +1570,7 @@ ALTER TABLE ONLY public."OrbitUsuario"
 
 
 --
--- TOC entry 4751 (class 2606 OID 18401)
+-- TOC entry 4752 (class 2606 OID 16568)
 -- Name: Carpetas idUsuario; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1576,7 +1579,7 @@ ALTER TABLE ONLY public."Carpetas"
 
 
 --
--- TOC entry 4759 (class 2606 OID 18406)
+-- TOC entry 4760 (class 2606 OID 16573)
 -- Name: DestinosUsuarios idUsuario; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1585,7 +1588,7 @@ ALTER TABLE ONLY public."DestinosUsuarios"
 
 
 --
--- TOC entry 4760 (class 2606 OID 18411)
+-- TOC entry 4761 (class 2606 OID 16578)
 -- Name: EmailCodes idUsuario; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1594,7 +1597,7 @@ ALTER TABLE ONLY public."EmailCodes"
 
 
 --
--- TOC entry 4755 (class 2606 OID 18416)
+-- TOC entry 4756 (class 2606 OID 16583)
 -- Name: CarpetasUsuarios idUsuarioCarpetasUsuarios; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1603,7 +1606,7 @@ ALTER TABLE ONLY public."CarpetasUsuarios"
 
 
 --
--- TOC entry 4947 (class 0 OID 0)
+-- TOC entry 4948 (class 0 OID 0)
 -- Dependencies: 6
 -- Name: SCHEMA public; Type: ACL; Schema: -; Owner: pg_database_owner
 --
@@ -1611,7 +1614,7 @@ ALTER TABLE ONLY public."CarpetasUsuarios"
 REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 
 
--- Completed on 2025-11-12 11:44:34
+-- Completed on 2025-11-13 10:46:17
 
 --
 -- PostgreSQL database dump complete
