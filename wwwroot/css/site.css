@@ -697,7 +697,10 @@ h2{
 /* HOME */
 .ui-input-container {
   position: relative;
-  width: 300px;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ui-input {
@@ -712,7 +715,7 @@ h2{
 }
 
 .ui-input:focus {
-  border-color: #6c63ff;
+  border-color: var(--color1);
 }
 
 .ui-input-underline {
@@ -721,9 +724,10 @@ h2{
   left: 0;
   height: 2px;
   width: 100%;
-  background-color: #6c63ff;
+  background-color: var(--color1);
   transform: scaleX(0);
   transition: transform 0.3s;
+  border-radius: 50px;
 }
 
 .ui-input:focus + .ui-input-underline {
@@ -736,8 +740,10 @@ h2{
   left: 0;
   height: 100%;
   width: 0;
-  background-color: rgba(108, 99, 255, 0.1);
+  background-color: #1f2b99;
+  opacity: 20%;
   transition: width 0.3s;
+  border-radius: 50px;
 }
 
 .ui-input:focus ~ .ui-input-highlight {
@@ -751,13 +757,15 @@ h2{
   transform: translateY(-50%);
   color: #999;
   transition: color 0.3s;
+  border-radius: 50px;
 }
 
 .ui-input:focus ~ .ui-input-icon {
-  color: #6c63ff;
+  color: var(--color1);
 }
 
 .ui-input-icon svg {
   width: 20px;
   height: 20px;
+  border-radius: 50px;
 }
