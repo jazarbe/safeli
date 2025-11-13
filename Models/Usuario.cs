@@ -16,11 +16,11 @@ public class Usuario
     public List<Orbit> orbits {get; private set;}
     public Point ubicacion {get; private set;}
     public List<Carpeta> carpetas {get; private set;}
-    public int contactoEmeregencia {get; private set;}
+    public int contactoEmergencia {get; private set;}
     public bool confirmado {get; private set;}
 
     public Usuario(){}
-    public Usuario(string nombre, string apellido, string email, int nroTelefono, string username, string foto, string bio, DateOnly fechaNac, string contraseña)
+    public Usuario(string nombre, string apellido, string email, int nroTelefono, string username, string foto, string bio, DateOnly fechaNac, string contraseña, int contactoEmergncia)
     {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -33,5 +33,6 @@ public class Usuario
         this.contraseña = contraseña;
         this.orbits = new List<Orbit>();
         this.carpetas = new List<Carpeta>();
+        this.contactoEmergencia = contactoEmergencia;
     }
 }

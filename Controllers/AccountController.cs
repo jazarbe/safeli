@@ -68,7 +68,7 @@ public class AccountController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> CrearCuenta(string nombre, string apellido, string email, int telefono, string username, string password, string pass2, DateOnly fecha, IFormFile foto, string bio, int contactoDeEmergencia)
+    public async Task<IActionResult> CrearCuenta(string nombre, string apellido, string email, int telefono, string username, string password, string pass2, DateOnly fecha, IFormFile foto, string bio, int contactoEmergencia)
     {
         if (miBd.ExisteCuenta(username, email, telefono) == null) 
         {
@@ -92,7 +92,7 @@ public class AccountController : Controller
                     foto.CopyTo(stream);
                 }
             }
-            int nuevoIdUsuario = await miBd.AgregarUsuario(nombre, apellido, email, telefono, username, password, fecha, nombreArchivo, bio, contactoDeEmergencia);
+            int nuevoIdUsuario = await miBd.AgregarUsuario(nombre, apellido, email, telefono, username, password, fecha, nombreArchivo, bio, contactoEmergencia);
             string token = Guid.NewGuid().ToString("N");
             DateTime ahora = DateTime.Now;
             DateTime expira = ahora.AddMinutes(20);

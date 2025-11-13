@@ -53,7 +53,7 @@ public class BD{
         }
         
     }
-public async Task<int> AgregarUsuario(string nombre, string apellido, string email, int nroTelefono, string username, string contraseña, DateOnly fechaNacimiento, string foto, string bio, int contactoDeEmergencia)
+public async Task<int> AgregarUsuario(string nombre, string apellido, string email, int nroTelefono, string username, string contraseña, DateOnly fechaNacimiento, string foto, string bio, int contactoEmergencia)
 {
     using(var connection = new NpgsqlConnection(_connectionString))
     {
@@ -64,7 +64,7 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
         INSERT INTO ""Usuarios"" 
         (nombre, apellido, email, ""nroTelefono"", username, ""contraseña"", foto, bio, ""fechaNacimiento"", confirmado, contactoEmergencia )
         VALUES 
-        (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pContraseña, @pFoto, @pBio, @pFechaNacimiento, @pConfirmado, @contactoEmergencia)
+        (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pContraseña, @pFoto, @pBio, @pFechaNacimiento, @pConfirmado, @pContactoEmergencia)
         RETURNING id; 
         ";
 
@@ -78,7 +78,9 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
             pFoto = foto, 
             pBio = bio, 
             pFechaNacimiento = fechaNacimiento.ToDateTime(TimeOnly.MinValue),
+            pContactoEmergencia = contactoEmergencia,
             pConfirmado = false 
+
         });
 
         return nuevoId;
