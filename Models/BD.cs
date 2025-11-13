@@ -77,6 +77,16 @@ public class BD{
             return await connection.QueryFirstOrDefaultAsync<Usuario>(query, new {pIdBuscado = idBuscado});
         }
     }
+        public async Task<Usuario> ObtenerUsuarioPorId(int idUsuario)
+    {
+        using (var conn = new NpgsqlConnection(_connectionString))
+        {
+            string sql = "SELECT p.id, nombre, apellido, email, nroTelefono, username, contraseña, foto, bio, fechaNacimiento";
+            return await conn.QueryFirstOrDefaultAsync<Usuario>(sql);
+        }
+    }
+
+
     public async Task<Usuario> BuscarUsuarioPorUsername(string userBuscado){
         Usuario usuarioBuscado = null;
         using(var connection = new NpgsqlConnection(_connectionString)){
@@ -106,6 +116,22 @@ public class BD{
             return await connection.QueryFirstOrDefaultAsync<Orbit>(query, new {pIdBuscado = idBuscado});
         }
     }
+    public async Task<bool> AgregarUsuarioAOrbit(int idUsuario, int idOrbit)
+{
+    using (var connection = new NpgsqlConnection(_connectionString))
+    {
+       string query = @"
+            INSERT INTO ""Usuarios_Orbits"" 
+            (""IdUsuario"", ""IdOrbit"")
+            VALUES 
+            (@pIdUsuarios, @pIDOrbit);
+            ";
+
+        int filasAfectadas = await connection.ExecuteAsync(query, new { pIdUsuario = idUsuario, pIdOrbit = idOrbit });
+        return filasAfectadas > 0;
+    }
+}
+
     public async Task AgregarOrbit(string name, string foto, int idUsuario)
     {
         using(var connection = new NpgsqlConnection(_connectionString))
