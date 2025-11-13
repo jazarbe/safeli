@@ -1,14 +1,24 @@
 @{
     ViewData["Title"] = "Menu";
 }
- @foreach (Orbit item in ViewBag.orbits){
-      <img src='@ViewBag.item.foto' alt="foto">
-    <h5>@ViewBag.item.name</h5>
- }
+@if (ViewBag.orbits != null)
+{
+    @foreach (Orbit item in ViewBag.orbits)
+    {
+        <img src='@item.foto' alt="foto">
+        <h5>@item.name</h5>
+    }
+}
+else
+{
+    <h2>@ViewBag.mensaje</h2>
+}
 
-<form method="post" action="index.html" target="_blank">
+<form method="post" action="">
     <input type="text" placeholder="Pegá el link para unirse a un Orbit">
     <button type="submit">
        Ingresar
     </button>
 </form>
+<h3>O</h3>
+<button> <a href='@Url.Action("ViewCrear")'>Crear</a> </button>

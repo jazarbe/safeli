@@ -77,6 +77,16 @@ public class BD{
             return await connection.QueryFirstOrDefaultAsync<Usuario>(query, new {pIdBuscado = idBuscado});
         }
     }
+        public async Task<Usuario> ObtenerUsuarioPorId(int idUsuario)
+    {
+        using (var conn = new NpgsqlConnection(_connectionString))
+        {
+            string sql = "SELECT p.id, nombre, apellido, email, nroTelefono, username, contraseña, foto, bio, fechaNacimiento";
+            return await conn.QueryFirstOrDefaultAsync<Usuario>(sql);
+        }
+    }
+
+
     public async Task<Usuario> BuscarUsuarioPorUsername(string userBuscado){
         Usuario usuarioBuscado = null;
         using(var connection = new NpgsqlConnection(_connectionString)){
@@ -106,6 +116,22 @@ public class BD{
             return await connection.QueryFirstOrDefaultAsync<Orbit>(query, new {pIdBuscado = idBuscado});
         }
     }
+    public async Task<bool> AgregarUsuarioAOrbit(int idUsuario, int idOrbit)
+{
+    using (var connection = new NpgsqlConnection(_connectionString))
+    {
+       string query = @"
+            INSERT INTO ""Usuarios_Orbits"" 
+            (""IdUsuario"", ""IdOrbit"")
+            VALUES 
+            (@pIdUsuarios, @pIDOrbit);
+            ";
+
+        int filasAfectadas = await connection.ExecuteAsync(query, new { pIdUsuario = idUsuario, pIdOrbit = idOrbit });
+        return filasAfectadas > 0;
+    }
+}
+
     public async Task AgregarOrbit(string name, string foto, int idUsuario)
     {
         using(var connection = new NpgsqlConnection(_connectionString))
@@ -113,9 +139,14 @@ public class BD{
             string link = Guid.NewGuid().ToString("N");
             if(foto == null) foto = "/images/default.jpg";
 
-            string query = "INSERT INTO \"Orbits\" (name, foto, link, idUsuario) VALUES (@pname, @pfoto, @plink, @pidUsuario)";
-            await connection.ExecuteAsync(query, new 
-            {ptitulo = name, pfoto = foto, plink = link, pidUsuario = idUsuario});
+            string query = "INSERT INTO \"Orbits\" (name, foto, link) VALUES (@pname, @pfoto, @plink)";
+            await connection.ExecuteAsync(query, new {pname = name, pfoto = foto, plink = link});
+
+            string query2 = "INSERT INTO \"OrbitUsuario\" (idOrbit, idUsuario) VALUES ((SELECT id FROM \"Orbits\" WHERE link = @plink), @pidUsuario)";
+            await connection.ExecuteAsync(query2, new {plink = link, pidUsuario = idUsuario});
+
+            string update = "UPDATE \"Orbits\" SET idOrbitUsuario = (SELECT id FROM \"OrbitUsuario\" WHERE idOrbit = (SELECT id FROM \"Orbits\" WHERE link = @plink))";
+            await connection.ExecuteAsync(update, new {plink = link});
         }
     }
 }

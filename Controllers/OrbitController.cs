@@ -32,22 +32,26 @@ public class OrbitController : Controller
         return RedirectToAction("OrbitInside", "OrbitController", new {orbit = orbit});
     }
 
-    public IActionResult Crear(string name, string foto)
+    public async Task<IActionResult> Crear(string name, string foto)
     {
-        Orbit orbit = new Orbit (name, foto);
-        // int idOrbit = await_bd.CrearOrbitAsync(orbit, HttpContext.Session.GetInt32("IdUsuario"));
-        ViewBag.Link = orbit.link;
+        int? id = HttpContext.Session.GetInt32("IdUsuario");
+        if (id == null) return RedirectToAction("Login", "Account");
+        else await miBd.AgregarOrbit(name, foto, id.Value);
 
-        // loader pero igual no hay una view de crear orbits donde hacer este método
+        // loader
         return View("MenuOrbit");
     }
 
     public async Task<IActionResult> MenuOrbit()
     {
         int? id = HttpContext.Session.GetInt32("IdUsuario");
-        Usuario user = await miBd.BuscarUsuarioPorId(id.Value);
-
-        ViewBag.orbits = user.orbits;
+        if (id == null) return RedirectToAction("Login", "Account");
+        else
+        {
+            Usuario user = await miBd.BuscarUsuarioPorId(id.Value);
+            if(user.orbits != null && user.orbits.Count > 0) ViewBag.orbits = user.orbits;
+            else ViewBag.mensaje = "Todavía no tenés Orbits.";
+        }
         return View();
     }
 
@@ -56,6 +60,11 @@ public class OrbitController : Controller
         ViewBag.nombre = orbit.name;
         ViewBag.link = orbit.link;
         ViewBag.usuarios = orbit.usuarios;
+        return View();
+    }
+
+    public IActionResult ViewCrear()
+    {
         return View();
     }
 
@@ -69,7 +78,7 @@ public class OrbitController : Controller
         return check;
     }
 
-        //Pantalla de carga, NO TOCAR
+      
     // // Acción para unirse a un Orbit por link
     //     public IActionResult Unirse(string link)
     //     {
@@ -78,7 +87,7 @@ public class OrbitController : Controller
     //         sw.Start();
 
     //         // 🔍 1. Buscar el Orbit por su link
-    //         Orbit? orbit = BD.ObtenerOrbitPorLink(link);
+    //         Orbit orbit = BD.BuscarOrbitPorLink(link);
 
     //         // 🧑 2. Obtener el usuario actual (por ejemplo, de la sesión)
     //         Usuario? usuarioActual = BD.ObtenerUsuarioPorId(HttpContext.Session.GetInt32("IdUsuario") ?? 0);
@@ -102,7 +111,7 @@ public class OrbitController : Controller
     //         ViewBag.TiempoTotal = tiempoTotal;
     //         ViewBag.Unido = unido;
 
-    //         // Mostramos la vista de carga
-    //         return View("PantallaCarga");
+            
+    //         return View("OrbitCarga");
     //     }
 }
