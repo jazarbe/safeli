@@ -53,24 +53,38 @@ public class BD{
         }
         
     }
-    public async Task AgregarUsuario(string nombre, string apellido, string email, int nroTelefono, string username, string contraseña, DateOnly fechaNacimiento, string foto, string bio)
+public async Task<int> AgregarUsuario(string nombre, string apellido, string email, int nroTelefono, string username, string contraseña, DateOnly fechaNacimiento, string foto, string bio)
+{
+    using(var connection = new NpgsqlConnection(_connectionString))
     {
-        using(var connection = new NpgsqlConnection(_connectionString))
-        {
-            if(foto == null) foto = "/images/default.jpg";
-            if(bio == null) bio = "";
-            
-            string query = @"
-            INSERT INTO ""Usuarios"" 
-            (nombre, apellido, email, ""nroTelefono"", username, ""contraseña"", foto, bio, ""fechaNacimiento"")
-            VALUES 
-            (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pContraseña, @pFoto, @pBio, @pFechaNacimiento);
-            ";
+        if(foto == null) foto = "/images/default.jpg";
+        if(bio == null) bio = "";
+        
+        string query = @"
+        INSERT INTO ""Usuarios"" 
+        (nombre, apellido, email, ""nroTelefono"", username, ""contraseña"", foto, bio, ""fechaNacimiento"", confirmado)
+        VALUES 
+        (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pContraseña, @pFoto, @pBio, @pFechaNacimiento, @pConfirmado)
+        RETURNING id; -- ¡CLAVE! Esto devuelve el ID autoincremental
+        ";
 
-            await connection.ExecuteAsync(query, new {pNombre = nombre, pApellido = apellido, pEmail = email, pNroTelefono = nroTelefono, pUsername = username,
-            pContraseña = contraseña, pFoto = foto, pBio = bio, pFechaNacimiento = fechaNacimiento.ToDateTime(TimeOnly.MinValue)});
-        }
+        // Usamos QuerySingleAsync para ejecutar la inserción y recuperar el valor de la columna 'id'
+        int nuevoId = await connection.QuerySingleAsync<int>(query, new {
+            pNombre = nombre, 
+            pApellido = apellido, 
+            pEmail = email, 
+            pNroTelefono = nroTelefono, 
+            pUsername = username,
+            pContraseña = contraseña, 
+            pFoto = foto, 
+            pBio = bio, 
+            pFechaNacimiento = fechaNacimiento.ToDateTime(TimeOnly.MinValue),
+            pConfirmado = false // Nuevo campo: el usuario empieza sin confirmar
+        });
+
+        return nuevoId;
     }
+}
     public async Task<Usuario> BuscarUsuarioPorId(int idBuscado){
         using(var connection = new NpgsqlConnection(_connectionString)){
             string query = "SELECT * FROM \"Usuarios\" WHERE id = @pIdBuscado";
@@ -102,6 +116,90 @@ public class BD{
             await connection.ExecuteAsync(query, new { pNuevacontraseña = nuevaContraseña, pUsername = username });
         }
     }
+
+    //INICIO VERIFICACION POR MAIL
+    public async Task GuardarToken(EmailCodes token)
+    {
+        using(var connection = new NpgsqlConnection(_connectionString))
+        {
+            string query = @"
+            INSERT INTO ""EmailCodes"" 
+            (token, ""IdUsuario"", ""CreadoCuando"", ""ExpiraCuando"", usado)
+            VALUES 
+            (@Token, @IdUsuario, @CreadoCuando, @ExpiraCuando, @Usado);
+            ";
+
+            // Dapper mapeará las propiedades del objeto 'token' a los parámetros SQL
+            await connection.ExecuteAsync(query, token);
+        }
+    }
+    public async Task<EmailCodes> ObtenerToken(string token, int idUsuario)
+    {
+        using(var connection = new NpgsqlConnection(_connectionString))
+        {
+            string query = @"
+            SELECT 
+                id, token, ""IdUsuario"", ""CreadoCuando"", ""ExpiraCuando"", usado
+            FROM 
+                ""EmailCodes""
+            WHERE 
+                token = @Token 
+                AND ""IdUsuario"" = @IdUsuario
+            ORDER BY ""CreadoCuando"" DESC
+            LIMIT 1;
+            ";
+
+            // QueryFirstOrDefaultAsync mapea la primera fila a un objeto EmailCodes.
+            // Si no se encuentra, devuelve null.
+            return await connection.QueryFirstOrDefaultAsync<EmailCodes>(query, new { 
+                Token = token, 
+                IdUsuario = idUsuario 
+            });
+        }
+    }
+
+    public async Task MarcarTokenComoUsado(int id)
+    {
+        using(var connection = new NpgsqlConnection(_connectionString))
+        {
+            string query = @"
+            UPDATE 
+                ""EmailCodes""
+            SET 
+                usado = TRUE
+            WHERE 
+                id = @Id;
+            ";
+
+            // ExecuteAsync ejecuta la operación de actualización
+            await connection.ExecuteAsync(query, new { 
+                Id = id 
+            });
+        }
+    }
+
+    public async Task ActivarUsuario(int idUsuario)
+    {
+        using(var connection = new NpgsqlConnection(_connectionString))
+        {
+            string query = @"
+            UPDATE 
+                ""Usuarios""
+            SET 
+                confirmado = TRUE
+            WHERE 
+                id = @IdUsuario;
+            ";
+
+            // ExecuteAsync ejecuta la operación de actualización
+            await connection.ExecuteAsync(query, new { 
+                IdUsuario = idUsuario 
+            });
+        }
+    }
+    //FIN VERIFICACION POR MAIL
+
+    //FIN ACCOUNT
 
     // Comienzo de Orbit
     public async Task<Orbit> BuscarOrbitPorLink(string linkBus){

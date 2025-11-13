@@ -92,15 +92,59 @@ public class AccountController : Controller
                     foto.CopyTo(stream);
                 }
             }
-            await miBd.AgregarUsuario(nombre, apellido, email, telefono, username, password, fecha, nombreArchivo, bio);
-            ViewBag.mensaje = "Cuenta creada correctamente.";
+            int nuevoIdUsuario = await miBd.AgregarUsuario(nombre, apellido, email, telefono, username, password, fecha, nombreArchivo, bio);
+            string token = Guid.NewGuid().ToString("N");
+            DateTime ahora = DateTime.Now;
+            DateTime expira = ahora.AddMinutes(20);
+            EmailCodes nuevoToken = new EmailCodes(nuevoIdUsuario, token, ahora, expira, false);
+            await miBd.GuardarToken(nuevoToken);
+            string urlBase = $"{this.Request.Scheme}://{this.Request.Host}";
+            string urlConfirmacion = $"{urlBase}/Account/ConfirmarEmail?token={token}&idUsuario={nuevoIdUsuario}";
+            
+            
 
             Usuario usuario = await miBd.BuscarUsuarioPorUsername(username) as Usuario;
             HttpContext.Session.SetInt32("IdUsuario", usuario.id);
+            ViewBag.mensaje = "Cuenta creada correctamente.";
             // loader
         }
         return RedirectToAction("Home", "Home");
     }
+
+
+
+    [HttpPost]
+    public async Task<IActionResult> ConfirmarEmail(string token, int idUsuario)
+    {
+        // 1. Obtener y validar el registro de EmailCodes
+        EmailCodes tokenData = await miBd.ObtenerToken(token, idUsuario); 
+
+        if (tokenData == null || tokenData.Usado || tokenData.expiraCuando < DateTime.Now)
+        {
+            // Token inválido, expirado o ya usado
+            return View("ErrorConfirmacion", "El enlace de confirmación no es válido o ha expirado.");
+        }
+
+        // 2. Ejecutar la activación
+        try
+        {
+            // Marcar el token como usado para evitar re-uso
+            await miBd.MarcarTokenComoUsado(tokenData.Id); 
+            
+            // Activar la cuenta del usuario
+            await miBd.ActivarUsuario(idUsuario); 
+
+            // Opcional: Iniciar sesión automáticamente o redirigir al login
+            return View("ConfirmacionExitosa");
+        }
+        catch (Exception ex)
+        {
+            // Manejo de errores de base de datos
+            return View("ErrorConfirmacion", "Ocurrió un error al activar tu cuenta.");
+        }
+    }
+
+
 
     public IActionResult SignUp( )
     {

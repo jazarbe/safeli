@@ -6,17 +6,18 @@ public class EmailCodes
     public int Id { get; private set; } 
     public int UserId { get; set; } 
     public string Token { get; set; } 
-    public DateTime CreatedAt { get; private set; }
-    public DateTime ExpiresAt { get; set; } 
-    public bool Used { get; set; } 
+    public DateTime creadoCuando { get; private set; }
+    public DateTime expiraCuando { get; set; } 
+    public bool Usado { get; set; } 
     
     public EmailCodes(){}
     
-    public EmailCodes(int userId, string token, DateTime expiresAt)
+    public EmailCodes(int userId, string token, DateTime createdAt, DateTime expiresAt, bool usado)
     {
         this.UserId = userId;
         this.Token = token;
-        this.CreatedAt = DateTime.Now;
-        this.ExpiresAt = expiresAt;
+        this.creadoCuando = createdAt;
+        this.expiraCuando = expiresAt;
+        this.Usado = false;
     }
 }
