@@ -162,6 +162,11 @@ public class AccountController : Controller
         ViewBag.Foto = "/images/" + user.foto;
         return View(); 
     }
+    
+    
+
+
+
     [HttpPost]
     public async Task<IActionResult> OtherProfile(int id)
     {

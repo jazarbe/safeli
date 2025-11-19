@@ -4,27 +4,110 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<button type="submit" class="settings">
-    <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 512 512">
-    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="44" d="M358.62 129.28L86.49 402.08L70 442l39.92-16.49l272.8-272.13zm54.45-54.44l-11.79 11.78l24.1 24.1l11.79-11.79a16.51 16.51 0 0 0 0-23.34l-.75-.75a16.51 16.51 0 0 0-23.35 0"/></svg>
-</button>
-<img src="@ViewBag.foto" alt="FotoUser">
+
+<img src="@ViewBag.foto" alt="FotoUser" class = "img-perfil">
 
 <!-- en css hacerle el fondo -->
-<h2>@ViewBag.Username</h2> <!-- acá al lado tiene que estar el lapiz para editar la info -->
-<h5>@ViewBag.Email</h5>
-<h5>@ViewBag.Telefono</h5>
-<h5>@ViewBag.Biografia</h5>
+<div class = "perfil-css">
+
+    <div class = "username-box">
+        <h3>@ViewBag.Username</h3>
+
+        <button type="button" class="settings" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"/>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
+            </svg>
+
+        </button> 
+    </div>
+    
+<!-- acá al lado tiene que estar el lapiz para editar la info -->
+    <h5>@ViewBag.Email</h5>
+    <h5>@ViewBag.Telefono</h5>
+    <h5>@ViewBag.Biografia</h5>
+    <h5>@ViewBag.Ubicacion</h5>
 
 
-<h2>Ajustes</h2>
-<button class="ajustes">
-    <a href='@Url.Action("Permisos", "Account")'>Permisos</a>
-</button>
-<button class="ajustes">
-    <a href='@Url.Action("MenuOrbit", "Orbit")'>Orbits</a>
-</button>
-<button class="ajustes">
-    <a href='@Url.Action("LogOut", "Account")'>Cerrar Sesión</a>
-</button>
+    <h2>Ajustes</h2>
+    <button class="ajustes">
+        <a href='@Url.Action("Permisos", "Account")'>Permisos</a>
+    </button>
+    <button class="ajustes">
+        <a href='@Url.Action("MenuOrbit", "Orbit")'>Orbits</a>
+    </button>
+    <button class="ajustes">
+        <a href='@Url.Action("LogOut", "Account")'>Cerrar Sesión</a>
+    </button>
+
+    <div class="modal fade" id="editProfileModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Perfil</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+@* para cambiar la foto de perfil y el nombre, tocando el lapiz *@
+<div class="modal fade" id="editProfileModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Perfil</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <form method="post" enctype="multipart/form-data" action="@Url.Action("EditarPerfil","Account")">
+        <div class="modal-body">
+
+          <!-- EDITAR USERNAME -->
+          <div class="mb-3">
+            <label class="form-label">Nombre de Usuario</label>
+            <input type="text" class="form-control" name="Username" value="@ViewBag.Username">
+          </div>
+
+          <!-- EDITAR FOTO -->
+          <div class="mb-3">
+            <label class="form-label">Cambiar Foto de Perfil</label>
+            <input type="file" class="form-control" name="FotoPerfil">
+          </div>
+
+          <!-- EDITAR EMAIL -->
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" name="Email" value="@ViewBag.Email">
+          </div>
+
+          <!-- EDITAR TELÉFONO -->
+          <div class="mb-3">
+            <label class="form-label">Teléfono</label>
+            <input type="text" class="form-control" name="Telefono" value="@ViewBag.Telefono">
+          </div>
+
+          <!-- EDITAR BIO -->
+          <div class="mb-3">
+            <label class="form-label">Biografía</label>
+            <textarea class="form-control" name="Biografia" rows="3">@ViewBag.Biografia</textarea>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+</div>
+</div>
+
     

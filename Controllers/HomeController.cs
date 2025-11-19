@@ -60,7 +60,7 @@ public class HomeController : Controller
     {
         int? id = HttpContext.Session.GetInt32("IdUsuario");
         Usuario user = await miBd.BuscarUsuarioPorId(id.Value);
-        ViewBag.contactoEmergencia = user.contactoEmeregencia;
+        ViewBag.contactoEmergencia = user.contactoEmergencia;
         return View();
     }
 }
