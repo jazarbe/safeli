@@ -154,7 +154,7 @@ public class AccountController : Controller
         int? id = HttpContext.Session.GetInt32("IdUsuario");
         await miBd.UpdateUbicacion(ubicacion, id.Value);
         ViewBag.mensaje = "Ubicacion cambiada";
-        return View("Home", "Home");
+        return View("Perfil");
     }
     public async Task<IActionResult> Perfil()
     {
