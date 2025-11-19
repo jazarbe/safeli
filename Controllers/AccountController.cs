@@ -169,8 +169,8 @@ public class AccountController : Controller
         ViewBag.Ubicacion = user.ubicacion;
         return View(); 
     }
-    
-    
+   
+//  HACER EDITAR PERFIL --> NO FUNCIONA LAPIZ
 
 
 

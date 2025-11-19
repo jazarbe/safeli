@@ -126,6 +126,16 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
         }
     }
 
+    //  public async Task ActualizarPerfil (int id, string username, string email, int nroTelefono, string bio, string foto, int contactoEmergencia){
+    //     using(var connection = new NpgsqlConnection(_connectionString))
+    //     {
+    //         string query = @"UPDATE ""Usuarios"" SET username = @pUsername, email = @pEmail, ""nroTelefono"" = @pNroTelefono, bio = @pBio, foto = @pFoto, ""contactoEmergencia"" = @pContactoEmergencia WHERE id = @pId";
+    //         await connection.ExecuteAsync(query, new {pId = id, pUsername = username, pEmail = email, pNroTelefono = nroTelefono, pBio = bio, pFoto = foto, pContactoEmergencia = contactoEmergencia });
+    //     }
+ 
+    // }
+
+
     //INICIO VERIFICACION POR MAIL
     public async Task GuardarToken(EmailCodes token)
     {

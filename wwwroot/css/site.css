@@ -846,7 +846,7 @@ h2{
   display: inline-flex; 
   align-items: center;
   justify-content: center;
-  width: auto;            /* ❗ evita que se estire */
+  width: auto;
   height: auto;
 }
 
@@ -875,8 +875,38 @@ h2{
 
 .perfil-css h2{
   text-align: center;
-  
 }
+
+.ajustes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 3%;
+    transition: 0.3s ease;
+    border-radius: 20px ;
+}
+
+.ajustes-1{
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px; 
+    width: 100%;
+    margin-top: 20px;
+}
+
+.perfil-css {
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.ajustes a, .ajustes-1 a{
+  text-decoration: none;
+  color: white;
+}
+
 
 iframe {
   width: 100%;
