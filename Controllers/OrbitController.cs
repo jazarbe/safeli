@@ -124,6 +124,7 @@ public async Task<IActionResult> Unirse(string link)
     }
 }
 
+
       
     
 }

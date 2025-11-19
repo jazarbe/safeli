@@ -2,24 +2,27 @@
     ViewData["Title"] = "SOS";
 }
 <!-- que te diga a que números llamar pero no  -->
+<Section class = contenedor-sos>
 @if(ViewBag.contactoEmergencia != -1){
     <button type="button" class="SOS" 
             onclick="window.location.href = 'tel:@ViewBag.contactoEmergencia';">
-        Llamar a Contacto de Emergencia
+        Llamar a Contacto 
     </button>
 }
 <button type="button" class="SOS" 
         onclick="window.location.href = 'tel: 101';">
-    Llamar a Policia
+    Policia
 </button>
 <button type="button" class="SOS" 
         onclick="window.location.href = 'tel: 107';">
-    Llamar a Ambulancia
+    Ambulancia
 </button>
 <button type="button" class="SOS" 
         onclick="window.location.href = 'tel: 100';">
-    Llamar a Bomberos
+    Bomberos
 </button> 
-<button type="button" class="btn btn-outline-danger">Cancel</button>
-
+<button type="button" class="btn-outline-danger" onclick= "window.location.href= '@Url.Action("Home", "Home")' " >
+    Cancelar
+</button> 
 <script src="site.js"></script>
+<Section>
