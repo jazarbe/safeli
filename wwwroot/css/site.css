@@ -139,7 +139,7 @@ footer a{
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-.noti-css button{
+.noti-css button, .back button{
   background-color: none;
   color: none;
   padding: 0%;
@@ -895,5 +895,37 @@ iframe {
   left: 20%;
   width: 80%;
   border: none;
-  z-index: 9999;
+  z-index: 9999; /* queda arriba de las notificaciones, ver que hacer*/
+}
+
+/* PERMISOS */
+.permisos{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 2%;
+}
+.permisos input{
+  margin-right: 5%;
+}
+
+.permisos h3{
+  margin: 0;
+}
+
+.back{
+  background: none;
+}
+.back svg{
+  background-color: var(--blanco);
+  border: 1px var(--color1);
+  padding: 3%;
+  cursor: pointer;
+  width:50px;
+  height:50px;
+  border-radius: 50%;
+  position: absolute;
+  top: 6%;
+  left: 6%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
