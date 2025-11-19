@@ -278,14 +278,16 @@ button{
   border: none;
 }
 
-
+/* COMIENZO SOS */
 .SOS{
+  text-align: center;
   background-color: var(--rojo);
   color: #FFFFFF;
-  padding: 5%;
-  margin: 2%;
+  padding: 2%;
+  
+  margin: 5%;
   width: 200px;
-  font-size: 25px;
+  font-size: 15px;
   font-family: "Noto Sans", sans-serif;
   border-radius: 10px;
   border-color: var(--rojo);
@@ -294,7 +296,6 @@ button{
 .SOS a{
   color: var(--blanco);
   text-decoration: none;
-
 }
 .contenedor-sos {
   display: flex;
@@ -312,10 +313,14 @@ button{
   transition: all 0.2s ease;
 }
 .btn-outline-danger {
-  border-color: #BA0000;
+  border: 1px solid #BA0000;
+  border-radius: 15px;
   color: #BA0000;
+  background-color: #FFFFFF;
+  margin-top: 10%;
 }
 
+/* FIN SOS */
 /*TDV NO TENES CUENTA?*/
 h3{
   margin-top: 10%;
