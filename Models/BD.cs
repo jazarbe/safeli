@@ -62,7 +62,7 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
         
         string query = @"
         INSERT INTO ""Usuarios"" 
-        (nombre, apellido, email, ""nroTelefono"", username, ""contraseña"", foto, bio, ""fechaNacimiento"", confirmado, contactoEmergencia )
+        (nombre, apellido, email, ""nroTelefono"", username, ""contraseña"", foto, bio, ""fechaNacimiento"", confirmado, ""contactoEmergencia"" )
         VALUES 
         (@pNombre, @pApellido, @pEmail, @pNroTelefono, @pUsername, @pContraseña, @pFoto, @pBio, @pFechaNacimiento, @pConfirmado, @pContactoEmergencia)
         RETURNING id; 

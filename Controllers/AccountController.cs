@@ -93,13 +93,6 @@ public class AccountController : Controller
                 }
             }
             int nuevoIdUsuario = await miBd.AgregarUsuario(nombre, apellido, email, telefono, username, password, fecha, nombreArchivo, bio, contactoEmergencia);
-            string token = Guid.NewGuid().ToString("N");
-            DateTime ahora = DateTime.Now;
-            DateTime expira = ahora.AddMinutes(20);
-            EmailCodes nuevoToken = new EmailCodes(nuevoIdUsuario, token, ahora, expira, false);
-            await miBd.GuardarToken(nuevoToken);
-            string urlBase = $"{this.Request.Scheme}://{this.Request.Host}";
-            string urlConfirmacion = $"{urlBase}/Account/ConfirmarEmail?token={token}&idUsuario={nuevoIdUsuario}";
             Usuario usuario = await miBd.BuscarUsuarioPorUsername(username) as Usuario;
             HttpContext.Session.SetInt32("IdUsuario", usuario.id);
             ViewBag.mensaje = "Cuenta creada correctamente.";
@@ -110,35 +103,44 @@ public class AccountController : Controller
 
 
 
-    [HttpPost]
-    public async Task<IActionResult> ConfirmarEmail(string token, int idUsuario)
+    // [HttpPost]
+    // public async Task<IActionResult> ConfirmarEmail(string token, int idUsuario)
+    // {
+
+    //     EmailCodes tokenData = await miBd.ObtenerToken(token, idUsuario); 
+
+    //     if (tokenData == null || tokenData.usado || tokenData.expiraCuando < DateTime.Now)
+    //     {
+    //         return View("Index", "Home");
+    //     }
+
+    //     // 2. Ejecutar la activación
+    //     try
+    //     {
+    //         await miBd.MarcarTokenComoUsado(tokenData.id); 
+    //         await miBd.ActivarUsuario(idUsuario); 
+
+    //         // Opcional: Iniciar sesión automáticamente o redirigir al login
+    //         return RedirectToAction("Home", "Home");
+    //     }
+    //     catch (Exception ex)
+    //     {   
+    //         return RedirectToAction("Index", "Home");
+    //     }
+    // }
+    public async Task<string> tokenGen(int nuevoIdUsuario )
     {
-        EmailCodes tokenData = await miBd.ObtenerToken(token, idUsuario); 
+        string token = Guid.NewGuid().ToString("N");
+            DateTime ahora = DateTime.Now;
+            DateTime expira = ahora.AddMinutes(20);
+            EmailCodes nuevoToken = new EmailCodes(nuevoIdUsuario, token, ahora, expira, false);
+            await miBd.GuardarToken(nuevoToken);
+            string urlBase = $"{this.Request.Scheme}://{this.Request.Host}";
+            string urlConfirmacion = $"{urlBase}/Account/ConfirmarEmail?token={token}&idUsuario={nuevoIdUsuario}";
 
-        if (tokenData == null || tokenData.Usado || tokenData.expiraCuando < DateTime.Now)
-        {
-            return View("ErrorConfirmacion", "El enlace de confirmación no es válido o ha expirado.");
-        }
-
-        // 2. Ejecutar la activación
-        try
-        {
-            // Marcar el token como usado para evitar re-uso
-            await miBd.MarcarTokenComoUsado(tokenData.Id); 
-            
-            // Activar la cuenta del usuario
-            await miBd.ActivarUsuario(idUsuario); 
-
-            // Opcional: Iniciar sesión automáticamente o redirigir al login
-            return View("ConfirmacionExitosa");
-        }
-        catch (Exception ex)
-        {
-            // Manejo de errores de base de datos
-            return View("ErrorConfirmacion", "Ocurrió un error al activar tu cuenta.");
-        }
+        return "";
+        
     }
-
 
 
     public IActionResult SignUp( )
@@ -154,7 +156,7 @@ public class AccountController : Controller
         int? id = HttpContext.Session.GetInt32("IdUsuario");
         await miBd.UpdateUbicacion(ubicacion, id.Value);
         ViewBag.mensaje = "Ubicacion cambiada";
-        return View("Home", "Home");
+        return View("Perfil");
     }
     public async Task<IActionResult> Perfil()
     {
