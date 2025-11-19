@@ -169,6 +169,11 @@ public class AccountController : Controller
         ViewBag.Ubicacion = user.ubicacion;
         return View(); 
     }
+    
+    
+
+
+
     [HttpPost]
     public async Task<IActionResult> OtherProfile(int id)
     {
