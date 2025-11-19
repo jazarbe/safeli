@@ -150,6 +150,12 @@ public class AccountController : Controller
     {
         return View(); 
     }
+    public async Task<IActionResult> ActualizarUbicacion(string ubicacion){
+        int? id = HttpContext.Session.GetInt32("IdUsuario");
+        await miBd.UpdateUbicacion(ubicacion, id.Value);
+        ViewBag.mensaje = "Ubicacion cambiada";
+        return View("Home", "Home");
+    }
     public async Task<IActionResult> Perfil()
     {
         int? id = HttpContext.Session.GetInt32("IdUsuario");
@@ -160,6 +166,7 @@ public class AccountController : Controller
         ViewBag.Telefono = user.nroTelefono;
         ViewBag.Biografia = user.bio;
         ViewBag.Foto = "/images/" + user.foto;
+        ViewBag.Ubicacion = user.ubicacion;
         return View(); 
     }
     [HttpPost]

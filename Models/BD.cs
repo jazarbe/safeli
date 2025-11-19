@@ -118,6 +118,14 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
         }
     }
 
+    public async Task UpdateUbicacion (string ubicacion, int id){
+        using(var connection = new NpgsqlConnection(_connectionString))
+        {
+            string query = "UPDATE \"Usuarios\" SET ubicacion = @pUbicacion WHERE id = @pId";
+            await connection.ExecuteAsync(query, new { pUbicacion = ubicacion, pId = id });
+        }
+    }
+
     //INICIO VERIFICACION POR MAIL
     public async Task GuardarToken(EmailCodes token)
     {

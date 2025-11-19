@@ -50,6 +50,7 @@ public class HomeController : Controller
     {
         int? id = HttpContext.Session.GetInt32("IdUsuario");
         ViewBag.id = id.Value;
+        ViewBag.mensaje = null;
         return View();
     }
      public async Task<IActionResult> SafeliScore()
@@ -60,7 +61,7 @@ public class HomeController : Controller
     {
         int? id = HttpContext.Session.GetInt32("IdUsuario");
         Usuario user = await miBd.BuscarUsuarioPorId(id.Value);
-        ViewBag.contactoEmergencia = user.contactoEmeregencia;
+        ViewBag.contactoEmergencia = user.contactoEmergencia;
         return View();
     }
 }

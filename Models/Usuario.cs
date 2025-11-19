@@ -14,7 +14,7 @@ public class Usuario
     public DateTime fechaNacimiento {get; private set;}
     public string contraseña {get; private set;}
     public List<Orbit> orbits {get; private set;}
-    public Point ubicacion {get; private set;}
+    public string ubicacion {get; private set;}
     public List<Carpeta> carpetas {get; private set;}
     public int contactoEmergencia {get; private set;}
     public bool confirmado {get; private set;}
