@@ -29,10 +29,10 @@
                     </svg>
                 </a>
             }
-            <a href='@Url.Action("LogOut", "Account")'><img src="/images/logotipo_color.png" alt="Logotipo SAFELI"></a>
+            <a href='@Url.Action("LogOut", "Account")' class="over-iframe"><img src="/images/logotipo_color.png" alt="Logotipo SAFELI"></a>
             @if(ViewContext.RouteData.Values["action"].ToString() != "SOS"){
                 
-                <div class = "noti-css">
+                <div class="noti-css over-iframe">
                     <button type = "button" class = "button-noti" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"aria-controls="offcanvasRight">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" >
                             <g fill="none" stroke="#1F2B99" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">

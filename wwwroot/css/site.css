@@ -923,10 +923,13 @@ h2{
   color: white;
 }
 
-
+/* HOME */
 iframe {
   width: 100%;
-  height: 100%;
+  height: 625px;
+  position: absolute;
+  top: 17%;
+  z-index: 0000;
   border: none;
 }
 
@@ -936,7 +939,11 @@ iframe {
   left: 20%;
   width: 80%;
   border: none;
-  z-index: 9999; /* queda arriba de las notificaciones, ver que hacer*/
+  z-index: 10;
+}
+
+.over-iframe{
+  z-index: 10;
 }
 
 /* PERMISOS */
@@ -977,6 +984,4 @@ iframe {
   width: 120%;
   margin: 20%;
   align-items: center;
-
-
 }
