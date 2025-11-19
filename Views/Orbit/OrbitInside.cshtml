@@ -1,4 +1,54 @@
 @{
     ViewData["Title"] = "@ViewBag.nombre";
 }
+<form method="post" action="">
+    <div class="ui-input-container">
+      <input required="" placeholder="Buscar usuario" class="ui-input" type="text"/>
+      <div class="ui-input-underline"></div>
+      <div class="ui-input-highlight"></div>
+     
+      <div class="ui-input-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"></path>
+        </svg>
+      </div>
+    </div>
+</form>
+    <h2>@ViewBag.Orbitname</h2>
+    <div class = "ListaUsuarios">
+@if (ViewBag.orbitsUsuarios != null)
+{
+    @foreach (Orbit item in ViewBag.orbitsUsuarios)
+    {
+        <img src='@item.foto' alt="foto">
+        <h5>@item.name</h5>
+    }
+}
+else
+{
+    <h2>@ViewBag.mensaje</h2>
+}
+</div>
+
+<button type="submit" class="settings">
+    <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 512 512">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="44" d="M358.62 129.28L86.49 402.08L70 442l39.92-16.49l272.8-272.13zm54.45-54.44l-11.79 11.78l24.1 24.1l11.79-11.79a16.51 16.51 0 0 0 0-23.34l-.75-.75a16.51 16.51 0 0 0-23.35 0"/></svg>
+</button>
+
+
+    <button type="submit" class="plus">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+        <path fill="#1f2b99" d="M512 0C229.232 0 0 229.232 0 512c0 282.784 229.232 512 512 512c282.784 0 512-229.216 512-512C1024 229.232 794.784 0 512 0m0 961.008c-247.024 0-448-201.984-448-449.01c0-247.024 200.976-448 448-448s448 200.977 448 448s-200.976 449.01-448 449.01M736 480H544V288c0-17.664-14.336-32-32-32s-32 14.336-32 32v192H288c-17.664 0-32 14.336-32 32s14.336 32 32 32h192v192c0 17.664 14.336 32 32 32s32-14.336 32-32V544h192c17.664 0 32-14.336 32-32s-14.336-32-32-32"/></svg>
+    </button>
+
+
+
+
+
+
+
+
+ 
+
+
 
