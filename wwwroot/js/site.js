@@ -240,3 +240,18 @@ document.addEventListener("DOMContentLoaded", function () {
     //   });
     // // #endregion
 });
+
+
+//#region SOS 
+const boton = document.getElementById('miBoton');
+
+boton.addEventListener('click', function() {
+    if (this.textContent === 'Opción A') {
+        this.textContent = 'Opción B';
+    } else {
+        this.textContent = 'Opción A';
+    }
+});
+
+
+// #endregion SOS
