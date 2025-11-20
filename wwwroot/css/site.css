@@ -274,12 +274,12 @@ input [type = "password"]::placeholder{
   align-items: center;
   margin-top: 3%;
   transition: 0.3s ease;
+  color: var(--blanco);
+  
 }
 
-.inicio-button button:hover{
-  box-shadow: 1px 3px 10px var(--color3);
-  transition: 0.5s;
-}
+
+
 /* BUTTON REGISREAESE */
 .registrarse-button a{
   text-decoration: none;
@@ -1164,4 +1164,9 @@ section h1{
   color: var(--color3);
   font-weight: 600;
 
+}
+
+.landing-button{
+  margin-top: 10%;
+  text-decoration: none;
 }
