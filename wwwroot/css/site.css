@@ -990,6 +990,14 @@ h2{
     transition: 0.3s ease;
     border-radius: 20px ;
 }
+.ajustes-cerrar{
+    border: 1px solid (--color1);
+    border-radius: 15px;
+    color: (--color1);
+    background-color: #FFFFFF;
+    margin-top: 10%;
+  
+}
 
 .ajustes-1{
     display: flex;
