@@ -236,10 +236,10 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
     using (var connection = new NpgsqlConnection(_connectionString))
     {
        string query = @"
-            INSERT INTO ""Usuarios_Orbits"" 
-            (""IdUsuario"", ""IdOrbit"")
+            INSERT INTO ""OrbitUsuario"" 
+            (""idUsuario"", ""idOrbit"")
             VALUES 
-            (@pIdUsuarios, @pIDOrbit);
+            (@pIdUsuario, @pIdOrbit);
             ";
 
         int filasAfectadas = await connection.ExecuteAsync(query, new { pIdUsuario = idUsuario, pIdOrbit = idOrbit });
@@ -254,7 +254,7 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
     {
         string query = @"
             SELECT COUNT(*) 
-            FROM ""Usuarios_Orbits"" 
+            FROM ""OrbitUsuario"" 
             WHERE ""IdUsuario"" = @pIdUsuario AND ""IdOrbit"" = @pIdOrbit;
         ";
 

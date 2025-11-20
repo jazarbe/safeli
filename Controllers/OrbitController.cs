@@ -32,12 +32,25 @@ public class OrbitController : Controller
         return RedirectToAction("OrbitInside", "OrbitController", new {orbit = orbit});
     }
 
-    public async Task<IActionResult> Crear(string name, string foto)
+    public async Task<IActionResult> Crear(string name, IFormFile foto)
     {
         int? id = HttpContext.Session.GetInt32("IdUsuario");
         if (id == null) return RedirectToAction("Login", "Account");
-        else await miBd.AgregarOrbit(name, foto, id.Value);
-
+        else{    
+            string nombreArchivo = "default.jpg";
+            string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+            string rutaCompleta = Path.Combine(carpeta, nombreArchivo);
+            if (foto != null && foto.Length > 0)
+            {
+                nombreArchivo = Path.GetFileName(foto.FileName);
+                rutaCompleta = Path.Combine(carpeta, nombreArchivo);
+                using (var stream = new FileStream(rutaCompleta, FileMode.Create))
+                {
+                    foto.CopyTo(stream);
+                }
+            await miBd.AgregarOrbit(name, nombreArchivo, id.Value);
+            }
+        }
         // loader
         return View("MenuOrbit");
     }
