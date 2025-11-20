@@ -148,6 +148,20 @@ footer a{
   width: 0px;
 }
 
+.offcanvas-body h3{
+  text-align: left;
+  font-size: 20px;
+  border: 1px solid black;
+  padding: 2.5%;
+}
+
+.offcanvas-header h5{
+  color: var(--color1);
+  margin-top: 3%;
+  font-weight: 700;
+}
+
+
 /*BORDE HEADER Y FOOTER*/
 .borde {
   width: 100% !important; /* Ancho del rectángulo */
@@ -988,4 +1002,56 @@ iframe {
   align-items: center;
 }
 
+/* SAFELI SCORE */
+.card-body input{
+  width: 100%;
+  padding: 3%;
+  border: 1.5px solid var(--color1);
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
 
+.card-body textarea{
+  width: 100%;
+  padding: 3%;
+  border: 1.5px solid var(--color1);
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  justify-content: center;
+  margin-top: 3%;
+}
+
+.review-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  width: 100%; 
+}
+
+.rating-container {
+  width: 100%;
+  text-align: center; 
+  margin-bottom: 20px; 
+}
+
+.button-row {
+  width: 100%;
+  text-align: center; 
+}
+
+.button-row .btn-primary {
+  width: 100%; 
+  display: block; 
+}
+
+.rating {
+  display: inline-block;
+}
+
+.feedback-header svg{
+  align-items: start;
+}

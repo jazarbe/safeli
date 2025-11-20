@@ -64,4 +64,9 @@ public class HomeController : Controller
         ViewBag.contactoEmergencia = user.contactoEmergencia;
         return View();
     }
+
+      public async Task<IActionResult> Feedback()
+    {
+        return View();
+    }
 }

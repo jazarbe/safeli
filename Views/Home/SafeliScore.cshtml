@@ -5,26 +5,23 @@
 <link href="~/css/tu-archivo.css" rel="stylesheet">
 
 <div class="feedback-header">
-    <a href="javascript:history.back()" class="back-arrow">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-    </a>
+
     <h2>Feedback</h2>
-    </div>
+</div>
 
 
 <div class="feedback-container">
-
     <div class="card feedback-card">
         <div class="card-body">
-            <form method="post" action='@Url.Action("SafeliScore", "Home")'>
-                <input type="text" name="CardTitle" class="form-control mb-3" placeholder="Título del feedback">
 
-                <textarea class="form-control mb-3" name="ReviewText" placeholder="Escribe tu review aquí..."></textarea>
+            <form method="post" action='@Url.Action("Feedback", "Home")'>
+                <h3 id="tituloDisplay" style="display: none; cursor: pointer;" title="Haz clic para editar el título"></h3>
+
+                <input type="text" id="tituloInput" placeholder="Título del feedback" value="">
+
+                <textarea id="reviewTexto" placeholder="Escribe tu review aquí..."></textarea>
 
                 <div class="review-row">
-                    <span class="review-label">Review:</span>
                     
                     <div class="rating">
                         <input value="5" name="rating" id="star5" type="radio">
@@ -38,10 +35,9 @@
                         <input value="1" name="rating" id="star1" type="radio">
                         <label for="star1"></label>
                     </div>
-
-                    <button type="submit" class="btn btn-primary ms-auto">
-                        Enviar
-                    </button>
+                    <div class = "button-row">
+                        <button type="submit" class="btn btn-primary ms-auto">Enviar</button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -50,32 +46,35 @@
 
 </div>
 
-@* <form method="post" action='@Url.Action("SafeliScoreBD", "Home")' target="_blank">
-    <div class="InputContainer">
-        <input placeholder="Search" id="input" class="input" name="text" type="text"/>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    
+    var inputTitulo = document.getElementById("tituloInput");
+    var displayTitulo = document.getElementById("tituloDisplay");
+    var reviewTexto = document.getElementById("reviewTexto");
 
-        <label class="labelforsearch" for="input">
-            <svg class="searchIcon" viewBox="0 0 512 512">
-            <path
-                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
-            ></path>
-            </svg>
-        </label>
-    </div>
-    <div class="rating">
-        <input value="5" name="rating" id="star5" type="radio">
-        <label for="star5"></label>
-        <input value="4" name="rating" id="star4" type="radio">
-        <label for="star4"></label>
-        <input value="3" name="rating" id="star3" type="radio">
-        <label for="star3"></label>
-        <input value="2" name="rating" id="star2" type="radio">
-        <label for="star2"></label>
-        <input value="1" name="rating" id="star1" type="radio">
-        <label for="star1"></label>
-    </div>
-
-    <button type="submit">
+    inputTitulo.addEventListener("keydown", function(event) {
         
-    </button>
-</form> *@
+        if (event.key === "Enter" || event.keyCode === 13) {
+            event.preventDefault();
+            var tituloEscrito = inputTitulo.value;
+        
+            if (tituloEscrito.trim() !== "") {
+                displayTitulo.textContent = tituloEscrito;
+                inputTitulo.style.display = "none";
+                displayTitulo.style.display = "block"; 
+                reviewTexto.focus();
+            } else {
+                 reviewTexto.focus();
+            }
+        }
+    });
+
+    displayTitulo.addEventListener("click", function() {
+        displayTitulo.style.display = "none";
+        inputTitulo.style.display = "block";
+        inputTitulo.focus();
+        inputTitulo.select();
+    });
+});
+</script>
