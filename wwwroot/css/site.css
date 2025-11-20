@@ -26,6 +26,10 @@ img{
   justify-self: center;
 }
 
+.inicio-button a{
+  text-decoration: none;
+}
+
 /*CHECKBOX - LOGIN*/
 .checkbox-container {
   display: flex;
