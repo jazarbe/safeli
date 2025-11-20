@@ -55,28 +55,43 @@ footer{
   z-index: 1000;
 }
 
-footer div button{
-  background-color: var(--rojo);
-  color: var(--blanco);
-  border: none;
+.sos-button-css, .sos-button{
+  position: absolute;
+  bottom: 45%;
+  left: 0%;
+}
+
+.sos-button-css button{
+  background-color: var(--color5);
+  border: 3px solid var(--rojo);
   cursor: pointer;
   padding-top: 5%;
   padding-bottom: 5%;
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
-.sos-button button{
-  border-radius: 50%;
+.sos-button-css button a{
+  color: var(--rojo) !important;
+  font-weight: 700;
 }
-.sos-button-css a{
+
+.sos-button button{
+  background-color: var(--rojo);
+  border: 3px solid var(--rojo);
+  cursor: pointer;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.sos-button a{
   color: var(--blanco) !important;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 footer div{
@@ -123,14 +138,20 @@ footer a{
 }
 
 /* HEADER */
+.noti-css{
+  z-index: 10;
+  position: absolute;
+  right: 10%;
+  top: 6%;
+  padding: 7%;
+}
+
 .noti-css svg{
   background-color: var(--blanco) !important;
   border: 1px var(--color1) !important;
-  padding: 3% !important;
+  padding: 10% !important;
   border: none;
   cursor: pointer;
-  padding-top: 5%;
-  padding-bottom: 5%;
   width:50px;
   height:50px;
   border-radius: 50%;
@@ -743,9 +764,11 @@ h2{
   font-size: 1em;
   border: none;
   border-radius: 20px;
-  border-bottom: 2px solid #ccc;
+  background-color: #f0fbfbcb;
+  /* border-bottom: 2px solid #ccc; */
   outline: none;
   transition: border-color 0.3s;
+  
 }
 
 .ui-input:focus {
@@ -947,9 +970,9 @@ h2{
 /* HOME */
 iframe {
   width: 100%;
-  height: 625px;
   position: absolute;
-  top: 17%;
+  top: 3.65%;
+  height: 825px;
   z-index: 0000;
   border: none;
 }
@@ -965,6 +988,9 @@ iframe {
 
 .over-iframe{
   z-index: 10;
+  position: absolute;
+  top: 1.7%;
+  left: 25%;
 }
 
 /* PERMISOS */
