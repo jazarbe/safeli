@@ -67,6 +67,9 @@ public class HomeController : Controller
 
       public async Task<IActionResult> Feedback()
     {
-        return View();
+        int? id = HttpContext.Session.GetInt32("IdUsuario");
+        ViewBag.id = id.Value;
+        ViewBag.mensaje = "Recibimos tu feedback!";
+        return View("Home");
     }
 }

@@ -151,7 +151,8 @@ footer a{
 .offcanvas-body h3{
   text-align: left;
   font-size: 20px;
-  border: 1px solid black;
+  border: 2px solid var(--color1);
+  border-radius: 10px;
   padding: 2.5%;
 }
 
@@ -161,6 +162,9 @@ footer a{
   font-weight: 700;
 }
 
+.btn-close{
+  margin-right: 1.5% !important;
+}
 
 /*BORDE HEADER Y FOOTER*/
 .borde {
@@ -727,7 +731,7 @@ h2{
 /* HOME */
 .ui-input-container {
   position: relative;
-  width: 70%;
+  width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -822,7 +826,7 @@ h2{
   display: inline-flex; 
   align-items: center;
   justify-content: center;
-  width: auto;            /* ❗ evita que se estire */
+  width: auto; 
   height: auto;
 }
 
@@ -1039,8 +1043,12 @@ iframe {
 }
 
 .button-row {
-  width: 100%;
+  width: 60%;
   text-align: center; 
+}
+
+.button-row button{
+  background-color: var(--color1);
 }
 
 .button-row .btn-primary {
@@ -1086,10 +1094,74 @@ iframe {
   margin-top: 15px;
 }
 
+.orbit-menu h4{
+  text-align: center;
+  font-size: 18px;
+  margin-top: 3%;
+}
+
 /* CREAR ORBIT */
 .crear-header h1{
   text-align: center;
   margin-top: 5%;
   color: var(--color1);
   font-weight: 600;
+}
+
+/* ORBIT INSIDE */
+.orbit-form{
+  width: fit-content;
+  height: auto;
+  background-color: transparent;
+  display: flex;
+  margin-right: 6.3%;
+  margin-left: 6.3%;
+}
+
+.plus{
+  background-color: transparent;
+}
+
+.plus svg{
+  width: 30%;
+  height: auto;
+  display: flex;
+  justify-self: end;
+}
+
+section h1{
+  text-align: center;
+  margin: 3%;
+  color: var(--color1);
+  font-weight: 600;
+  margin-top: 7%;
+}
+
+.usuario-orbit img{
+  border-radius: 50%;
+  width: 80px;  
+  height:80px;
+  object-fit: cover;
+  justify-self: flex-start;
+  margin-left: 5%;
+}
+
+.usuario-orbit{
+  display: flex;
+  margin-bottom: 3%;
+  padding: 2%;
+}
+
+.text-orbit{
+  margin-left: 5%;
+}
+
+.text-orbit h4{
+  font-size: 15px;
+}
+.text-orbit h3{
+  margin-top: 1.5%;
+  color: var(--color3);
+  font-weight: 600;
+
 }

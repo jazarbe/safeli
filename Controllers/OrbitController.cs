@@ -70,14 +70,15 @@ public class OrbitController : Controller
 
    public IActionResult OrbitInside(Orbit orbit)
     {
-        string baseUrl = $"{Request.Scheme}://{Request.Host}";
+        // string baseUrl = $"{Request.Scheme}://{Request.Host}";
 
-        ViewBag.LinkCompleto = orbit.ObtenerLinkCompleto(baseUrl);
+        // ViewBag.LinkCompleto = orbit.ObtenerLinkCompleto(baseUrl);
 
-        ViewBag.nombre = orbit.name;
-        ViewBag.usuarios = orbit.usuarios;
+        // ViewBag.nombre = orbit.name;
+        // ViewBag.usuarios = orbit.usuarios;
 
-        return View(orbit);
+        // return View(orbit);
+        return View();
     }
 
     public IActionResult ViewCrear()
