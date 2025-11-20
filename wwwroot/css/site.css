@@ -1055,3 +1055,41 @@ iframe {
 .feedback-header svg{
   align-items: start;
 }
+
+/* ORBIT */
+.orbit-menu input{
+  width: 50%;
+  padding: 3%;
+  margin: 3%;
+  border: 1.5px solid var(--color1);
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+
+.crear-orbit-btn button{
+  background-color: var(--color1);
+  color: #fff;
+  padding: 2%;
+  width: 150px;
+  font-size: 15px;
+  border-radius: 50px !important;
+  border-color: var(--color1);
+  border: none;
+}
+
+.crear-orbit-btn{
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+  margin-top: 15px;
+}
+
+/* CREAR ORBIT */
+.crear-header h1{
+  text-align: center;
+  margin-top: 5%;
+  color: var(--color1);
+  font-weight: 600;
+}

@@ -14,12 +14,14 @@ else
 {
     <h2>@ViewBag.mensaje</h2>
 }
-
-<form method="post" action="">
-    <input type="text" placeholder="Pegá el link para unirse a un Orbit">
-    <button type="submit">
-       Ingresar
-    </button>
-</form>
-<h3>O</h3>
-<button> <a href='@Url.Action("ViewCrear")'>Crear</a> </button>
+<div class = "orbit-menu">
+    <form method="post" action='@Url.Action("Unirse", "Orbit")'>
+        <input type="text" placeholder="Pegá el link para unirse a un Orbit">
+        <button type="submit">Ingresar</button>
+    </form>
+    <form method="post" action='@Url.Action("ViewCrear", "Orbit")'>
+        <div class = "crear-orbit-btn">
+            <button type = "submit"> Crear</button>
+        </div>
+    </form>
+</div>
