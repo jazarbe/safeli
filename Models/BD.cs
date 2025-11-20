@@ -273,7 +273,7 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
             string query = "INSERT INTO \"Orbits\" (nombre, foto, link) VALUES (@pname, @pfoto, @plink)";
             await connection.ExecuteAsync(query, new {pname = name, pfoto = foto, plink = link});
 
-            string query2 = "INSERT INTO \"OrbitUsuario\" (idOrbit, idUsuario) VALUES ((SELECT id FROM \"Orbits\" WHERE link = @plink), @pidUsuario)";
+            string query2 = "INSERT INTO \"OrbitUsuario\" (\"idUsuario\", \"idOrbit\") VALUES ((SELECT id FROM \"Orbits\" WHERE link = @plink), @pidUsuario)";
             await connection.ExecuteAsync(query2, new {plink = link, pidUsuario = idUsuario});
         }
     }

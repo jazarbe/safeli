@@ -48,8 +48,8 @@ public class OrbitController : Controller
                 {
                     foto.CopyTo(stream);
                 }
-            await miBd.AgregarOrbit(name, nombreArchivo, id.Value);
             }
+            await miBd.AgregarOrbit(name, nombreArchivo, id.Value);
         }
         // loader
         return View("MenuOrbit");
@@ -69,26 +69,24 @@ public class OrbitController : Controller
     }
 
    public IActionResult OrbitInside(Orbit orbit)
-{
-    // Genera la URL base del sitio (por ej: https://localhost:5001 o https://tusitio.com)x
-    string baseUrl = $"{Request.Scheme}://{Request.Host}";
+    {
+        string baseUrl = $"{Request.Scheme}://{Request.Host}";
 
-    // Crea el link completo y lo pasa a la vista
-    ViewBag.LinkCompleto = orbit.ObtenerLinkCompleto(baseUrl);
+        ViewBag.LinkCompleto = orbit.ObtenerLinkCompleto(baseUrl);
 
-    // También pasamos los datos del orbit
-    ViewBag.nombre = orbit.name;
-    ViewBag.usuarios = orbit.usuarios;
+        ViewBag.nombre = orbit.name;
+        ViewBag.usuarios = orbit.usuarios;
 
-    return View(orbit); // Enviamos el Orbit como modelo
-}
+        return View(orbit);
+    }
 
     public IActionResult ViewCrear()
     {
         return View();
     }
 
-    public bool UsuarioUnido(Orbit orbit, Usuario user){
+    public bool UsuarioUnido(Orbit orbit, Usuario user)
+    {
         bool check = false;
         
         foreach(Usuario u in orbit.usuarios){
@@ -99,43 +97,41 @@ public class OrbitController : Controller
     }
 
 
-    [HttpGet]
-public async Task<IActionResult> Unirse(string link)
-{
-    int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
-    if (idUsuario == null)
-        return RedirectToAction("Login", "Account");
+//[HttpGet]
+// public async Task<IActionResult> Unirse(string link)
+// {
+//     int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
+//     if (idUsuario == null) return RedirectToAction("Login", "Account");
 
-    // Buscar el orbit con ese link
-    Orbit orbit = await miBd.BuscarOrbitPorLink(link);
-    if (orbit == null)
-    {
-        ViewBag.MensajeError = "El enlace no es válido o el Orbit no existe.";
-        return View("Error");
-    }
+//     else{
+//         Orbit orbit = await miBd.BuscarOrbitPorLink(link);
+//         if (orbit == null)
+//         {
+//             ViewBag.MensajeError = "El enlace no es válido o el Orbit no existe.";
+//             return View("Error");
+//         }
 
-    // Comprobar si el usuario ya está en el orbit
-    bool yaUnido = await miBd.UsuarioEnOrbit(idUsuario.Value, orbit.id);
-    if (yaUnido)
-    {
-        ViewBag.Mensaje = "Ya sos parte de este Orbit.";
-        return RedirectToAction("OrbitInside", new { link = link });
-    }
+//         bool yaUnido = await miBd.UsuarioEnOrbit(idUsuario.Value, orbit.id);
+//         if (yaUnido)
+//         {
+//             ViewBag.Mensaje = "Ya sos parte de este Orbit.";
+//             return RedirectToAction("OrbitInside", new { link = link });
+//         }
 
-    // Agregar el usuario al orbit
-    bool agregado = await miBd.AgregarUsuarioAOrbit(idUsuario.Value, orbit.id);
+//         bool agregado = await miBd.AgregarUsuarioAOrbit(idUsuario.Value, orbit.id);
 
-    if (agregado)
-    {
-        ViewBag.Mensaje = "Te uniste correctamente al Orbit.";
-        return RedirectToAction("OrbitInside", new { link = link });
-    }
-    else
-    {
-        ViewBag.MensajeError = "Hubo un problema al unirte al Orbit.";
-        return View("Error");
-    }
-}
+//         if (agregado)
+//         {
+//             ViewBag.Mensaje = "Te uniste correctamente al Orbit.";
+//             return RedirectToAction("OrbitInside", new { link = link });
+//         }
+//         else
+//         {
+//             ViewBag.Mensaje = "Hubo un problema al unirte al Orbit.";
+//             return View();
+//         }
+//     }
+// }
 
 
       
