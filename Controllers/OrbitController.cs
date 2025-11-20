@@ -63,7 +63,7 @@ public class OrbitController : Controller
         {
             Usuario user = await miBd.BuscarUsuarioPorId(id.Value);
             if(user.orbits != null && user.orbits.Count > 0) ViewBag.orbits = user.orbits;
-            else ViewBag.mensaje = "Todavía no tenés Orbits.";
+            else ViewBag.mensaje = "Todavía no tenés Orbits";
         }
         return View();
     }

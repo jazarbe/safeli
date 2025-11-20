@@ -77,6 +77,10 @@ footer{
   font-weight: 700;
 }
 
+.contenedor-sos{
+  margin-top: 40%;
+}
+
 .sos-button button{
   background-color: var(--rojo);
   border: 3px solid var(--rojo);
@@ -139,7 +143,7 @@ footer a{
 
 /* HEADER */
 .noti-css{
-  z-index: 10;
+  z-index: 100;
   position: absolute;
   right: 10%;
   top: 6%;
@@ -205,12 +209,30 @@ footer a{
 }
 
 
+.input-center-log{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 40%;
+}
+
+.input-center-log input{
+  width: 276px;
+  padding: 3%;
+  border: 1.5px solid var(--color1);
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+
 .input-center{
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  margin-top: 40px;
+  margin-top: 5%;
 }
 
 .input-center input{
@@ -657,6 +679,11 @@ h2{
 }
 
 /* SAFELI SCORE */
+
+.SafeliScore-content{
+  margin-top: 30%;
+}
+
 .rating {
   display: inline-block;
 }
@@ -756,6 +783,7 @@ h2{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: -25%;
 }
 
 .ui-input {
@@ -764,11 +792,11 @@ h2{
   font-size: 1em;
   border: none;
   border-radius: 20px;
-  background-color: #f0fbfbcb;
+  background-color: #f0fbfb;
+  opacity: 90%;
   /* border-bottom: 2px solid #ccc; */
   outline: none;
   transition: border-color 0.3s;
-  
 }
 
 .ui-input:focus {
@@ -789,6 +817,7 @@ h2{
 
 .ui-input:focus + .ui-input-underline {
   transform: scaleX(1);
+  
 }
 
 .ui-input-highlight {
@@ -828,6 +857,10 @@ h2{
 }
 
 /* PERFIL */
+.perfil-content{
+  margin-top: 25%;
+}
+
 .img-perfil{
   border-radius: 50%;
   border: 2px solid black;
@@ -868,20 +901,31 @@ h2{
   gap: 10px;
 }
 
-.perfil-css h5{
-  text-align: center;
+
+.perfil-css h5 {
+  display: block;
+  width: fit-content;
   background-color: var(--color5);
+  padding: 10px 20px;
   border-radius: 20px;
-  padding: 3%;
+  font-size: 15px;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.content-perfilText{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   
 }
 
 .perfil-css h2{
   text-align: center;
-  
+  margin-top: 10%;
+  font-size: 20px !important;
 }
 
-/* PERFIL */
 .img-perfil{
   border-radius: 50%;
   width: 150px;  
@@ -1053,6 +1097,7 @@ iframe {
   text-align: center;
   justify-content: center;
   margin-top: 3%;
+  background-color: var(--color5);
 }
 
 .review-row {
@@ -1090,7 +1135,12 @@ iframe {
   align-items: start;
 }
 
-/* ORBIT */
+/* MENU ORBIT */
+
+.MenuOrbit-content{
+  margin-top: 30%;
+}
+
 .orbit-menu input{
   width: 50%;
   padding: 3%;
@@ -1132,6 +1182,10 @@ iframe {
   margin-top: 5%;
   color: var(--color1);
   font-weight: 600;
+}
+
+.CrearOrbit-content{
+  margin-top: 30%;
 }
 
 /* ORBIT INSIDE */

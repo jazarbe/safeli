@@ -177,7 +177,29 @@ public class AccountController : Controller
         return View(); 
     }
    
-//  HACER EDITAR PERFIL --> NO FUNCIONA LAPIZ
+    [HttpPost]
+    public IActionResult EditarPerfil(string Username, string Email, string Telefono, string Biografia, string ContactoEmergencia, IFormFile FotoPerfil)
+    {
+        // ACTUALIZAR INFORMACIÓN EN LA BD
+
+        // 1. Si subió foto nueva → guardarla
+        if (FotoPerfil != null && FotoPerfil.Length > 0)
+        {
+            var fileName = Path.GetFileName(FotoPerfil.FileName);
+            var filePath = Path.Combine("wwwroot/img/perfiles", fileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                FotoPerfil.CopyTo(stream);
+            }
+
+            // Guardar ruta en BD
+        }
+
+        // 2. Guardar cambios en la BD (Username, Email, Telefono, Bio, Emergencia)
+
+        return RedirectToAction("Perfil");
+    }
 
 
 

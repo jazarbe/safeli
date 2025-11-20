@@ -2,20 +2,23 @@
     ViewData["Title"] = "Perfil";
 }
 
-<img src="@ViewBag.foto" alt="FotoUser" class = "img-perfil">
+<div class = "perfil-content">
+  <img src="@ViewBag.foto" alt="FotoUser" class = "img-perfil">
 
 <div class = "perfil-css">
 
     <div class = "username-box">
         <h3>@ViewBag.Username</h3>
 
-        <button type="button" class="settings" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+        <div class = "content-perfilText">
+          <button type="button" class="settings" data-bs-toggle="modal" data-bs-target="#editProfileModal">
             <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 20h9"/>
             <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
             </svg>
-
-        </button> 
+          </button> 
+        </div>
+        
     </div>
     
     <h5>@ViewBag.Email</h5>
@@ -46,17 +49,8 @@
     
 
     <div class="modal fade" id="editProfileModal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <h5 class="modal-title">Editar Perfil</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-</div>
-@* para cambiar la foto de perfil y el nombre, tocando el lapiz *@
-<!-- <div class="modal fade" id="editProfileModal" tabindex="-1">
-  @* <div="modal-dialog">
+      <div class="modal fade" id="editProfileModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
 
       <div class="modal-header">
@@ -64,37 +58,43 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
-      <form method="post" enctype="multipart/form-data" action="@Url.Action("EditarPerfil","Account")"> *@
-        @* <div class="modal-body">
+      <form method="post" enctype="multipart/form-data" action="@Url.Action("EditarPerfil","Account")">
+        <div class="modal-body">
 
-          <!-- EDITAR USERNAME *@
-          <div class="mb-3">
-            <label class="form-label">Nombre de Usuario</label>
-            <input type="text" class="form-control" name="Username" value="@ViewBag.Username">
-          </div>
-
-          EDITAR FOTO 
-          <div class="mb-3">
-            <label class="form-label">Cambiar Foto de Perfil</label>
+          <!-- FOTO -->
+          <div class="mb-3 text-center">
+            <img src="@ViewBag.foto" class="rounded-circle mb-2" width="90" height="90" style="object-fit: cover;">
             <input type="file" class="form-control" name="FotoPerfil">
           </div>
 
-           EDITAR EMAIL 
+          <!-- USERNAME -->
+          <div class="mb-3">
+            <label class="form-label">Usuario</label>
+            <input type="text" class="form-control" name="Username" value="@ViewBag.Username">
+          </div>
+
+          <!-- EMAIL -->
           <div class="mb-3">
             <label class="form-label">Email</label>
             <input type="email" class="form-control" name="Email" value="@ViewBag.Email">
           </div>
 
-          EDITAR TELÉFONO 
+          <!-- TELÉFONO -->
           <div class="mb-3">
             <label class="form-label">Teléfono</label>
             <input type="text" class="form-control" name="Telefono" value="@ViewBag.Telefono">
           </div>
 
-          EDITAR BIO 
+          <!-- BIOGRAFÍA -->
           <div class="mb-3">
             <label class="form-label">Biografía</label>
             <textarea class="form-control" name="Biografia" rows="3">@ViewBag.Biografia</textarea>
+          </div>
+
+          <!-- CONTACTO DE EMERGENCIA -->
+          <div class="mb-3">
+            <label class="form-label">Contacto de Emergencia</label>
+            <input type="text" class="form-control" name="ContactoEmergencia" value="@ViewBag.ContactoEmergencia">
           </div>
 
         </div>
@@ -103,16 +103,23 @@
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
           <button type="submit" class="btn btn-primary">Guardar Cambios</button>
         </div>
-      </form> -->
+      </form>
 
-    @* </div>
-  </div>
-</div> *@
-
-@* 
     </div>
   </div>
 </div>
-</div> *@
+      <div class="modal-dialog">
+        <div class="modal-content">
 
-    
+          <div class="modal-header">
+            <h5 class="modal-title">Editar Perfil</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    @* HACER QUE CON EL LAPIZ SE PUEDA EDITARRRRR 20/11/15:57 *@

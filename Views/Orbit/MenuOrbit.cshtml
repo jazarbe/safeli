@@ -1,28 +1,30 @@
 @{
     ViewData["Title"] = "Menu";
 }
-
-@if (ViewBag.orbits != null)
-{
-    @foreach (Orbit item in ViewBag.orbits)
+<div class = "MenuOrbit-content">
+        @if (ViewBag.orbits != null)
     {
-        <img src='@item.foto' alt="foto">
-        <h5>@item.name</h5>
+        @foreach (Orbit item in ViewBag.orbits)
+        {
+            <img src='@item.foto' alt="foto">
+            <h5>@item.name</h5>
+        }
     }
-}
-else
-{
-    <h2>@ViewBag.mensaje</h2>
-}
-<div class = "orbit-menu">
-    <form method="post" action='@Url.Action("Unirse", "Orbit")'>
-        <input type="text" placeholder="Pegá el link para unirse a un Orbit">
-        <button type="submit">Ingresar</button>
-    </form>
-    <h4>Si no tenes Orbit, podes crearlo:</h4>
-    <form method="post" action='@Url.Action("ViewCrear", "Orbit")'>
-        <div class = "crear-orbit-btn">
-            <button type = "submit"> Crear</button>
-        </div>
-    </form>
+    else
+    {
+        <h2>@ViewBag.mensaje</h2>
+    }
+    <div class = "orbit-menu">
+        <form method="post" action='@Url.Action("Unirse", "Orbit")'>
+            <input type="text" placeholder="Pegá el link para unirse a un Orbit">
+            <button type="submit">Ingresar</button>
+        </form>
+        <h4>Si no tenes Orbit, podes crearlo:</h4>
+        <form method="post" action='@Url.Action("ViewCrear", "Orbit")'>
+            <div class = "crear-orbit-btn">
+                <button type = "submit"> Crear</button>
+            </div>
+        </form>
+    </div>
 </div>
+
