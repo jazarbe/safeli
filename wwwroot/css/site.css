@@ -123,6 +123,8 @@ footer a{
 }
 
 /* HEADER */
+
+
 .noti-css svg{
   background-color: var(--blanco) !important;
   border: 1px var(--color1) !important;
@@ -922,6 +924,14 @@ h2{
     /* margin-top: 3%; */
     transition: 0.3s ease;
     border-radius: 20px ;
+}
+.ajustes-cerrar{
+    border: 1px solid (--color1);
+    border-radius: 15px;
+    color: (--color1);
+    background-color: #FFFFFF;
+    margin-top: 10%;
+  
 }
 
 .ajustes-1{
