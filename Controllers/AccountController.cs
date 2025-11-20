@@ -41,6 +41,11 @@ public class AccountController : Controller
         }
     }
 
+    public IActionResult Login()
+    {
+        return View();
+    }
+
     public IActionResult LogOut()
     {
         HttpContext.Session.Clear();
