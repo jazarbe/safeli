@@ -30,7 +30,7 @@
                 </a>
             }
             <img class="over-iframe" src="/images/logotipo_color.png" alt="Logotipo SAFELI">
-            @if(ViewContext.RouteData.Values["action"].ToString() != "SOS"){
+            @if(ViewContext.RouteData.Values["action"].ToString() != "SOS" && ViewContext.RouteData.Values["action"].ToString() != "Login"){
                 
                 <div class="noti-css">
                     <button type = "button" class = "button-noti" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"aria-controls="offcanvasRight">
@@ -47,7 +47,6 @@
                             <h5>Notificaciones</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
-                    @* DESPUES HACER QUE AL TOCAR LA NOTI, SE ELIMINE *@
                         <div class="offcanvas-body">
                             <h3 >¡Te damos la Bienvenida a SAFELI!</h3>
                         </div>
