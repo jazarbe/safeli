@@ -86,18 +86,10 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
         return nuevoId;
     }
 }
-    public async Task<Usuario> BuscarUsuarioPorId(int idBuscado){
+     public async Task<Usuario> BuscarUsuarioPorId(int idBuscado){
         using(var connection = new NpgsqlConnection(_connectionString)){
             string query = "SELECT id, nombre, apellido, email, \"nroTelefono\", username, foto, bio, contraseña, \"contactoEmergencia\" FROM \"Usuarios\" WHERE id = @pIdBuscado";
             return await connection.QueryFirstOrDefaultAsync<Usuario>(query, new {pIdBuscado = idBuscado});
-        }
-    }
-        public async Task<Usuario> ObtenerUsuarioPorId(int idUsuario)
-    {
-        using (var conn = new NpgsqlConnection(_connectionString))
-        {
-            string sql = "SELECT p.id, nombre, apellido, email, nroTelefono, username, contraseña, foto, bio, fechaNacimiento";
-            return await conn.QueryFirstOrDefaultAsync<Usuario>(sql);
         }
     }
 
@@ -225,13 +217,19 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
             return await connection.QueryFirstOrDefaultAsync<Orbit>(query, new {pLinkBus = linkBus});
         }
     }
+//    public async Task<Usuario> BuscarUsuarioPorId(int idBuscado){
+//         using(var connection = new NpgsqlConnection(_connectionString)){
+//             string query = "SELECT id, nombre, apellido, email, \"nroTelefono\", username, foto, bio, contraseña, \"contactoEmergencia\" FROM \"Usuarios\" WHERE id = @pIdBuscado";
+//             return await connection.QueryFirstOrDefaultAsync<Usuario>(query, new {pIdBuscado = idBuscado});
+//         }
+//     }
     public async Task<Orbit> BuscarOrbitPorId(int idBuscado){
         using(var connection = new NpgsqlConnection(_connectionString)){
             string query = "SELECT * FROM \"Orbits\" WHERE id = @pIdBuscado";
             return await connection.QueryFirstOrDefaultAsync<Orbit>(query, new {pIdBuscado = idBuscado});
         }
     }
-    public async Task<bool> AgregarUsuarioAOrbit(int idUsuario, int idOrbit)
+    public async Task<bool>AgregarUsuarioAOrbit(int idUsuario, int idOrbit)
 {
     using (var connection = new NpgsqlConnection(_connectionString))
     {
@@ -255,7 +253,7 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
         string query = @"
             SELECT COUNT(*) 
             FROM ""OrbitUsuario"" 
-            WHERE ""IdUsuario"" = @pIdUsuario AND ""IdOrbit"" = @pIdOrbit;
+            WHERE ""idUsuario"" = @pIdUsuario AND ""idOrbit"" = @pIdOrbit;
         ";
 
         int count = await connection.ExecuteScalarAsync<int>(query, new { pIdUsuario = idUsuario, pIdOrbit = idOrbit });
