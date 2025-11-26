@@ -20,7 +20,7 @@ public class Usuario
     public bool confirmado {get; private set;}
 
     public Usuario(){}
-    public Usuario(string nombre, string apellido, string email, int nroTelefono, string username, string foto, string bio, DateOnly fechaNac, string contraseña, int contactoEmergncia)
+    public Usuario(string nombre, string apellido, string email, int nroTelefono, string username, string foto, string bio, DateTime fechaNac, string contraseña, int contactoEmergencia)
     {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -29,7 +29,7 @@ public class Usuario
         this.username = username;
         this.foto = foto;
         this.bio = bio;
-        this.fechaNacimiento = fechaNac.ToDateTime(TimeOnly.MinValue);
+        this.fechaNacimiento = fechaNac;
         this.contraseña = contraseña;
         this.orbits = new List<Orbit>();
         this.carpetas = new List<Carpeta>();
