@@ -2,43 +2,44 @@
     ViewData["Title"] = "Log In";
 }
 
+<div class = "logIn-css">
 
-    @if(ViewBag.mensaje != null)
-    {
-        <h1 class="error">@ViewBag.mensaje</h1>
-    }   
+        @if(ViewBag.mensaje != null)
+        {
+            <h1 class="error">@ViewBag.mensaje</h1>
+        }   
 
-<form method="post" action='@Url.Action("LogIn", "Account")'>
-   <div class = "input-center-log">
-        <input type = "text" name="email" placeholder ="Ingrese su Email"/> 
-        <div class = "contra-signUp">
-            <input type="password" name="password" id="pass-1" placeholder ="Contraseña" required/>
-            <i class="fa-solid fa-eye-slash toggle-password" id="togglePassword2"required></i> <br>
+    <form method="post" action='@Url.Action("LogIn", "Account")'>
+    <div class = "input-center-log">
+            <input type = "text" name="email" placeholder ="Ingrese su Email"/> 
+            <div class = "contra-signUp">
+                <input type="password" name="password" id="pass-1" placeholder ="Contraseña" required/>
+                <i class="fa-solid fa-eye-slash toggle-password" id="togglePassword2"required></i> <br>
+            </div>
         </div>
-    </div>
 
-    
-    <div class = "logIn_Href">
-        <a href='@Url.Action("ForgotPassword", "Account")'>¿Te olvidaste la contraseña?</a><br>
-    </div>
-    
-    <div class = "checkbox-div">
-        <input type="checkbox"> Mantenerme iniciado/a 
-    </div>
+        
+        <div class = "logIn_Href">
+            <a href='@Url.Action("ForgotPassword", "Account")'>¿Te olvidaste la contraseña?</a><br>
+        </div>
+        
+        <div class = "checkbox-div">
+            <input type="checkbox"> Mantenerme iniciado/a 
+        </div>
 
-    <div class = "inicio-button">
-        <button type="submit">Iniciar Sesión</button><br>
-    </div>
-</form>
+        <div class = "inicio-button">
+            <button type="submit">Iniciar Sesión</button><br>
+        </div>
+    </form>
 
-<div class = "NoAccount">
-    <h3>¿Todavía no tenes cuenta?</h3>
+    <div class = "NoAccount">
+        <h3>¿Todavía no tenes cuenta?</h3>
+    </div>
+        
+    <form method="post" action='@Url.Action("SignUp", "Account")'>
+        <div class = "inicio-button">
+            <button type = "submit"> Registrate</button>
+        </div>
+    </form>
+
 </div>
-    
-<form method="post" action='@Url.Action("SignUp", "Account")'>
-    <div class = "inicio-button">
-        <button type = "submit"> Registrate</button>
-    </div>
-</form>
-
-

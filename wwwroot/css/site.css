@@ -31,6 +31,10 @@ img{
 }
 
 /*CHECKBOX - LOGIN*/
+
+.logIn-css{
+  margin-top: -20%;
+}
 .checkbox-container {
   display: flex;
   align-items: center;
@@ -58,6 +62,7 @@ footer{
   align-items: center;
   z-index: 1000;
 }
+
 
 .sos-button-css{
   position: absolute;
@@ -1012,13 +1017,18 @@ h2{
     transition: 0.3s ease;
     border-radius: 20px ;
 }
+
 .ajustes-cerrar{
-    border: 1px solid (--color1);
+    border: 2px solid var(--rojo);
     border-radius: 15px;
-    color: (--color1);
-    background-color: #FFFFFF;
-    margin-top: 10%;
-  
+    background-color: var(--blanco);
+    margin-top: 5%;
+}
+
+.ajustes-cerrar a{
+  color: var(--rojo);
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .ajustes-1{
@@ -1036,7 +1046,7 @@ h2{
   max-height: 90vh;
 }
 
-.ajustes a, .ajustes-1 a{
+.ajustes a{
   text-decoration: none;
   color: white;
 }
@@ -1046,7 +1056,7 @@ iframe {
   width: 100%;
   position: absolute;
   top: 3.65%;
-  height: 825px;
+  height: 740px;
   z-index: 0000;
   border: none;
 }
@@ -1068,6 +1078,11 @@ iframe {
 }
 
 /* PERMISOS */
+
+.acc-permisos{
+  margin-top: 40%;
+}
+
 .permisos{
   display: flex;
   flex-direction: row;
@@ -1279,4 +1294,15 @@ section h1{
 .landing-button{
   margin-top: 10%;
   text-decoration: none;
+}
+
+/* AYUDA */
+
+.acc-ayuda{
+  margin-top: 40%;
+}
+
+/* TUTORIAL */
+.acc-tuto{
+  margin-top: 40%;
 }
