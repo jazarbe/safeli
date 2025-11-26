@@ -21,7 +21,7 @@
     <header>
         <!-- if para ver cuando usar cada header --> 
         <div class="borde"></div>
-        @if (ViewContext.RouteData.Values["action"].ToString() != "Index" && ViewContext.RouteData.Values["action"].ToString() != "SignUp" && ViewContext.RouteData.Values["action"].ToString() != "ForgotPassword"){
+        @if (ViewContext.RouteData.Values["action"].ToString() != "Index" && ViewContext.RouteData.Values["action"].ToString() != "Login" && ViewContext.RouteData.Values["action"].ToString() != "SignUp" && ViewContext.RouteData.Values["action"].ToString() != "ForgotPassword"){
             @if(ViewContext.RouteData.Values["action"].ToString() == "Permisos" || ViewContext.RouteData.Values["action"].ToString() == "ViewCrear"){
                 <a href='@Url.Action("Perfil", "Account")' class="back">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
