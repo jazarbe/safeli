@@ -59,7 +59,13 @@ footer{
   z-index: 1000;
 }
 
-.sos-button-css, .sos-button{
+.sos-button-css{
+  position: absolute;
+  bottom: 45%;
+  left: 43%;
+}
+
+.sos-button{
   position: absolute;
   bottom: 45%;
   left: 0%;
@@ -79,7 +85,10 @@ footer{
 .sos-button-css button a{
   color: var(--rojo) !important;
   font-weight: 700;
+  text-align: center;
+  justify-content: center;
 }
+
 
 .contenedor-sos{
   margin-top: 40%;
@@ -100,6 +109,8 @@ footer{
 .sos-button a{
   color: var(--blanco) !important;
   font-weight: 700;
+  text-align: center;
+  justify-content: center;
 }
 
 footer{
@@ -110,6 +121,9 @@ footer div{
   width: 100%;
 }
 
+.sos-button-css{
+  width: 15%;
+}
 footer ul li{
   text-align: center;
   list-style: none;
