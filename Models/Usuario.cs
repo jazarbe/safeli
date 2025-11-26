@@ -20,21 +20,6 @@ public class Usuario
     public bool confirmado {get; private set;}
 
     public Usuario(){}
-    public Usuario(string nombre, string apellido, string email, int nroTelefono, string username, string foto, string bio, string fechaNac, string contraseña, int contactoEmergencia)
-    {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-        this.nroTelefono = nroTelefono;
-        this.username = username;
-        this.foto = foto;
-        this.bio = bio;
-        this.fechaNacimiento = DateTime.ParseExact(fechaNac, "d/M/yyyy", CultureInfo.InvariantCulture);
-        this.contraseña = contraseña;
-        this.orbits = new List<Orbit>();
-        this.carpetas = new List<Carpeta>();
-        this.contactoEmergencia = contactoEmergencia;
-    }
     public Usuario(string nombre, string apellido, string email, int nroTelefono, string username, string foto, string bio, DateOnly fechaNac, string contraseña, int contactoEmergencia)
     {
         this.nombre = nombre;
