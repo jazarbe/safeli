@@ -170,8 +170,7 @@ public class AccountController : Controller
     public async Task<IActionResult> ActualizarUbicacion(string ubicacion){
         int? id = HttpContext.Session.GetInt32("IdUsuario");
         await miBd.UpdateUbicacion(ubicacion, id.Value);
-        ViewBag.mensaje = "Ubicacion cambiada";
-        return View("Perfil");
+        return RedirectToAction("Perfil");
     }
     public async Task<IActionResult> Perfil()
     {

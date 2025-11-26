@@ -70,14 +70,11 @@ public class OrbitController : Controller
 
    public IActionResult OrbitInside(Orbit orbit)
     {
-        // string baseUrl = $"{Request.Scheme}://{Request.Host}";
+        string baseUrl = $"{Request.Scheme}://{Request.Host}";
+        ViewBag.LinkCompleto = orbit.ObtenerLinkCompleto(baseUrl);
+        ViewBag.nombre = orbit.name;
+        ViewBag.usuarios = orbit.usuarios;
 
-        // ViewBag.LinkCompleto = orbit.ObtenerLinkCompleto(baseUrl);
-
-        // ViewBag.nombre = orbit.name;
-        // ViewBag.usuarios = orbit.usuarios;
-
-        // return View(orbit);
         return View();
     }
 
@@ -98,41 +95,44 @@ public class OrbitController : Controller
     }
 
 
-//[HttpGet]
-// public async Task<IActionResult> Unirse(string link)
-// {
-//     int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
-//     if (idUsuario == null) return RedirectToAction("Login", "Account");
+[HttpPost]
+public async Task<IActionResult> Unirse(string link)
+{
+    int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
+    if (idUsuario == null) return RedirectToAction("Login", "Account");
 
-//     else{
-//         Orbit orbit = await miBd.BuscarOrbitPorLink(link);
-//         if (orbit == null)
-//         {
-//             ViewBag.MensajeError = "El enlace no es válido o el Orbit no existe.";
-//             return View("Error");
-//         }
+    else{
+        Usuario usu = await miBd.BuscarUsuarioPorId(idUsuario.Value);
+        Orbit orbit = await miBd.BuscarOrbitPorLink(link);
+        if (orbit == null)
+        {
+            ViewBag.mensaje = "El enlace no es válido o el Orbit no existe.";
+            return View("MenuOrbit");
+        }
 
-//         bool yaUnido = await miBd.UsuarioEnOrbit(idUsuario.Value, orbit.id);
-//         if (yaUnido)
-//         {
-//             ViewBag.Mensaje = "Ya sos parte de este Orbit.";
-//             return RedirectToAction("OrbitInside", new { link = link });
-//         }
+        bool yaUnido = await miBd.UsuarioEnOrbit(idUsuario.Value, orbit.id);
+        if (yaUnido)
+        {
+            ViewBag.Mensaje = "Ya sos parte de este Orbit.";
+            return View("OrbitInside", new { link = link });
+        }
 
-//         bool agregado = await miBd.AgregarUsuarioAOrbit(idUsuario.Value, orbit.id);
+        bool agregado = await miBd.AgregarUsuarioAOrbit(idUsuario.Value, orbit.id);
 
-//         if (agregado)
-//         {
-//             ViewBag.Mensaje = "Te uniste correctamente al Orbit.";
-//             return RedirectToAction("OrbitInside", new { link = link });
-//         }
-//         else
-//         {
-//             ViewBag.Mensaje = "Hubo un problema al unirte al Orbit.";
-//             return View();
-//         }
-//     }
-// }
+        if (agregado)
+        {
+            ViewBag.mensaje = "Te uniste correctamente al Orbit.";
+            usu.orbits.Add(orbit);
+            orbit.usuarios.Add(usu);
+            return View("OrbitInside", new { link = link });
+        }
+        else
+        {
+            ViewBag.Mensaje = "Hubo un problema al unirte al Orbit.";
+            return View("MenuOrbit");
+        }
+    }
+}
 
 
       

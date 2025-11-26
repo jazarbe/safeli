@@ -20,7 +20,7 @@
     </button>
 </form>
 
-<section>
+<!-- <section>
     <h1>Safeli Team</h1>
     <div class = "usuario-orbit">
         <img src="/images/foto-jaz.jpg" alt="foto-jaz">
@@ -54,19 +54,16 @@
         </div>
         
     </div>
-</section>
-<!-- <h2>@ViewBag.Orbitname</h2>
+</section> -->
+
+<h2>@ViewBag.nombre</h2>
 <div class = "ListaUsuarios">
-    @if (ViewBag.orbitsUsuarios != null)
+    @if (ViewBag.usuarios != null)
     {
-        @foreach (Orbit item in ViewBag.orbitsUsuarios)
+        @foreach (Usuario item in ViewBag.usuarios)
         {
             <img src='@item.foto' alt="foto">
-            <h5>@item.name</h5>
+            <h5>@item.nombre</h5>
         }
     }
-    else
-    {
-        <h2>@ViewBag.mensaje</h2>
-    }
-</div> -->
+</div>
