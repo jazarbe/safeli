@@ -40,7 +40,7 @@ public class BD{
  
     public async Task<Usuario> LogIn(string email, string contraseña){
         using(var connection = new NpgsqlConnection(_connectionString)){
-            string query = "SELECT * FROM \"Usuarios\" WHERE email = @pEmail  AND contraseña = @pPassword";
+            string query = "SELECT id, nombre, apellido, email, \"nroTelefono\", username, foto, bio, contraseña, \"contactoEmergencia\" FROM \"Usuarios\" WHERE email = @pEmail  AND contraseña = @pPassword";
             return await connection.QueryFirstOrDefaultAsync<Usuario>(query, new {pEmail = email, pPassword = contraseña});
         }
     }
@@ -88,7 +88,7 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
 }
     public async Task<Usuario> BuscarUsuarioPorId(int idBuscado){
         using(var connection = new NpgsqlConnection(_connectionString)){
-            string query = "SELECT * FROM \"Usuarios\" WHERE id = @pIdBuscado";
+            string query = "SELECT id, nombre, apellido, email, \"nroTelefono\", username, foto, bio, contraseña, \"contactoEmergencia\" FROM \"Usuarios\" WHERE id = @pIdBuscado";
             return await connection.QueryFirstOrDefaultAsync<Usuario>(query, new {pIdBuscado = idBuscado});
         }
     }
@@ -105,7 +105,7 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
     public async Task<Usuario> BuscarUsuarioPorUsername(string userBuscado){
         Usuario usuarioBuscado = null;
         using(var connection = new NpgsqlConnection(_connectionString)){
-            string query = "SELECT * FROM \"Usuarios\" WHERE username = @puserBuscado";
+            string query = "SELECT id, nombre, apellido, email, \"nroTelefono\", username, foto, bio, contraseña, \"contactoEmergencia\" FROM \"Usuarios\" WHERE username = @puserBuscado";
             return await connection.QueryFirstOrDefaultAsync<Usuario>(query, new {puserBuscado = userBuscado});
         }
     }
