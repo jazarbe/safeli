@@ -40,7 +40,7 @@ public class BD{
  
     public async Task<Usuario> LogIn(string email, string contraseña){
         using(var connection = new NpgsqlConnection(_connectionString)){
-            string query = "SELECT id, nombre, apellido, email, \"nroTelefono\", username, foto, bio, contraseña, \"contactoEmergencia\" FROM \"Usuarios\" WHERE email = @pEmail  AND contraseña = @pPassword";
+            string query = "SELECT * FROM \"Usuarios\" WHERE email = @pEmail  AND contraseña = @pPassword";
             return await connection.QueryFirstOrDefaultAsync<Usuario>(query, new {pEmail = email, pPassword = contraseña});
         }
     }

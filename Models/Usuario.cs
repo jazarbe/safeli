@@ -1,5 +1,5 @@
 namespace info360.Models;
-
+using System.Globalization;
 
 public class Usuario
 {
@@ -11,7 +11,7 @@ public class Usuario
     public string username {get; private set;}
     public string foto {get; private set;}
     public string bio {get; private set;}
-    public DateTime fechaNacimiento {get; private set;}
+    public DateTime fechaNacimiento {get; set;}
     public string contraseña {get; private set;}
     public List<Orbit> orbits {get; private set;}
     public string ubicacion {get; private set;}
@@ -20,7 +20,7 @@ public class Usuario
     public bool confirmado {get; private set;}
 
     public Usuario(){}
-    public Usuario(string nombre, string apellido, string email, int nroTelefono, string username, string foto, string bio, DateTime fechaNac, string contraseña, int contactoEmergencia)
+    public Usuario(string nombre, string apellido, string email, int nroTelefono, string username, string foto, string bio, string fechaNac, string contraseña, int contactoEmergencia)
     {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -29,7 +29,22 @@ public class Usuario
         this.username = username;
         this.foto = foto;
         this.bio = bio;
-        this.fechaNacimiento = fechaNac;
+        this.fechaNacimiento = DateTime.ParseExact(fechaNac, "d/M/yyyy", CultureInfo.InvariantCulture);
+        this.contraseña = contraseña;
+        this.orbits = new List<Orbit>();
+        this.carpetas = new List<Carpeta>();
+        this.contactoEmergencia = contactoEmergencia;
+    }
+    public Usuario(string nombre, string apellido, string email, int nroTelefono, string username, string foto, string bio, DateOnly fechaNac, string contraseña, int contactoEmergencia)
+    {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.nroTelefono = nroTelefono;
+        this.username = username;
+        this.foto = foto;
+        this.bio = bio;
+        this.fechaNacimiento = fechaNac.ToDateTime(TimeOnly.MinValue);
         this.contraseña = contraseña;
         this.orbits = new List<Orbit>();
         this.carpetas = new List<Carpeta>();
