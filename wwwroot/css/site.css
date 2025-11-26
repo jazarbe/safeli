@@ -31,6 +31,10 @@ img{
 }
 
 /*CHECKBOX - LOGIN*/
+
+.logIn-css{
+  margin-top: -20%;
+}
 .checkbox-container {
   display: flex;
   align-items: center;
@@ -58,6 +62,7 @@ footer{
   align-items: center;
   z-index: 1000;
 }
+
 
 .sos-button-css{
   position: absolute;
@@ -1012,13 +1017,18 @@ h2{
     transition: 0.3s ease;
     border-radius: 20px ;
 }
+
 .ajustes-cerrar{
-    border: 1px solid (--color1);
+    border: 2px solid var(--rojo);
     border-radius: 15px;
-    color: (--color1);
-    background-color: #FFFFFF;
-    margin-top: 10%;
-  
+    background-color: var(--blanco);
+    margin-top: 5%;
+}
+
+.ajustes-cerrar a{
+  color: var(--rojo);
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .ajustes-1{
@@ -1036,17 +1046,93 @@ h2{
   max-height: 90vh;
 }
 
-.ajustes a, .ajustes-1 a{
+.ajustes a{
   text-decoration: none;
   color: white;
 }
+
+
+.modal-content{
+   border-radius: 20px;
+    padding: 10px 5px;
+    border: none;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+/* Header del modal */
+.modal-header {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.modal-title {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+/* Botón de cerrar */
+.btn-close {
+    filter: brightness(0) invert(1);
+    background-color: #e74c3c;
+    border-radius: 50%;
+    width: 27px;
+    height: 27px;
+    opacity: 1;
+}
+
+/* Inputs */
+.modal-body .form-control,
+.modal-body textarea {
+    border-radius: 12px;
+    border: 1.5px solid #dcdcdc;
+    padding: 10px 12px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.modal-body .form-control:focus,
+.modal-body textarea:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74,144,226,0.25);
+}
+
+/* Foto */
+.modal-body img {
+    border: 3px solid #EFEFEF;
+}
+
+/* Footer del modal */
+.modal-footer {
+    border-top: none;
+}
+
+/* Botón de guardar */
+.modal-footer .btn-primary {
+    background-color: var(--color1);
+    border: none;
+    padding: 10px 18px;
+    font-size: 16px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+
+
+/* Botón cancelar */
+.modal-footer .btn-secondary {
+    background-color: var(--blanco);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+}
+
 
 /* HOME */
 iframe {
   width: 100%;
   position: absolute;
   top: 3.65%;
-  height: 825px;
+  height: 740px;
   z-index: 0000;
   border: none;
 }
@@ -1068,6 +1154,11 @@ iframe {
 }
 
 /* PERMISOS */
+
+.acc-permisos{
+  margin-top: 40%;
+}
+
 .permisos{
   display: flex;
   flex-direction: row;
@@ -1279,4 +1370,15 @@ section h1{
 .landing-button{
   margin-top: 10%;
   text-decoration: none;
+}
+
+/* AYUDA */
+
+.acc-ayuda{
+  margin-top: 40%;
+}
+
+/* TUTORIAL */
+.acc-tuto{
+  margin-top: 40%;
 }

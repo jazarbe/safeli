@@ -46,6 +46,16 @@ public class AccountController : Controller
         return View();
     }
 
+     public IActionResult Ayuda()
+    {
+        return View();
+    }
+
+     public IActionResult Tutorial()
+    {
+        return View();
+    }
+
     public IActionResult LogOut()
     {
         HttpContext.Session.Clear();
