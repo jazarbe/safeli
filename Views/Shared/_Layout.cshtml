@@ -21,17 +21,16 @@
     <header>
         <!-- if para ver cuando usar cada header --> 
         <div class="borde"></div>
-        @if (ViewContext.RouteData.Values["action"].ToString() != "Index" && ViewContext.RouteData.Values["action"].ToString() != "Login" && ViewContext.RouteData.Values["action"].ToString() != "SignUp" && ViewContext.RouteData.Values["action"].ToString() != "ForgotPassword"){
-            @if(ViewContext.RouteData.Values["action"].ToString() == "Permisos" || ViewContext.RouteData.Values["action"].ToString() == "ViewCrear" || ViewContext.RouteData.Values["action"].ToString() == "Tutorial" || ViewContext.RouteData.Values["action"].ToString() == "Ayuda"){
+        @if (ViewContext.RouteData.Values["action"].ToString() != "Index" && ViewContext.RouteData.Values["action"].ToString() != "Login"  && ViewContext.RouteData.Values["action"].ToString() != "LogIn"&& ViewContext.RouteData.Values["action"].ToString() != "SignUp" && ViewContext.RouteData.Values["action"].ToString() != "ForgotPassword"){
+            @if(ViewContext.RouteData.Values["action"].ToString() != "Index"){
                 <a href="javascript:history.back()" class="back">
-    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
-        <path fill="#1f2b99" d="m4 10l-.354.354L3.293 10l.353-.354zm16.5 8a.5.5 0 0 1-1 0zM8.646 15.354l-5-5l.708-.708l5 5zm-5-5.708l5-5l.708.708l-5 5zM4 9.5h10v1H4zM20.5 16v2h-1v-2zM14 9.5a6.5 6.5 0 0 1 6.5 6.5h-1a5.5 5.5 0 0 0-5.5-5.5z"/>
-    </svg>
-</a>
-
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
+                        <path fill="#1f2b99" d="m4 10l-.354.354L3.293 10l.353-.354zm16.5 8a.5.5 0 0 1-1 0zM8.646 15.354l-5-5l.708-.708l5 5zm-5-5.708l5-5l.708.708l-5 5zM4 9.5h10v1H4zM20.5 16v2h-1v-2zM14 9.5a6.5 6.5 0 0 1 6.5 6.5h-1a5.5 5.5 0 0 0-5.5-5.5z"/>
+                    </svg>
+                </a>
             }
             <img class="over-iframe" src="/images/logotipo_color.png" alt="Logotipo SAFELI">
-            @if(ViewContext.RouteData.Values["action"].ToString() != "SOS" && ViewContext.RouteData.Values["action"].ToString() != "Login"){
+            @if(ViewContext.RouteData.Values["action"].ToString() != "SOS" && ViewContext.RouteData.Values["action"].ToString() != "Login" && ViewContext.RouteData.Values["action"].ToString() != "LogIn"){
                 
                 <div class="noti-css">
                     <button type = "button" class = "button-noti" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"aria-controls="offcanvasRight">
@@ -57,12 +56,6 @@
             
         }
         else{
-             <a href="javascript:history.back()" class="back">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
-                    <path fill="#1f2b99" d="m4 10l-.354.354L3.293 10l.353-.354zm16.5 8a.5.5 0 0 1-1 0zM8.646 15.354l-5-5l.708-.708l5 5zm-5-5.708l5-5l.708.708l-5 5zM4 9.5h10v1H4zM20.5 16v2h-1v-2zM14 9.5a6.5 6.5 0 0 1 6.5 6.5h-1a5.5 5.5 0 0 0-5.5-5.5z"/>
-                </svg>
-            </a>
-
             <img src="/images/imagotipo_color.png" alt="Imagotipo SAFELI">
         }
     </header>
@@ -73,7 +66,7 @@
 
     <footer>
     <!-- solo cuando está en session -->
-    @if (ViewContext.RouteData.Values["action"].ToString() != "Index" && ViewContext.RouteData.Values["action"].ToString() != "Login" && ViewContext.RouteData.Values["action"].ToString() != "SignUp" && ViewContext.RouteData.Values["action"].ToString() != "Permisos" && ViewContext.RouteData.Values["action"].ToString() != "ForgotPassword"){
+    @if (ViewContext.RouteData.Values["action"].ToString() != "Index" && ViewContext.RouteData.Values["action"].ToString() != "Login" && ViewContext.RouteData.Values["action"].ToString() != "LogIn" && ViewContext.RouteData.Values["action"].ToString() != "SignUp" && ViewContext.RouteData.Values["action"].ToString() != "Permisos" && ViewContext.RouteData.Values["action"].ToString() != "ForgotPassword"){
         <div>
             <ul>
                 <li>

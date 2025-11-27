@@ -51,9 +51,8 @@ public class OrbitController : Controller
             }
             int idOrbit = await miBd.AgregarOrbit(name, nombreArchivo);
             await miBd.AgregarUsuarioAOrbit(id.Value, idOrbit);
+            return View("MenuOrbit");
         }
-        // loader
-        return View("MenuOrbit");
     }
 
     public async Task<IActionResult> MenuOrbit()
