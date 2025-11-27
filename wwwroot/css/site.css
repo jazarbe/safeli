@@ -16,7 +16,12 @@
 }
 body{
   position: relative;
+}
+
+main {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 img{

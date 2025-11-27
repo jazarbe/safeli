@@ -269,16 +269,8 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
             if(foto == null) foto = "/images/default.jpg";
 
             string query = "INSERT INTO \"Orbits\" (nombre, foto, link) VALUES (@pname, @pfoto, @plink) returning id";
-            return await connection.ExecuteAsync(query, new {pname = name, pfoto = foto, plink = link});
+            return await connection.QuerySingleAsync<int>(query, new {pname = name, pfoto = foto, plink = link});
         }
     }
 
-    public async Task AgregarOrbitUsuario(int id, int idUsuario){
-        using(var connection = new NpgsqlConnection(_connectionString))
-        {
-            string query = "INSERT INTO \"OrbitUsuario\" (\"idUsuario\", \"idOrbit\") VALUES 1, 28";
-            await connection.ExecuteAsync(query);
-        }
-    }
 }
-// , new {pidUsuario = idUsuario, pId = id}

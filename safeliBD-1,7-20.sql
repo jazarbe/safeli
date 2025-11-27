@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.0
 
--- Started on 2025-11-20 09:06:44
+-- Started on 2025-11-27 10:38:24
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -994,15 +994,6 @@ ALTER TABLE ONLY public."Usuarios" ALTER COLUMN id SET DEFAULT nextval('public."
 -- Data for Name: Orbits; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."Orbits" VALUES (1, 'ajajaja', '/images/default.jpg', 'fb1be22561cd4b4bb83838870a261e4b');
-INSERT INTO public."Orbits" VALUES (2, 'git', 'Captura de pantalla 2025-11-20 084947.png', '542aa0ee013841bb8198c7da763d083d');
-INSERT INTO public."Orbits" VALUES (3, 'git', 'Captura de pantalla 2025-11-20 084947.png', '869c88c6360f4e998b7f075664462e4e');
-INSERT INTO public."Orbits" VALUES (4, 'git', 'Captura de pantalla 2025-11-20 084947.png', 'c1a5a3cc757e4a6b8ad04992f645f2e5');
-INSERT INTO public."Orbits" VALUES (5, 'git', 'Captura de pantalla 2025-11-20 084947.png', '9a687cb99f74425e807d36253ac11085');
-INSERT INTO public."Orbits" VALUES (6, 'git', 'Captura de pantalla 2025-11-20 084947.png', '9ddba485143a4d16b77aa70ed00d262c');
-INSERT INTO public."Orbits" VALUES (7, 'git', 'Captura de pantalla 2025-11-20 084947.png', 'dcf85091d59148b4bb8366ad4101576f');
-INSERT INTO public."Orbits" VALUES (8, 'git', 'Captura de pantalla 2025-11-20 084947.png', '8befba643720403a96fac54b319514ac');
-INSERT INTO public."Orbits" VALUES (9, 'git', 'Captura de pantalla 2025-11-20 084947.png', '0f3b702121d14b7a911ea308b1e89a22');
 
 
 --
@@ -1019,11 +1010,10 @@ INSERT INTO public."Orbits" VALUES (9, 'git', 'Captura de pantalla 2025-11-20 08
 -- Data for Name: Usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."Usuarios" VALUES (2, 'Diana', 'Park', 'dianairenepark08@gmail.com', 1165006568, 'ddpyi', 'foto-dai.jfif', '', '2008-11-27', 'holadai', NULL, 911, NULL, NULL);
-INSERT INTO public."Usuarios" VALUES (3, 'Joaquin', 'Iribas', 'soyjoaquin.i@gmail.com', 1150523437, 'AuraMan', 'IMG_8121.jpeg', '', '2009-06-05', 'miSafeli.360', NULL, 911, NULL, NULL);
-INSERT INTO public."Usuarios" VALUES (4, 'Ciro', 'Perazzo', 'ciroperazzo08@gmail.com', 0, 'cirif', 'default.jpg', '', '2008-10-20', 'hola', NULL, 911, NULL, NULL);
-INSERT INTO public."Usuarios" VALUES (1, 'Jazmin', 'Arias Berlin', 'jazminariasberlin@gmail.com', 1139448264, 'jazarbe', 'foto-jaz.jpg', '', '2009-03-16', 'prueba3', NULL, 911, NULL, 'yatay');
-INSERT INTO public."Usuarios" VALUES (5, 'a', 'a', 'a@mail.com', 0, 'a', 'default.jpg', '', '2025-01-01', 'a', NULL, 0, false, NULL);
+INSERT INTO public."Usuarios" VALUES (6, 'Joaco', 'iribas', 'joaquiniribas@gmail.com', 1120203434, 'Aura2Man', 'IMG_8121.jpeg', '', '2000-02-01', 'miSafeli.360', NULL, 1180809090, false, NULL);
+INSERT INTO public."Usuarios" VALUES (7, 'Jazmin', 'Arias', 'jazminariasberlin@gmail.com', 1139448264, 'jazarbe', 'foto-jaz.jpg', '', '2009-03-16', 'prueba4', NULL, 0, false, NULL);
+INSERT INTO public."Usuarios" VALUES (8, 'Diana', 'Park', 'dianairenepark08@gmail.com', 11, 'ddpyi', 'foto-dai.jfif', '', '2008-11-27', 'holadai', NULL, 0, false, NULL);
+INSERT INTO public."Usuarios" VALUES (9, 'Ciro', 'Perazzo', 'ciroperazzo08@gmail.com', 0, 'cirif', 'default.jpg', '', '2008-10-20', 'hola', NULL, 0, false, NULL);
 
 
 --
@@ -1176,7 +1166,7 @@ SELECT pg_catalog.setval('public."OrbitUsuario_idUsuario_seq"', 1, false);
 -- Name: OrbitUsuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."OrbitUsuario_id_seq"', 1, true);
+SELECT pg_catalog.setval('public."OrbitUsuario_id_seq"', 19, true);
 
 
 --
@@ -1185,7 +1175,7 @@ SELECT pg_catalog.setval('public."OrbitUsuario_id_seq"', 1, true);
 -- Name: Orbits_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Orbits_id_seq"', 9, true);
+SELECT pg_catalog.setval('public."Orbits_id_seq"', 24, true);
 
 
 --
@@ -1203,7 +1193,7 @@ SELECT pg_catalog.setval('public."Usuarios_idDestinos_seq"', 1, false);
 -- Name: Usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Usuarios_id_seq"', 5, true);
+SELECT pg_catalog.setval('public."Usuarios_id_seq"', 9, true);
 
 
 --
@@ -1563,7 +1553,7 @@ ALTER TABLE ONLY public."CarpetasUsuarios"
 REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 
 
--- Completed on 2025-11-20 09:06:44
+-- Completed on 2025-11-27 10:38:24
 
 --
 -- PostgreSQL database dump complete

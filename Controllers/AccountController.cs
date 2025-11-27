@@ -30,10 +30,9 @@ public class AccountController : Controller
     public async Task<IActionResult> LogIn(string email, string password)
     {
         Usuario usuario = await miBd.LogIn(email, password); //ns si está bien
-        string msg = "";
         if(usuario == null){
-            msg = "Nombre de usuario o contraseña incorrectos";
-            return RedirectToAction("Index", "Home", new { msg = msg });
+            ViewBag.mensaje = "Nombre de usuario o contraseña incorrectos";
+            return View("Login");
         }
         else{
             HttpContext.Session.SetInt32("IdUsuario", usuario.id);
@@ -43,6 +42,7 @@ public class AccountController : Controller
 
     public IActionResult Login()
     {
+        ViewBag.mensaje = "";
         return View();
     }
 

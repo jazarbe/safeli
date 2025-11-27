@@ -50,7 +50,7 @@ public class OrbitController : Controller
                 }
             }
             int idOrbit = await miBd.AgregarOrbit(name, nombreArchivo);
-            await miBd.AgregarOrbitUsuario(idOrbit, id.Value);
+            await miBd.AgregarUsuarioAOrbit(id.Value, idOrbit);
         }
         // loader
         return View("MenuOrbit");
@@ -123,6 +123,11 @@ public async Task<IActionResult> Unirse(string link)
         if (agregado)
         {
             ViewBag.mensaje = "Te uniste correctamente al Orbit.";
+            Console.WriteLine("usu es null? " + (usu == null));
+            Console.WriteLine("orbit es null? " + (orbit == null));
+            Console.WriteLine("usu.orbits es null? " + (usu?.orbits == null));
+            Console.WriteLine("orbit.usuarios es null? " + (orbit?.usuarios == null));
+
             usu.orbits.Add(orbit);
             orbit.usuarios.Add(usu);
             return View("OrbitInside", new { link = link });
