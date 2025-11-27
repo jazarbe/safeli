@@ -2,58 +2,250 @@
     ViewData["Title"] = "Tutorial";
 }
 
-@* REHACER TUTORIAL *@
 <div class = "acc-tuto">
-        <div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-        <h2 class="accordion-header">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            ¿ASDSAD?
-        </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+    <div class="accordion" id="accordionExample">
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Home
+                </button>
+            </h2>
+
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                <!-- TUTORIAL - HOME -->
+                    <div class="card-tuto">
+
+                        <img src="/images/homeTUTO.png" class="card-img-top" alt="HOME TUTORIAL">
+                        
+                        <div class="card-body">
+                            <p class="card-text">Este es el INICIO, acá ves un mapa con la ubicación de cada uno de los usuarios que tenes en tus ORBITS</p>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
-    </div>
     
-    <div class="accordion-item">
-        <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            ¿asdsad?
-        </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-            <div class="card" style="width: 18rem;">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Notificaciones
+                </button>
+            </h2>
 
-                @* PONER LAS FOTOS DEL TUTORIAL *@
-                <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+
+                    <!-- NOTI -->
+                    <div class="card-tuto" >
+
+                        <img src="/images/notiTUTO.png" class="card-img-top" alt="HOME TUTORIAL">
+                        
+                        <img src="/images/Notificaciones.png" alt="NOTIFICACIONES">
+                        
+                        <div class="card-body">
+                            <p class="card-text">Acá vas a poder ver las notificaciones
+                        </div>
                     </div>
+                </div>
             </div>
         </div>
-        </div>
-    </div>
 
-    <div class="accordion-item">
-        <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Accordion Item #3
-        </button>
-        </h2>
-        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-            <strong>This is the third item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Ubicación
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <!-- NOTI -->
+                    <div class="card-tuto">
+
+                        <img src="/images/ubiTUTO.png" class="card-img-top" alt="HOME TUTORIAL">
+                        
+                        <div class="card-body">
+                            <p class="card-text">Acá ingresas tu ubicación y se va a ver actualizada en tu perfil
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Pie de página
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    
+                    <div class="accordion" id="accordionFooter">
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                        Inicio
+                                    </button>
+                                </h2>
+
+                                <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordionFooter">
+                                    <div class="accordion-body2">
+                                        <img src="/images/BBTHome-TUTP.png" alt="INICIO BTN">
+                                        
+                                        <div class="card-body">
+                                            <p class="card-text">Tocando el botón INICIO, vas a poder volver nuevamente al Inicio
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                        Votos
+                                    </button>
+                                </h2>
+
+                                <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionFooter">
+                                    
+                                    <div class="accordion-body">
+                                        
+                                        <div class="card-tuto">
+                                            <img src="/images/votosTUTO.png" alt="votos BTN">
+                                            <img src="/images/VOTOSTUTO 0.png" alt="VOTOS BTN">
+                                            <img src="/images/VOTOSTUTO-1.png" alt="VOTOS BTN">
+                                            <img src="/images/VOTOSTUTO-2.png" alt="VOTOS BTN">
+
+                                            <div class="card-body">
+                                                <p class="card-text">Tocando el botón VOTOS, vas a poder ingresar a los votos.
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                        SOS
+                                    </button>
+                                </h2>
+
+                                <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionFooter">
+                                    
+                                    <div class="accordion-body">
+                                        
+                                        <div class="card-tuto">
+                                            <img src="/images/TUTO - SOS.png" alt="sos BTN">
+                                            <img src="/images/SOS.png" alt="sos BTN">
+                                            <img src="/images/SOS-1.png" alt="sos BTN">
+
+                                            <div class="card-body">
+                                                <p class="card-text">Tocando el botón SOS, vas a poder llamar a los contactos y servicios de emergencia 
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                        ORBIT
+                                    </button>
+                                </h2>
+
+                                <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionFooter">
+                                    
+                                    <div class="accordion-body">
+                                        
+                                        <div class="card-tuto">
+                                            <img src="/images/TUTO - ORBIT.png" alt="ORBIT BTN">
+                                            <img src="/images/Orbit Inicio.png" alt="ORBIT BTN">
+                                            <img src="/images/Orbit Inicio-1.png" alt="ORBIT BTN">
+                                            <img src="/images/Orbit Inicio-2.png" alt="ORBIT BTN">
+                                            <img src="/images/CREAR ORBIT.png" alt="ORBIT BTN">
+                                            
+
+                                            <div class="card-body">
+                                                <p class="card-text">Tocando el botón ORBIT, vas a poder crear, ver y agregar miembros a tu grupo social, llamado ORBITS 
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                            Menu Orbit
+                                        </button>
+                                    </h2>
+
+                                    <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionFooter">
+                                        
+                                        <div class="accordion-body">
+                                            
+                                            <div class="card-tuto">
+                                                <img src="/images/Menu Orbit.png" alt="MENU ORBIT BTN">
+                                                <img src="/images/Orbit Inside.png" alt="MENU ORBIT BTN">
+                                                <img src="/images/Orbit Inside-1.png" alt="MENU ORBIT BTN">
+                                                <img src="/images/Agregar al Orbit.png" alt="MENU ORBIT BTN">
+
+                                                
+
+                                                <div class="card-body">
+                                                    <p class="card-text">Si tenes ORBITS
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                            Perfil
+                                        </button>
+                                    </h2>
+
+                                    <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#accordionFooter">
+                                        
+                                        <div class="accordion-body">
+                                            
+                                            <div class="card-tuto">
+                                                <img src="/images/TUTO - PERFIL.png" alt="Perfil BTN">
+                                                <img src="/images/otro perfil.png" alt="Perfil BTN">
+                                                <img src="/images/otro perfil-1.png" alt="Perfil BTN">
+                                                <img src="/images/otro perfil-2.png" alt="Perfil BTN">
+                                                <img src="/images/otro perfil-3.png" alt="Perfil BTN">
+                                                <img src="/images/otro perfil-4.png" alt="Perfil BTN">
+                                                <img src="/images/otro perfil-5.png" alt="Perfil BTN">
+
+
+                                                <div class="card-body">
+                                                    <p class="card-text">Tocando el botón PERFIL, vas a poder configurar tu perfil, resolver tus dudas, configurar los permisos y cerrar sesión 
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                            </div>
+                    
+                </div>
+            </div>
         </div>
-    </div>
+
     </div>
 </div>

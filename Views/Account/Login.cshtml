@@ -1,13 +1,16 @@
 @{
-    ViewData["Title"] = "Log In";
+    ViewData["Title"] = "Login";
 }
 
 <div class = "logIn-css">
 
+    <div class = "mensaje-error">
         @if(ViewBag.mensaje != "")
         {
             <h1 class="error">@ViewBag.mensaje</h1>
-        }   
+        } 
+    </div>
+          
 
     <form method="post" action='@Url.Action("LogIn", "Account")'>
     <div class = "input-center-log">
@@ -28,7 +31,7 @@
         </div>
 
         <div class = "inicio-button">
-            <button type="submit">Iniciar Sesión</button><br>
+            <h3><button type="submit">Iniciar Sesión</button><br></h3>
         </div>
     </form>
 
@@ -38,7 +41,7 @@
         
     <form method="post" action='@Url.Action("SignUp", "Account")'>
         <div class = "inicio-button">
-            <button type = "submit"> Registrate</button>
+            <h3><button type = "submit"> Registrate</button></h3>
         </div>
     </form>
 

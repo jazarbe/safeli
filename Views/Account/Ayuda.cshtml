@@ -12,12 +12,12 @@
 
             <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
             
-            @* PONER LA MISMA CLASE QUE OTROS BOTONES *@
-                <div class="accordion-body">
-                    <button type="button" class="tuto-css"> 
-                        <a href='@Url.Action("Tutorial", "Account")'>Ir al tutorial</a>
-                    </button>     
-                </div>
+                <form method="post" action='@Url.Action("Tutorial", "Account")'>
+                    <div class = "inicio-button">
+                        <h3><button type = "submit">Ir al tutorial</button></h3>
+                    </div>
+                </form>
+
             </div>
 
     <div class="accordion-item">

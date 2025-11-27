@@ -26,12 +26,15 @@
         <input type="Date" name="fecha" id="Fecha" placeholder ="Fecha de Nacimiento" required/>
         <input type="file" name="foto" id="Foto" placeholder="Foto de Perfil">
         
-        <div class = "create-button">
-            <button type="submit">Crear Cuenta</button><br>
-        </div>
+
+        <div class = "inicio-button">
+            <h3><button type = "submit"> Crear cuenta</button></h3>
+        </div>    
+
     </div>
 </form>
 
-<div class = "sign-a">
-    <a href='@Url.Action("Index", "Home")'>Volver al Inicio de Sesión</a><br>
-</div>
+    <div class = "sign-a">
+            <h3> <a href='@Url.Action("Login", "Account")'>Volver al Inicio de Sesión</a><br></h3>
+    </div>    
+

@@ -46,10 +46,8 @@
   </div>
 </div>
 
-<div class = "landing-button">
-    <a href='@Url.Action("Login", "Account")'>
-        <button>Acceder</button>
-    </a>
-</div>
-
-<!-- BUTTON PARA ACCEDER A LOGIN -->
+<form method="post" action='@Url.Action("Login", "Account")'>
+        <div class = "inicio-button">
+            <h3><button type = "submit"> Acceder</button></h3>
+        </div>
+    </form>
