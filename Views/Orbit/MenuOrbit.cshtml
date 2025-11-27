@@ -2,12 +2,16 @@
     ViewData["Title"] = "Menu";
 }
 <div class = "MenuOrbit-content">
-        @if (ViewBag.orbits != null)
+    @if (ViewBag.orbits != null)
     {
+        int i = 0;
+        <p>hola</p>
         @foreach (Orbit item in ViewBag.orbits)
         {
+            <p>@i</p>
             <img src='@item.foto' alt="foto">
             <h5>@item.name</h5>
+            i++;
         }
     }
     else
