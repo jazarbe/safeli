@@ -52,12 +52,12 @@
     
 
     <div class="modal fade" id="editProfileModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title">Editar Perfil</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              <h5 class="modal-title">Editar Perfil</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
             <form method="post" enctype="multipart/form-data" action="@Url.Action("EditarPerfil","Account")">
@@ -98,31 +98,14 @@
                         <label class="form-label">Contacto de Emergencia</label>
                         <input type="text" class="form-control" name="ContactoEmergencia" value="@ViewBag.ContactoEmergencia">
                     </div>
-
                 </div>
 
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-        </div>
-      </form>
-
-    </div>
-  </div>
-</div>
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <div class="modal-header">
-            <h5 class="modal-title">Editar Perfil</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+              </form>
           </div>
-
         </div>
-      </div>
     </div>
-
-
-
-    @* HACER QUE CON EL LAPIZ SE PUEDA EDITARRRRR 20/11/15:57 *@
+</div>

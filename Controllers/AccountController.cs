@@ -183,7 +183,7 @@ public class AccountController : Controller
         ViewBag.Biografia = user.bio;
         ViewBag.Foto = "/images/" + user.foto;
         ViewBag.Ubicacion = user.ubicacion;
-        return View(); 
+        return View();
     }
    
     [HttpPost]

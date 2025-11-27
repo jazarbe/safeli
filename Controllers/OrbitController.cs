@@ -49,7 +49,8 @@ public class OrbitController : Controller
                     foto.CopyTo(stream);
                 }
             }
-            await miBd.AgregarOrbit(name, nombreArchivo, id.Value);
+            int idOrbit = await miBd.AgregarOrbit(name, nombreArchivo);
+            await miBd.AgregarOrbitUsuario(idOrbit, id.Value);
         }
         // loader
         return View("MenuOrbit");
