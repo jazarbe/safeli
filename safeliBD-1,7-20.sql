@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.0
 
--- Started on 2025-11-27 10:38:24
+-- Started on 2025-11-27 15:31:59
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -1166,7 +1166,7 @@ SELECT pg_catalog.setval('public."OrbitUsuario_idUsuario_seq"', 1, false);
 -- Name: OrbitUsuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."OrbitUsuario_id_seq"', 19, true);
+SELECT pg_catalog.setval('public."OrbitUsuario_id_seq"', 36, true);
 
 
 --
@@ -1175,7 +1175,7 @@ SELECT pg_catalog.setval('public."OrbitUsuario_id_seq"', 19, true);
 -- Name: Orbits_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Orbits_id_seq"', 24, true);
+SELECT pg_catalog.setval('public."Orbits_id_seq"', 48, true);
 
 
 --
@@ -1553,7 +1553,7 @@ ALTER TABLE ONLY public."CarpetasUsuarios"
 REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 
 
--- Completed on 2025-11-27 10:38:24
+-- Completed on 2025-11-27 15:31:59
 
 --
 -- PostgreSQL database dump complete
