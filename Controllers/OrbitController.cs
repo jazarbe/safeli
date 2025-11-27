@@ -32,6 +32,7 @@ public class OrbitController : Controller
         return RedirectToAction("OrbitInside", "OrbitController", new {orbit = orbit});
     }
 
+    [HttpPost]
     public async Task<IActionResult> Crear(string name, IFormFile foto)
     {
         int? id = HttpContext.Session.GetInt32("IdUsuario");
@@ -50,8 +51,8 @@ public class OrbitController : Controller
                 }
             }
             int idOrbit = await miBd.AgregarOrbit(name, nombreArchivo);
-            await miBd.AgregarUsuarioAOrbit(id.Value, idOrbit);
-            return View("MenuOrbit");
+            Orbit orbit = await miBd.BuscarOrbitPorId(idOrbit);
+            return RedirectToAction("Unirse", "Orbit", new { link = orbit.link });
         }
     }
 
@@ -95,51 +96,47 @@ public class OrbitController : Controller
     }
 
 
-[HttpPost]
-public async Task<IActionResult> Unirse(string link)
-{
-    int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
-    if (idUsuario == null) return RedirectToAction("Login", "Account");
+    [HttpGet]
+    public async Task<IActionResult> Unirse(string link)
+    {
+        int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
+        if (idUsuario == null) return RedirectToAction("Login", "Account");
 
-    else{
-        Usuario usu = await miBd.BuscarUsuarioPorId(idUsuario.Value);
-        Orbit orbit = await miBd.BuscarOrbitPorLink(link);
-        if (orbit == null)
-        {
-            ViewBag.mensaje = "El enlace no es válido o el Orbit no existe.";
-            return View("MenuOrbit");
+        else{
+            Usuario usu = await miBd.BuscarUsuarioPorId(idUsuario.Value);
+            Orbit orbit = await miBd.BuscarOrbitPorLink(link);
+            if (orbit == null)
+            {
+                ViewBag.mensaje = "El enlace no es válido o el Orbit no existe.";
+                return View("MenuOrbit");
+            }
+
+            bool yaUnido = await miBd.UsuarioEnOrbit(idUsuario.Value, orbit.id);
+            if (yaUnido)
+            {
+                ViewBag.Mensaje = "Ya sos parte de este Orbit.";
+                return View("OrbitInside", new { link = link });
+            }
+
+            bool agregado = await miBd.AgregarUsuarioAOrbit(idUsuario.Value, orbit.id);
+
+            if (agregado)
+            {
+                ViewBag.mensaje = "Te uniste correctamente al Orbit.";
+                Console.WriteLine("usu es null? " + (usu == null));
+                Console.WriteLine("orbit es null? " + (orbit == null));
+                Console.WriteLine("usu.orbits es null? " + (usu?.orbits == null));
+                Console.WriteLine("orbit.usuarios es null? " + (orbit?.usuarios == null));
+
+                usu.orbits.Add(orbit);
+                orbit.usuarios.Add(usu);
+                return View("OrbitInside", new { link = link });
+            }
+            else
+            {
+                ViewBag.Mensaje = "Hubo un problema al unirte al Orbit.";
+                return View("MenuOrbit");
+            }
         }
-
-        bool yaUnido = await miBd.UsuarioEnOrbit(idUsuario.Value, orbit.id);
-        if (yaUnido)
-        {
-            ViewBag.Mensaje = "Ya sos parte de este Orbit.";
-            return View("OrbitInside", new { link = link });
-        }
-
-        bool agregado = await miBd.AgregarUsuarioAOrbit(idUsuario.Value, orbit.id);
-
-        if (agregado)
-        {
-            ViewBag.mensaje = "Te uniste correctamente al Orbit.";
-            Console.WriteLine("usu es null? " + (usu == null));
-            Console.WriteLine("orbit es null? " + (orbit == null));
-            Console.WriteLine("usu.orbits es null? " + (usu?.orbits == null));
-            Console.WriteLine("orbit.usuarios es null? " + (orbit?.usuarios == null));
-
-            usu.orbits.Add(orbit);
-            orbit.usuarios.Add(usu);
-            return View("OrbitInside", new { link = link });
-        }
-        else
-        {
-            ViewBag.Mensaje = "Hubo un problema al unirte al Orbit.";
-            return View("MenuOrbit");
-        }
-    }
-}
-
-
-      
-    
+    } 
 }

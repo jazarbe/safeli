@@ -86,7 +86,7 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
         return nuevoId;
     }
 }
-     public async Task<Usuario> BuscarUsuarioPorId(int idBuscado){
+    public async Task<Usuario> BuscarUsuarioPorId(int idBuscado){
         using(var connection = new NpgsqlConnection(_connectionString)){
             string query = "SELECT id, nombre, apellido, email, \"nroTelefono\", username, foto, bio, contraseña, \"contactoEmergencia\", ubicacion FROM \"Usuarios\" WHERE id = @pIdBuscado";
             return await connection.QueryFirstOrDefaultAsync<Usuario>(query, new {pIdBuscado = idBuscado});
