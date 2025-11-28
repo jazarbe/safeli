@@ -60,7 +60,7 @@ public class OrbitController : Controller
     {
         string baseUrl = $"{Request.Scheme}://{Request.Host}";
         ViewBag.LinkCompleto = orbit.ObtenerLinkCompleto(baseUrl);
-        ViewBag.nombre = orbit.name;
+        ViewBag.nombre = orbit.nombre;
         ViewBag.usuarios = miBd.BuscarUsuariosPorOrbit(orbit.id);
         ViewBag.mensaje = "";
 
@@ -103,7 +103,7 @@ public class OrbitController : Controller
             if (yaUnido)
             {
                 ViewBag.mensaje = "Ya sos parte de este Orbit.";
-                ViewBag.nombre = orbit.name;
+                ViewBag.nombre = orbit.nombre;
                 ViewBag.usuarios = miBd.BuscarUsuariosPorOrbit(orbit.id);
 
                 return View("OrbitInside", new { orbit = orbit });
@@ -115,7 +115,7 @@ public class OrbitController : Controller
             {
                 ViewBag.mensaje = "Te uniste correctamente al Orbit.";
                 
-                ViewBag.nombre = orbit.name;
+                ViewBag.nombre = orbit.nombre;
                 ViewBag.usuarios = await miBd.BuscarUsuariosPorOrbit(orbit.id);
                 return View("OrbitInside", new { orbit = orbit });
             }
