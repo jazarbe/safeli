@@ -889,13 +889,11 @@ h2{
 }
 
 .ui-input-icon {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-150%);
   color: #999;
   transition: color 0.3s;
   border-radius: 50px;
+  margin-left: 5%;
 }
 
 .ui-input:focus ~ .ui-input-icon {
@@ -1346,20 +1344,32 @@ iframe {
 
 /* ORBIT INSIDE */
 .orbit-form{
-  width: fit-content;
-  height: auto;
   background-color: transparent;
   display: flex;
-  margin-right: 6.3%;
-  margin-left: 6.3%;
+  align-items: center;
+  gap: 10px; 
+  width: 100%;
+  margin: 0 6.3%;
 }
 
 .plus{
-  background-color: transparent;
+  /* background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center; */
+  background: transparent;
+  width: auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 
 .plus svg{
-  width: 30%;
+  width: 10%;
   height: auto;
   display: flex;
   justify-self: end;
@@ -1402,6 +1412,64 @@ section h1{
 
 }
 
+.OrbitInside-css{
+  margin-top: 30%;
+  margin-bottom: 6%;
+}
+
+.ui-input {
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  font-size: 1em;
+  border: none;
+  border-radius: 20px;
+  background-color: #f0fbfb;
+  opacity: 90%;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.ui-input:focus {
+  border-color: var(--color1);
+}
+
+.ui-input-icon svg {
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+}
+
+.h2-orbitInside h2{
+  text-align: center !important;
+  font-size: 20px !important;
+}
+
+.OrbtInside-user h5{
+  margin-left: 3%;
+  display: inline-block;
+  justify-self: start;
+  width: fit-content;
+}
+
+.OrbtInside-user img{
+  display: inline-block;
+  width: fit-content;
+  border-radius: 50%;
+  width: 80px;  
+  height: 80px;
+  object-fit: cover;
+  border: 2px solid black;
+  justify-self: start;
+}
+
+.OrbtInside-user{
+  background-color: var(--color5);
+  border-radius: 20px;
+  padding: 2%;
+  margin: 2%;
+}
+
+
 /* AYUDA */
 
 .acc-ayuda{
@@ -1429,95 +1497,6 @@ section h1{
 }
 .card-body p{
   margin-top: 1%;
-}
-
-/* ORBIT INSIDE */
-.OrbitInside-css{
-  margin-top: 50%;
-}
-
-.plus{
-  width: fit-content;
-}
-
-.ui-input-container2 {
-  position: relative;
-  width: 80%;
-  height: fit-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: -25%;
-}
-
-.ui-input {
-  width: 100%;
-  padding: 10px 10px 10px 40px;
-  font-size: 1em;
-  border: none;
-  border-radius: 20px;
-  background-color: #f0fbfb;
-  opacity: 90%;
-  /* border-bottom: 2px solid #ccc; */
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-.ui-input:focus {
-  border-color: var(--color1);
-}
-
-.ui-input-underline2 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  background-color: var(--color1);
-  transform: scaleX(0);
-  transition: transform 0.3s;
-  border-radius: 50px;
-}
-
-.ui-input:focus + .ui-input-underline {
-  transform: scaleX(1);
-  
-}
-
-.ui-input-highlight2 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  background-color: #1f2b99;
-  opacity: 20%;
-  transition: width 0.3s;
-  border-radius: 50px;
-}
-
-.ui-input:focus ~ .ui-input-highlight {
-  width: 100%;
-}
-
-.ui-input-icon {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #999;
-  transition: color 0.3s;
-  border-radius: 50px;
-}
-
-.ui-input:focus ~ .ui-input-icon {
-  color: var(--color1);
-}
-
-.ui-input-icon svg {
-  width: 20px;
-  height: 20px;
-  border-radius: 50px;
 }
 
 /* MENUORBIT */
@@ -1548,35 +1527,4 @@ section h1{
 
 .MenuOrbit-content{
   margin-bottom: 100%;
-}
-
-/* INSIDE ORBIT */
-.h2-orbitInside h2{
-  text-align: center !important;
-  font-size: 20px !important;
-}
-
-.OrbtInside-user h5{
-  margin-left: 3%;
-  display: inline-block;
-  justify-self: start;
-  width: fit-content;
-}
-
-.OrbtInside-user img{
-  display: inline-block;
-  width: fit-content;
-  border-radius: 50%;
-  width: 80px;  
-  height: 80px;
-  object-fit: cover;
-  border: 2px solid black;
-  justify-self: start;
-}
-
-.OrbtInside-user{
-  background-color: var(--color5);
-  border-radius: 20px;
-  padding: 2%;
-  margin: 2%;
 }
