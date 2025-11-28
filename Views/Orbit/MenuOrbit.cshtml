@@ -2,18 +2,26 @@
     ViewData["Title"] = "Menu";
 }
 <div class = "MenuOrbit-content">
+
+
     @if (ViewBag.orbits != null)
     {
-        @foreach (Orbit item in ViewBag.orbits)
-        {
-            <img src= '@item.foto' alt="foto">
-            <h5>@item.name</h5>
-        }
+        <h1>Tus Orbits</h1>
+            @foreach (Orbit item in ViewBag.orbits)
+            {
+                <div class = "menuOrbt-css">
+                    <img src= '@item.foto' alt="foto-orbit">
+                    <h5><a href=''></a>@item.name</h5>
+                </div>
+            }
+        
     }
     else
     {
         <h2>@ViewBag.mensaje</h2>
     }
+
+    
     <div class = "orbit-menu">
         <form method="post" action='@Url.Action("Unirse", "Orbit")'>
             <input type="text" name = "link" autocomplete="off" placeholder="Pegá el link para unirse a un Orbit">
