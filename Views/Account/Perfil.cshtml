@@ -20,17 +20,19 @@
         </div>
         
     </div>
+      <div class = "perfil-css-bio">
+        <h5>@ViewBag.Email</h5>
+        <h5>@ViewBag.Telefono</h5>
+
+        @if(ViewBag.Biografia != ""){
+            <h5>@ViewBag.Biografia</h5>
+          }
+
+          @if(ViewBag.Ubicacion != null){
+            <h5>@ViewBag.Ubicacion</h5>
+          }
+      </div>
     
-    <h5>@ViewBag.Email</h5>
-    <h5>@ViewBag.Telefono</h5>
-
-    @if(ViewBag.Biografia != ""){
-      <h5>@ViewBag.Biografia</h5>
-    }
-
-    @if(ViewBag.Ubicacion != null){
-      <h5>@ViewBag.Ubicacion</h5>
-    }
 
     <h2>Ajustes</h2>
     

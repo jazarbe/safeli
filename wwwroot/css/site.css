@@ -961,6 +961,18 @@ h2{
   font-weight: 700;
 }
 
+.perfil-css-bio h5{
+  margin: 10px auto;
+  text-align: center;
+  color: black;
+  font-weight: 400;
+  font-size: 15px;
+  background-color: var(--color5);
+  width: fit-content;
+  padding: 3%;
+  border-radius: 20px;
+}
+
 .content-perfilText{
   display: flex;
   align-items: center;
@@ -1092,6 +1104,7 @@ h2{
   width: 100%;
   background-color: none;
 }
+
 
 /* Reposicionar la X sin romper el centrado */
 .modal-header .btn-close {
