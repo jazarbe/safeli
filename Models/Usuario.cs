@@ -13,7 +13,7 @@ public class Usuario
     public string bio {get; private set;}
     public DateTime fechaNacimiento {get; set;}
     public string contraseña {get; private set;}
-    public List<Orbit> orbits {get; private set;} = new List<Orbit>();
+    public List<Orbit> orbits {get; set;} = new List<Orbit>();
     public string ubicacion {get; private set;}
     public List<Carpeta> carpetas {get; private set;}
     public int contactoEmergencia {get; private set;}

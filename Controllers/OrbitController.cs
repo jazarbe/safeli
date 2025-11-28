@@ -18,20 +18,6 @@ public class OrbitController : Controller
         miBd = bd;
     }
 
-
-    public async Task<IActionResult> VerOrbit(string link) // muestra un Orbit específico
-    {
-        // Empieza a medir el tiempo de la consulta --> para el loader
-        var stopwatch = Stopwatch.StartNew();
-
-        Orbit orbit = await miBd.BuscarOrbitPorLink(link);
-
-        stopwatch.Stop();
-        ViewBag.TiempoConsulta = stopwatch.ElapsedMilliseconds;
-
-        return RedirectToAction("OrbitInside", "OrbitController", new {orbit = orbit});
-    }
-
     [HttpPost]
     public async Task<IActionResult> Crear(string name, IFormFile foto)
     {
@@ -63,6 +49,7 @@ public class OrbitController : Controller
         else
         {
             Usuario user = await miBd.BuscarUsuarioPorId(id.Value);
+            user.orbits = await miBd.BuscarOrbitsPorUsuario(user.id);
             if(user.orbits != null && user.orbits.Count > 0) ViewBag.orbits = user.orbits;
             else ViewBag.mensaje = "Todavía no tenés Orbits";
         }
@@ -74,7 +61,8 @@ public class OrbitController : Controller
         string baseUrl = $"{Request.Scheme}://{Request.Host}";
         ViewBag.LinkCompleto = orbit.ObtenerLinkCompleto(baseUrl);
         ViewBag.nombre = orbit.name;
-        ViewBag.usuarios = orbit.usuarios;
+        ViewBag.usuarios = miBd.BuscarUsuariosPorOrbit(orbit.id);
+        ViewBag.mensaje = "";
 
         return View();
     }
@@ -114,8 +102,11 @@ public class OrbitController : Controller
             bool yaUnido = await miBd.UsuarioEnOrbit(idUsuario.Value, orbit.id);
             if (yaUnido)
             {
-                ViewBag.Mensaje = "Ya sos parte de este Orbit.";
-                return View("OrbitInside", new { link = link });
+                ViewBag.mensaje = "Ya sos parte de este Orbit.";
+                ViewBag.nombre = orbit.name;
+                ViewBag.usuarios = miBd.BuscarUsuariosPorOrbit(orbit.id);
+
+                return View("OrbitInside", new { orbit = orbit });
             }
 
             bool agregado = await miBd.AgregarUsuarioAOrbit(idUsuario.Value, orbit.id);
@@ -123,18 +114,14 @@ public class OrbitController : Controller
             if (agregado)
             {
                 ViewBag.mensaje = "Te uniste correctamente al Orbit.";
-                Console.WriteLine("usu es null? " + (usu == null));
-                Console.WriteLine("orbit es null? " + (orbit == null));
-                Console.WriteLine("usu.orbits es null? " + (usu?.orbits == null));
-                Console.WriteLine("orbit.usuarios es null? " + (orbit?.usuarios == null));
-
-                usu.orbits.Add(orbit);
-                orbit.usuarios.Add(usu);
-                return View("OrbitInside", new { link = link });
+                
+                ViewBag.nombre = orbit.name;
+                ViewBag.usuarios = await miBd.BuscarUsuariosPorOrbit(orbit.id);
+                return View("OrbitInside", new { orbit = orbit });
             }
             else
             {
-                ViewBag.Mensaje = "Hubo un problema al unirte al Orbit.";
+                ViewBag.mensaje = "Hubo un problema al unirte al Orbit.";
                 return View("MenuOrbit");
             }
         }

@@ -6,7 +6,7 @@ public class Orbit
     public string name{get; private set;}
     public string foto{get; private set;}
     public string link { get; private set; }
-    public List<Usuario> usuarios {get; private set;} = new List<Usuario>();
+    public List<Usuario> usuarios {get; set;} = new List<Usuario>();
 
     public Orbit(){}
     public Orbit(string name, string foto)

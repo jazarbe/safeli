@@ -106,11 +106,9 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
         using (var connection = new NpgsqlConnection(_connectionString))
         {
             string orbitsQuery = @"
-                SELECT 
-                    o.id, o.name, o.foto, o.link, o.ubicacion 
-                FROM ""Orbits"" o
-                JOIN ""OrbitUsuario"" uo ON o.id = uo.idOrbit
-                WHERE uo.idUsuario = @pIdBuscado";
+                SELECT o.id, o.nombre, o.foto, o.link FROM ""Orbits"" o
+                JOIN ""OrbitUsuario"" uo ON o.id = uo.""idOrbit""
+                WHERE uo.""idUsuario"" = @pIdBuscado";
                 
             IEnumerable<Orbit> orbitsList = await connection.QueryAsync<Orbit>(orbitsQuery, new { pIdBuscado = idBuscado });
             
@@ -254,8 +252,8 @@ public async Task<int> AgregarUsuario(string nombre, string apellido, string ema
                 SELECT 
                     u.id, u.nombre, u.apellido, u.email, u.""nroTelefono"", u.username, u.foto, u.bio, u.contraseña, u.""contactoEmergencia"", u.ubicacion
                 FROM ""Usuarios"" u
-                JOIN ""OrbitUsuario"" uo ON u.id = uo.idUsuario
-                WHERE uo.idOrbit = @pIdBuscado";
+                JOIN ""OrbitUsuario"" uo ON u.id = uo.""idUsuario""
+                WHERE uo.""idOrbit"" = @pIdBuscado";
                 
             IEnumerable<Usuario> usersList = await connection.QueryAsync<Usuario>(usersQuery, new { pIdBuscado = idBuscado });
             
